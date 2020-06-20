@@ -1,0 +1,9 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/out/build/Mingw64-Debug
+/out/build/Mingw64-Release
+/out/build/x64-Debug
+/.vs
+/.vsss

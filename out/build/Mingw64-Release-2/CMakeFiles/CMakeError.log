@@ -1,0 +1,26 @@
+Performing C SOURCE FILE Test _GLFW_HAS_ASLR failed with the following output:
+Change Dir: C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_128c0 && [1/2] Building C object CMakeFiles/cmTC_128c0.dir/src.c.obj
+[2/2] Linking C executable cmTC_128c0.exe
+FAILED: cmTC_128c0.exe 
+cmd.exe /C "cd . && C:\msys64\mingw64\bin\gcc.exe -D_GLFW_HAS_ASLR -Wl,--dynamicbase   CMakeFiles/cmTC_128c0.dir/src.c.obj  -o cmTC_128c0.exe -Wl,--out-implib,libcmTC_128c0.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+collect2.exe: error: ld returned 5 exit status
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main(void) { return 0; }
+Performing C SOURCE FILE Test _GLFW_HAS_64ASLR failed with the following output:
+Change Dir: C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CMakeFiles/CMakeTmp
+
+Run Build Command(s):C:/Program Files (x86)/Microsoft Visual Studio/2019/Professional/Common7/IDE/CommonExtensions/Microsoft/CMake/Ninja/ninja.exe cmTC_9877d && [1/2] Building C object CMakeFiles/cmTC_9877d.dir/src.c.obj
+[2/2] Linking C executable cmTC_9877d.exe
+FAILED: cmTC_9877d.exe 
+cmd.exe /C "cd . && C:\msys64\mingw64\bin\gcc.exe -D_GLFW_HAS_64ASLR -Wl,--high-entropy-va   CMakeFiles/cmTC_9877d.dir/src.c.obj  -o cmTC_9877d.exe -Wl,--out-implib,libcmTC_9877d.dll.a -Wl,--major-image-version,0,--minor-image-version,0  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 && cd ."
+collect2.exe: error: ld returned 5 exit status
+ninja: build stopped: subcommand failed.
+
+
+Source file was:
+int main(void) { return 0; }

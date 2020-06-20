@@ -1,0 +1,9 @@
+This is a simple explanation of how a theme definition file works.
+It's very simple actually. Each textured action has a corresponding ID
+
+The syntax for that is simply:
+
+C_BUTTON_DOWN = "Path/To/Texture.png"
+
+To get a list of all the supported IDs,
+please refer to ThemeManager.h or a default theme
