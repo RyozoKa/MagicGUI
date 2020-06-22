@@ -11,7 +11,7 @@ void Canvas::Tick(double Delta)
 	Widget::Tick(Delta);
 }
 
-void Canvas::SetColor(Color& C)
+void Canvas::SetColor(Color C)
 {
 	Background.SetColor(C);
 	bUpdate = true;

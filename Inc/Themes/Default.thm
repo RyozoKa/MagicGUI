@@ -1,0 +1,3 @@
+C_BUTTON_DOWN = "Button_Down.png"
+C_BUTTON_HOVER = "Button_Hover.png"
+C_BUTTON_NORMAL = "Button_Normal.png"

@@ -93,7 +93,7 @@ public:
 
 	//ExpandMode ExMode = Ex_Expanded;	//-- Draw method, either begin as fully expanded (default), or collapsed
 
-	void AddKeypoint(Keypoint& Point);
+	void AddKeypoint(Keypoint Point);
 
 
 	//Collision detection against this Widget
@@ -148,10 +148,10 @@ public:
 	virtual void AddItem(Widget*);
 
 	//Setters
-	virtual void SetSize(const Vect2& Size);
-	virtual void SetRotation(const Rotator& Rot);
+	virtual void SetSize(const Vect2 Sz);
+	virtual void SetRotation(const Rotator Rot);
 	virtual void SetRadius(const float F);
-	virtual void SetPosition(const Vect2& Pos);
+	virtual void SetPosition(const Vect2 Pos);
 
 	//Etc
 	virtual void Draw();

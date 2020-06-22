@@ -2,6 +2,7 @@
 #include <stdio.h>
 #include "HString.h"
 #include <cstdio>
+#include "Texture.h"
 
 Texture* ThemeManager::TextureMap[C_ENDOF];
 const char* EnumMap[C_ENDOF] = {};
@@ -14,21 +15,32 @@ Texture* ThemeManager::GetTextureFor(Controls C)
 bool ThemeManager::LoadTheme(const char* ThemeFile)
 {
 	FILE* F;
-	F = fopen(ThemeFile, "r+b");
-	char* C;
+	F = fopen(ThemeFile, "r");
+	if(!F)
+	{
+		printf("Error: Failed to open theme file %s\n", ThemeFile);
+		return false;
+	}
+	char C;
 	String Line;
 	unsigned int LineCount = 0;
-	while( (C = getc(F)) != EOF )
+	do
 	{
-		while (C != '\n')
+		C = getc(F);
+		if(C != '\n' && C != EOF)
 			Line += C;
-		++LineCount;
-		if (!LoadTextureFromLine(Line))
+		else
 		{
-			printf("Error: Failed to load theme file %s\n Syntax error ( %i ): %s\n", ThemeFile, LineCount, Line.Tochar());
-			return false;
+			++LineCount;
+			if (!LoadTextureFromLine(Line))
+			{
+				printf("Error: Failed to load theme file %s\n Syntax error ( %i ): %s\n", ThemeFile, LineCount, Line.Tochar());
+				return false;
+			}
+			Line.Clear();
 		}
-	}
+	} while (C != EOF);
+	fclose(F);
 	return true;
 }
 
@@ -39,18 +51,28 @@ bool ThemeManager::LoadTextureFromLine(const String& Str)
 
 	int Index = Str.Find("=");
 	String ID;
-	if (!Index)
+	if (Index >= 0)
 		ID = Str.Substr(0, Index);
 	else
 		return false;
-	if( (Controls Cs = StringToID(ID)) != C_INVALID)
+	Controls Cs;
+	ID.Trim();
+	if( (Cs = StringToID(ID)) != C_INVALID)
 	{
-		String Result = Str.Substr(Index);
+		String Result = Str.Substr(Index + 1);
 		Result.Trim();
 		Result.ChopStart(1);
 		Result.Chop(1);
-		printf("File for ID %s is : %s\n", ID.Tochar(), Result.Tochar());
+		Texture* Tx = Texture::CreateTexture(Result.Tochar());
+		if (!Tx)
+		{
+			printf("Failed to load texture %s\n", Result.Tochar());
+			return false;
+		}
+		TextureMap[Cs] = Tx;
+		return true;
 	}
+	return false;
 }
 
 Controls ThemeManager::StringToID(String& S)

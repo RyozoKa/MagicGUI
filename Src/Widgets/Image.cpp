@@ -11,15 +11,16 @@ void Image::SetImage(Texture* Tx)
 {
 	ImgObj.SetImage(Tx);
 	bUpdate = true;
+	printf("Set image %p\n", Tx);
 }
 
-void Image::SetColor(Color& Cf)
+void Image::SetColor(const Color Cf)
 {
 	ImgObj.SetColor(Cf);
 	bUpdate = true;
 }
 
-void Image::SetSize(Vect2& Sz)
+void Image::SetSize(const Vect2 Sz)
 {
 	ImgObj.SetPrimitive(Sz);
 	Size = Sz;
@@ -33,7 +34,7 @@ void Image::SetType(TYPE T)
 	DrawType = T;
 }
 
-void Image::SetPosition(Vect2& Pos)
+void Image::SetPosition(const Vect2 Pos)
 {
 	Position = Pos;
 	bUpdate = true;

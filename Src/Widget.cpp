@@ -128,7 +128,7 @@ void Widget::Tick(double DT)
 }
 
 
-void Widget::AddKeypoint(Keypoint& Point)
+void Widget::AddKeypoint(Keypoint Point)
 {
 	Keys[NumKeys++] = Point;
 }
@@ -172,14 +172,14 @@ void Widget::AddItem(Widget* W)
 	W->ZIndex = GZindex++;
 }
 
-void Widget::SetSize(const Vect2& Sz)
+void Widget::SetSize(const Vect2 Sz)
 {
 	Size = Sz;
 	DrawSize = Sz;
 	Update();	//Update all the children
 }
 
-void Widget::SetRotation(const Rotator& Rot)
+void Widget::SetRotation(const Rotator Rot)
 {
 	Rotation = Rot;
 	RotMatrix = Mat2(Rot);
@@ -191,7 +191,7 @@ void Widget::SetRadius(const float F)
 	CollisionType = ECollision_Radi;
 }
 
-void Widget::SetPosition(const Vect2& Pos)
+void Widget::SetPosition(const Vect2 Pos)
 {
 	//if(bAnimating)
 	//	return;

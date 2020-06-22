@@ -18,8 +18,11 @@ Texture * Texture::CreateTexture(const char * Path)
 {
 	HASH ID = HashName(Path);
 	auto it = _HashTable.find(ID);
-		if (it != _HashTable.end())
-			return it->second;	//Don't load a texture that already exists
+	if (it != _HashTable.end())
+	{
+		return it->second;	//Don't load a texture that already exists
+		printf("Reusing texture\n");
+	}
 	int width, height, nChannels;
 	stbi_set_flip_vertically_on_load(true);
 	unsigned char* Data = stbi_load(Path, &width, &height, &nChannels, 0); 
@@ -28,6 +31,7 @@ Texture * Texture::CreateTexture(const char * Path)
 		std::cout << "Texture: Failed to create texture: Failed to load " << Path << "\n";
 		return nullptr;
 	}
+	printf("Creating new texture\n");
 	Texture* Tx = new Texture();//Window::Interface->CreateTexture(data, width, height, nrChannels);
 	Tx->Data = Data;
 	Tx->TextureID = ID;

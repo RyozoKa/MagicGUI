@@ -247,6 +247,7 @@ inline char*					Tochar() const { return nstring; }
 	String& operator+= (const BYTE S1);
 	String& operator+= (const float S1);
 	String& operator+= (const double S1);
+	String& operator+= (const char S1);
 	String& operator-= (const char* s1);
 
 	char* nstring;

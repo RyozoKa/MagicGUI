@@ -19,7 +19,7 @@ public:
 	RenderObject Background;
 
 	//Canvas interface
-	void SetColor(Color&);		//-- Background color
+	void SetColor(const Color);		//-- Background color
 	void SetImage(Texture*);	//-- Background image
 	virtual void SetMode(TYPE);	
 
@@ -30,7 +30,7 @@ public:
 		Background.Owner = this;
 	}
 
-	virtual void SetSize(const Vect2& Sz)
+	virtual void SetSize(const Vect2 Sz)
 	{
 		Widget::SetSize(Sz);
 		Background.SetPrimitive(Sz);

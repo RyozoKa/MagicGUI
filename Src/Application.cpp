@@ -17,6 +17,7 @@ Vect2 Application::PhysicalSize = { 0, 0 };
 Vect2 Application::ScreenRes = { 0, 0 };
 unsigned short Application::RefreshRate = 0;
 GLFWmonitor* Application::primary = nullptr;
+Callbacks<> Application::SubsystemModules;
 
 void copy_buffer()
 {

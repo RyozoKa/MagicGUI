@@ -1783,6 +1783,10 @@ String& String::operator +=(double S)
 		return *this;
 	
 }
+String& String::operator+=(const char S1)
+{
+	return Append(S1);
+}
 String& String::operator-= (const char* s1)
 {
 	int pos = FindExact((char*)s1);

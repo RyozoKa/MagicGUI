@@ -32,6 +32,7 @@ typedef unsigned long		UNIT64;
 #include <GLFW/glfw3.h>
 
 #include "HDynamicArray.h"
+
 void ErrorMessage(const char* Msg, const char* Title);	//Simple, crossplatform implementation of showing error messages during startup.
 
 //GLFW overrides.
@@ -49,7 +50,7 @@ struct GLFWwindow
 #else
 	#define MAGICGUIAPI __attribute__((dllimport))
 #endif
-
+#include "CallbackChain.h"
 #include "Shader.h"
 
 inline long long Abs(long long num)
@@ -388,6 +389,8 @@ public:
 	static GLFWmonitor* primary;
 	static Vect2 ScreenRes;
 
+	static Callbacks<> SubsystemModules;
+
 	static void Execute();
 };
 
@@ -523,9 +526,9 @@ public:
 #define MOD_SUPER		0x0008
 
 //Mouse buttons
-#define MOUSE_BUTTON_LEFT 1
-#define MOUSE_BUTTON_MIDDLE 3
-#define MOUSE_BUTTON_RIGHT 2
+#define MOUSE_BUTTON_LEFT 0
+#define MOUSE_BUTTON_MIDDLE 2
+#define MOUSE_BUTTON_RIGHT 1
 
 bool RectOverlap(Vect2 Pos1, Vect2 Size1, Vect2 Pos2, Vect2 Size2);
 

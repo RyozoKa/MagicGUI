@@ -86,11 +86,7 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 			//Shader must be initialized after glewInit
 			Shader.InitializeShader("Shaders/Vert.shader", "Shaders/Frag.shader");
 
-			for(auto it = Texture::_HashTable.begin(); it != Texture::_HashTable.end(); ++it)
-			{
-				it->second->DriverStartup();
-			}
-			Application::bDriverInit = true;
+			
 
 			//Initialize empty texture
 			unsigned int Data = 0xFFFFFFFF;
@@ -101,6 +97,12 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, 1, 1, 0, GL_RGBA, GL_UNSIGNED_BYTE, &Data);
+			for(auto it = Texture::_HashTable.begin(); it != Texture::_HashTable.end(); ++it)
+			{
+				it->second->DriverStartup();
+			}
+			Application::bDriverInit = true;
+			Application::SubsystemModules.DelegateCallbacks();
 		}
 		else
 			Wd = glfwCreateWindow(Size.X, Size.Y, Title, Mode == MD_FULLSCREEN ? Application::primary : nullptr, Context);
@@ -239,7 +241,7 @@ void Window::OnCursor(double X, double Y)
 	Widget* W;
 	
 	//Don't perform another hit test if we don't have to
-	if(CursorPos.X == X && CursorPos.Y == Y)
+	if(CursorPos.X == X && CursorPos.Y == Y || (LastHit && LastHit->TestCollision(CursorPos)))
 		W = LastHit;
 	else
 	{
@@ -281,7 +283,7 @@ void Window::OnMouseClick(int Key)
 		break;
 	}
 
-	printf("%f %f %p\n", CursorPos.X, CursorPos.Y, LastHit);
+	printf("%f %f %p %i\n", CursorPos.X, CursorPos.Y, LastHit, Key);
 }
 
 void Window::OnMouseRelease(int Key)
@@ -335,7 +337,7 @@ void MouseClickCallback(GLFWwindow* Wnd, int Button, int Action, int Mods)
 			Wnd->Wnd->OnMouseClick(Button);
 		break;
 		case GLFW_RELEASE:
-			Wnd->Wnd->OnMouseClick(Button);
+			Wnd->Wnd->OnMouseRelease(Button);
 		break;
 	}
 }

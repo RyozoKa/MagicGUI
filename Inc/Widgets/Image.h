@@ -22,10 +22,10 @@ public:
 
 	//Image interface
 	void SetImage(Texture*);
-	void SetColor(Color& Cf);
-	void SetSize(Vect2& Sz);
+	void SetColor(const Color Cf);
+	void SetSize(const Vect2 Sz);
 	void SetType(TYPE);
-	void SetPosition(Vect2&);
+	void SetPosition(const Vect2);
 
 	virtual void RenderObjects();
 
