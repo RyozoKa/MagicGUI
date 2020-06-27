@@ -242,3 +242,8 @@ bool RectOverlap(Vect2 Pos1, Vect2 Size1, Vect2 Pos2, Vect2 Size2)
         return false;
     return true; 
 } 
+
+bool RectWithin(Vect2 InnerPos, Vect2 InnerSize, Vect2 OuterPos, Vect2 OuterSize)
+{
+    return (InnerPos.X >= OuterPos.X && InnerPos.Y >= OuterPos.Y && InnerSize.X <= OuterSize.X && InnerSize.Y <= OuterSize.Y);
+}

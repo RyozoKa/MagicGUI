@@ -84,7 +84,7 @@ class MAGICGUIAPI RenderObject
 {
 	public:
 
-	unsigned int RenderMode;
+	unsigned int RenderMode = TYPE::TYPE_NONE;
 	unsigned char TextureMode;
 
 	unsigned int VertexBuffer = 0; 		
@@ -92,7 +92,7 @@ class MAGICGUIAPI RenderObject
 	unsigned int ElementBuffer = 0;
 	
 	float Red, Green, Blue, Alpha;
-	Texture* Image;
+	Texture* Image = NULL;
 	bool bPending;					//--	This is set initially, in case the driver has not yet been initialized. Any upload to the GPU needs to be delayed until DriverStartup() is called.
 
 	unsigned int	ShaderProgram;	//--	Shader program used for this RenderObject
@@ -134,15 +134,7 @@ class MAGICGUIAPI RenderObject
 	//Event called when driver is fully initialized.
 	void DriverStartup();
 
-	void DrawObject(const Vect2 Location);
-
-	//-- Location: Absolute position for the entire object
-	//-- Pos: Scissorbox segment position
-	//-- Size: Scissorbox size
-	void DrawSegment(const Vect2 Location, const Vect2 Pos, const Vect2 Size);
-	
-
-	
+	void DrawObject(const Vect2 Location);	
 };
 
 //Render specific statics

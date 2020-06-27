@@ -49,12 +49,6 @@ public:
 	void OnMouseRelease(int Key);
 	void OnScroll(double XOffset, double YOffset);
 
-	//Used by segmented updates to redraw 
-	void Update()
-	{
-		C.SegmentRender();
-	}
-
 	virtual void Tick(double);
 
 	void AddItem(Widget& Item);
@@ -80,7 +74,7 @@ public:
 
 	Vect2 CursorPos;
 
-	Window(const Vect2 Size)
+	Window(const Vect2 Size) : GridSystem(&C)
 	{
 		//Initialize canvas widget here
 		C.Window = this;

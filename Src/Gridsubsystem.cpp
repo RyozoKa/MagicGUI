@@ -3,6 +3,7 @@
 #include "Window.h"
 #include "Widget.h"
 #include <cstdio>
+#include "Canvas.h"
 
 Block& Gridsubsystem::GetBlock(const Vect2 Pos)
 {
@@ -94,14 +95,10 @@ void Gridsubsystem::UpdateSegment(class Widget& W, const Vect2 Pos, const Vect2 
 {
 	//Create first level scissor box
 	CurrentState = RenderState::STATE_Segmented;
-	glScissor(Pos.X, (W.Window->WindowSize.Y - Pos.Y) - Size.Y, Size.X, Size.Y);
-	glEnable(GL_SCISSOR_TEST);
-	ScissorPos = Pos;
-	ScissorSize = Size;
-	bScissorState = true;
+	ScissorBox(Pos, Size);
 
 	//Iterate over the blocks
-	int Index = GetBlockIndex(Pos);
+	/*int Index = GetBlockIndex(Pos);
 	Vect2 Len = Pos.GetBlockDelta() + Size;
 	Vect2 Num = Len / Vect2(64.f, 64.f);
 	Num.RoundUp();
@@ -125,13 +122,12 @@ void Gridsubsystem::UpdateSegment(class Widget& W, const Vect2 Pos, const Vect2 
 					Wd.bUpdate = true;
 			}
 		}
-	}
+	}*/
 	//Redraw segments
-	W.Window->Update();
-	glDisable(GL_SCISSOR_TEST);
-	bScissorState = false;
-	ScissorPos.Zero();
-	ScissorSize.Zero();
+	//Bug: This will draw things that won't show up but still disables its update. We don't want that!
+	OwnerCanvas->bUpdate = true;
+	OwnerCanvas->SegmentRender(Pos, Size);
+	DisableScissor();
 	CurrentState = RenderState::STATE_Normal;
 }
 
@@ -144,6 +140,7 @@ void Gridsubsystem::ResizeWidget(Widget& W, const Vect2& Delta)
 	//	Vect2 Delta = NewSize - W.DrawSize;
 
 	//}
+
 	if ( (W.Position + W.DrawSize).GetBlock() != (W.Position + W.DrawSize + Delta).GetBlock())
 	{
 		RemoveWidget(W);

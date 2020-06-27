@@ -20,12 +20,11 @@ public:
 		ImgObj.Owner = this;
 	}
 
-	//Image interface
 	void SetImage(Texture*);
 	void SetColor(const Color Cf);
-	void SetSize(const Vect2 Sz);
+	virtual void SetSize(const Vect2 Sz);
 	void SetType(TYPE);
-	void SetPosition(const Vect2);
+	virtual void SetPosition(const Vect2);
 
 	virtual void RenderObjects();
 

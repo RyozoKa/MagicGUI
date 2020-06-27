@@ -76,6 +76,8 @@ public:
 
 	//True if this widget contains any transparency
 	bool bTransparent = false;
+	bool bEnabled = true;				//-- Enable or disable widget
+	bool bHidden = false;				//-- Visibility
 
 	//Animation internals
 	bool bAnimating = false;			//-- Move object interpolated according to keypoints
@@ -158,6 +160,8 @@ public:
 	virtual void RenderObjects() = 0;	//-- Override this and set the objects you wish to draw in a custom widget.
 	virtual void Update();				//-- Set to redraw in the next tick
 
+	virtual void SegmentRender(Vect2 Pos, Vect2 Size);
+
 	//Input Events
 	virtual void OnMouseEnter(float X, float Y);
 	virtual void OnMouseLeave(float X, float Y);
@@ -167,6 +171,9 @@ public:
 	virtual void OnMouseRightReleased(float X, float Y);
 	virtual void OnKeyPressed(int Key, int Mod);
 	virtual void OnScroll(float YOffset);
+
+	//Other events
+	virtual void Attached();
 
 	class Gridsubsystem* GridSystem;	//--	Grid to which this widget belongs. This could be the main window, or a scroll pane
 

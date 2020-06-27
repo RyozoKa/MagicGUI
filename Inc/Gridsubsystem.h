@@ -25,6 +25,9 @@ class Gridsubsystem
 {
 public:
 
+	Gridsubsystem(class Canvas* COwner) : OwnerCanvas(COwner) {}
+
+	class Canvas* OwnerCanvas;
 	//These are the number of horizontal and vertical blocks
 	const Vect2 GridSize = { 120, 68 };
 

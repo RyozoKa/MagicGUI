@@ -10,7 +10,7 @@ void Button::SetStateBackground(Texture* T, ButtonState S)
 void Button::SetStateColor(Color C, ButtonState S)
 {
 	ColoredStates[S] = C;
-	//DrawType |= TYPE::TYPE_COLOR;
+	//DrawType |= TYPE::TYPE_COLOR
 }
 
 void Button::SetState(ButtonState S)
@@ -27,11 +27,13 @@ void Button::SetState(ButtonState S)
 void Button::OnMouseEnter(float X, float Y)
 {
 	SetState(ButtonState::STATE_Hover);
+	printf("Entered\n");
 }
 
 void Button::OnMouseLeave(float X, float Y)
 {
 	SetState(ButtonState::STATE_Normal);
+	printf("Left\n");
 }
 
 void Button::OnMouseLeftClick(float X, float Y)
@@ -62,4 +64,14 @@ void Button::OnKeyPressed(int Key, int Mod)
 
 void Button::OnScroll(float YOffset)
 {
+}
+
+void Button::SetColor(Color C)
+{
+	Image::SetColor(C);
+}
+
+void Button::SetImage(Texture* T)
+{
+	Image::SetImage(T);
 }

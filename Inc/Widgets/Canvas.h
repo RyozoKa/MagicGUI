@@ -14,7 +14,6 @@
 class MAGICGUIAPI Canvas : public Widget
 {
 public:
-	virtual void Tick(double Delta);
 
 	RenderObject Background;
 
@@ -40,18 +39,5 @@ public:
 	virtual bool TestCollision(const Vect2&)
 	{
 		return false;
-	}
-
-	//Canvas interface
-	//Used by segmented rendering
-	void SegmentRender()
-	{
-		if (bUpdate)
-			Draw();
-		for(int i = 0; i < Items.size(); ++i)
-		{
-			if (Items[i]->bUpdate)
-				Items[i]->Draw();
-		}
 	}
 };

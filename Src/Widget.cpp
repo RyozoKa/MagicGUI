@@ -116,8 +116,14 @@ void Widget::Tick(double DT)
 	//This will take care of all Z indexing too
 	if(OldPos != Position || OldSize > DrawSize)
 	{
-		Vect2 MinPos = Vect2::Min(OldPos, Position);
-		Vect2 FinalSize = (Position - OldPos).ToAbs() + Vect2::Max(OldSize, DrawSize);
+		//Calculate the largest rect
+		Vect2 MinPos;// = Vect2::Min(OldPos, Position);
+		MinPos.X = MIN(OldPos.X, Position.X) - 2.f;
+		MinPos.Y = MIN(OldPos.Y, Position.Y) - 2.f;
+		Vect2 FinalSize;// = Vect2::Max(OldSize, DrawSize);
+		FinalSize.X = MAX(OldPos.X + OldSize.X, Position.X + DrawSize.X) + 2.f;
+		FinalSize.Y = MAX(OldPos.Y + OldSize.Y, Position.Y + DrawSize.Y) + 2.f;
+		FinalSize -= MinPos;
 		GridSystem->UpdateSegment(*this, MinPos, FinalSize);
 	}
 	else if (bUpdate)
@@ -135,6 +141,8 @@ void Widget::AddKeypoint(Keypoint Point)
 
 bool Widget::TestCollision(const Vect2& Pos)
 {
+	if (bHidden || !bEnabled)
+		return false;
 	switch (CollisionType)
 	{
 		case ECollision_Radi:
@@ -170,6 +178,8 @@ void Widget::AddItem(Widget* W)
 	W->Owner = this;
 	W->Window = Window;
 	W->ZIndex = GZindex++;
+	GridSystem->InsertWidget(*W);
+	W->Attached();
 }
 
 void Widget::SetSize(const Vect2 Sz)
@@ -203,7 +213,8 @@ void Widget::SetPosition(const Vect2 Pos)
 
 void Widget::Draw()
 {
-	//Perform segmented drawing if needed
+	
+	//Perform segmented drawing if needed. We don't care about rendering overlays because Controls aren't meant to be stacked on top of eachother unless they are children.
 	if(CurrentState == RenderState::STATE_Normal)
 	{
 		if (bTransparent)
@@ -219,30 +230,14 @@ void Widget::Draw()
 	if((DrawSize < Size))
 	{
 		bScissor = true;
-		Vect2 FinalPos = Position;
-		Vect2 FinalSize = DrawSize;
-		if(bScissorState)
-		{ 
-			FinalPos = Vect2::Max(FinalPos, ScissorPos);
-			FinalSize = Vect2::Min(Position + DrawSize, ScissorPos + ScissorSize);
-			FinalSize -= FinalPos;
-			FinalSize.X -= 0.01;	//Compensate for weird rounding error in the scissor box.
-		}
-		if (FinalSize <= 0.f)
-			return;	//Don't draw nulls. if you pass a negative delta to glScissor it will revert to the previous box, causing artifacts
-		glScissor(FinalPos.X , (Window->WindowSize.Y - FinalPos.Y ) - FinalSize.Y, FinalSize.X, FinalSize.Y);
-		glEnable(GL_SCISSOR_TEST);
+		ScissorBox(Position, DrawSize);
 	}
-	//Draw objects
-	RenderObjects();
+	//Draw objects if visible
+	if (!bHidden)
+		RenderObjects();
 
 	if(bScissor)
-	{
-		if (!bScissorState)	//No previous scissor
-			glDisable(GL_SCISSOR_TEST);
-		else
-			glScissor(ScissorPos.X, (Window->WindowSize.Y - ScissorPos.Y) - ScissorSize.Y, ScissorSize.X, ScissorSize.Y);
-	}
+		DisableScissor();
 	bUpdate = false;
 }
 
@@ -254,6 +249,22 @@ void Widget::Update()
 	bUpdate = true;
 	//printf("Updated\n");
 }
+void Widget::SegmentRender(Vect2 Pos, Vect2 Size)
+	{
+		if (bUpdate)
+			Draw();
+		for(int i = 0; i < Items.size(); ++i)
+		{
+			if (/*Items[i]->bUpdate &&*/ RectOverlap(Pos, Pos + Size, Items[i]->Position, Items[i]->Position + Items[i]->Size))
+			{
+				bool bUpdateState = Items[i]->bUpdate;
+				Items[i]->bUpdate = true;
+				Items[i]->SegmentRender(Pos, Size);
+				if(!RectWithin(Items[i]->Position, Items[i]->Size, Pos, Size))
+					Items[i]->bUpdate = bUpdateState;	//If we've only drawn this partially, restore previous update state
+			}
+		}
+	}
 //These don't do anything by default.
 void Widget::OnMouseEnter(float X, float Y)
 {}
@@ -278,3 +289,7 @@ void Widget::OnKeyPressed(int Key, int Mod)
 
 void Widget::OnScroll(float YOffset)
 {}
+
+void Widget::Attached()
+{
+}

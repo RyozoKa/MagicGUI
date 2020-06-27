@@ -248,7 +248,8 @@ void RenderObject::DriverStartup()
 //Material
 void RenderObject::DrawObject(const Vect2 Location)
 {
-	
+	if (RenderMode == TYPE::TYPE_NONE)
+		return;
 	//glfwMakeContextCurrent(Owner->Window->WindowHandle);
 	//glViewport(0, 0, Owner->Window->WindowSize.X, Owner->Window->WindowSize.Y);
 	
@@ -287,14 +288,6 @@ void RenderObject::DrawObject(const Vect2 Location)
 	glDrawElements(GL_TRIANGLES, NumVertices, GL_UNSIGNED_INT, 0);
 	//glFlush();
 	glBindVertexArray(0);
-}
-
-void RenderObject::DrawSegment(const Vect2 Location, const Vect2 Pos, const Vect2 Size)
-{
-	return;
-	glScissor(Pos.X, Pos.Y, Size.X, Size.Y);
-	DrawObject(Location);
-	glDisable(GL_SCISSOR_TEST);
 }
 
 Vect2 ScissorSize;

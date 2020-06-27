@@ -7,6 +7,7 @@
 */
 #pragma once
 #include <string.h>
+#include <stdlib.h>
 
 template<class T> class HDynamicArray
 {
@@ -20,16 +21,16 @@ public:
 	//Constructors
 	HDynamicArray() : _Size(0), _Alloc(16)
 	{
-		_Data = new T[_Alloc];
+		_Data = (T*)malloc(_Alloc * sizeof(T));//new T[_Alloc];
 	}
 	HDynamicArray(const UINT64 Alloc) : _Size(0), _Alloc(Alloc)
 	{
-		_Data = new T[Alloc];
+		_Data =  (T*)malloc(_Alloc * sizeof(T));//new T[Alloc];
 	}
 	//Destructors
 	~HDynamicArray()
 	{
-		delete[] _Data;
+		free(_Data);// delete[] _Data;
 	}
 
 	void Insert(T& D)
@@ -38,10 +39,11 @@ public:
 		if (_Size >= _Alloc)
 		{
 			_Alloc <<= 1;
-			T* New = new T[_Alloc];
-			memcpy(New, _Data, _Size * sizeof(T));
-			delete[] _Data;
-			_Data = New;
+			//T* New = new T[_Alloc];
+			//memcpy(New, _Data, _Size * sizeof(T));
+			//delete[] _Data;
+			//_Data = New;
+			_Data = (T*)realloc(_Data, _Size * sizeof(T));
 		}
 		_Data[_Size++] = D;
 	}
@@ -52,10 +54,11 @@ public:
 		if (_Size >= _Alloc)
 		{
 			_Alloc <<= 1;
-			T* New = new T[_Alloc];
-			memcpy(New, _Data, _Size * sizeof(T));
-			delete[] _Data;
-			_Data = New;
+			//T* New = new T[_Alloc];
+			//memcpy(New, _Data, _Size * sizeof(T));
+			//delete[] _Data;
+			//_Data = New;
+			_Data = (T*)realloc(_Data, _Size * sizeof(T));
 		}
 		_Data[_Size++] = D;
 	}
@@ -75,8 +78,9 @@ public:
 		if (_Alloc > 16)
 		{
 			_Alloc = 16;
-			delete[] _Data;
-			_Data = new T[_Alloc];
+			//delete[] _Data;
+			//_Data = new T[_Alloc];
+			realloc(_Data, _Alloc * sizeof(T));
 		}
 		_Size = 0;
 	}
@@ -108,5 +112,11 @@ public:
 	T* Data()
 	{
 		return _Data;
+	}
+
+	T PopLast()
+	{
+		--_Size;
+		return _Data[_Size];
 	}
 };

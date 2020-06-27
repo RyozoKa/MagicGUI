@@ -33,6 +33,9 @@ typedef unsigned long		UNIT64;
 
 #include "HDynamicArray.h"
 
+#define MIN(x, y) (x < y ? x : y)
+#define MAX(x, y) (x > y ? x : y)
+
 void ErrorMessage(const char* Msg, const char* Title);	//Simple, crossplatform implementation of showing error messages during startup.
 
 //GLFW overrides.
@@ -240,6 +243,11 @@ struct Vect2
 			return V1;
 		return V2;
 	}
+
+	bool IsEmpty()
+	{
+		return X == 0.f && Y == 0.f;
+	}
 };
 
 inline bool operator>(const Vect2& B, const Vect2& A)
@@ -309,6 +317,15 @@ struct Color
 	unsigned char Green;
 	unsigned char Blue;
 	unsigned char Alpha;
+
+	Color() = default;
+	Color(unsigned char R, unsigned char G, unsigned char B, unsigned char A = 255)
+	{
+		Red = R;
+		Green = G;
+		Blue = B;
+		Alpha = A;
+	}
 };
 
 
@@ -531,7 +548,7 @@ public:
 #define MOUSE_BUTTON_RIGHT 1
 
 bool RectOverlap(Vect2 Pos1, Vect2 Size1, Vect2 Pos2, Vect2 Size2);
-
+bool RectWithin(Vect2 InnerPos, Vect2 InnerSize, Vect2 OuterPos, Vect2 OuterSize);
 //Forward declarations
 template<class T> class HDynamicArray;
 class PackageReader;
@@ -574,4 +591,8 @@ using namespace google;
 #include "HIO.h"
 #include "HDynamicArray.h"
 
+void ScissorBox(Vect2 Pos, Vect2 Size);
+
+void DisableScissor();
+void DrawScissorRect();
 //Add new stuff here

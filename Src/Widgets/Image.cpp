@@ -11,7 +11,6 @@ void Image::SetImage(Texture* Tx)
 {
 	ImgObj.SetImage(Tx);
 	bUpdate = true;
-	printf("Set image %p\n", Tx);
 }
 
 void Image::SetColor(const Color Cf)

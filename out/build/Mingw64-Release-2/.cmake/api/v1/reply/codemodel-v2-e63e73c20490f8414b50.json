@@ -1,0 +1,388 @@
+{
+	"configurations" : 
+	[
+		{
+			"directories" : 
+			[
+				{
+					"build" : ".",
+					"childIndexes" : 
+					[
+						1,
+						4
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.8"
+					},
+					"projectIndex" : 0,
+					"source" : ".",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"build" : "glfw-3.3.2",
+					"childIndexes" : 
+					[
+						2,
+						3
+					],
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 1,
+					"source" : "glfw-3.3.2",
+					"targetIndexes" : 
+					[
+						24
+					]
+				},
+				{
+					"build" : "glfw-3.3.2/src",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "glfw-3.3.2/src",
+					"targetIndexes" : 
+					[
+						9
+					]
+				},
+				{
+					"build" : "glfw-3.3.2/tests",
+					"minimumCMakeVersion" : 
+					{
+						"string" : "3.0"
+					},
+					"parentIndex" : 1,
+					"projectIndex" : 1,
+					"source" : "glfw-3.3.2/tests",
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						26
+					]
+				},
+				{
+					"build" : "glew-2.1.0/build/cmake",
+					"hasInstallRule" : true,
+					"minimumCMakeVersion" : 
+					{
+						"string" : "2.8.12"
+					},
+					"parentIndex" : 0,
+					"projectIndex" : 2,
+					"source" : "glew-2.1.0/build/cmake",
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8,
+						25
+					]
+				}
+			],
+			"name" : "Release",
+			"projects" : 
+			[
+				{
+					"childIndexes" : 
+					[
+						1,
+						2
+					],
+					"directoryIndexes" : 
+					[
+						0
+					],
+					"name" : "MagicGUI",
+					"targetIndexes" : 
+					[
+						0
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						1,
+						2,
+						3
+					],
+					"name" : "GLFW",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						1,
+						2,
+						3,
+						4,
+						5,
+						9,
+						10,
+						11,
+						12,
+						13,
+						14,
+						15,
+						16,
+						17,
+						18,
+						19,
+						20,
+						21,
+						22,
+						23,
+						24,
+						26
+					]
+				},
+				{
+					"directoryIndexes" : 
+					[
+						4
+					],
+					"name" : "glew",
+					"parentIndex" : 0,
+					"targetIndexes" : 
+					[
+						6,
+						7,
+						8,
+						25
+					]
+				}
+			],
+			"targets" : 
+			[
+				{
+					"directoryIndex" : 0,
+					"id" : "MagicGUI::@6890427a1f51a3e7e1df",
+					"jsonFile" : "target-MagicGUI-Release-3a8a85c6c8ff57e0a593.json",
+					"name" : "MagicGUI",
+					"projectIndex" : 0
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "clipboard::@40e1479357977d89448f",
+					"jsonFile" : "target-clipboard-Release-d08f38934e43c23eaef7.json",
+					"name" : "clipboard",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "cursor::@40e1479357977d89448f",
+					"jsonFile" : "target-cursor-Release-3ec87ec3bf08c938bc4b.json",
+					"name" : "cursor",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "empty::@40e1479357977d89448f",
+					"jsonFile" : "target-empty-Release-5dded9d4887f36ad5b11.json",
+					"name" : "empty",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "events::@40e1479357977d89448f",
+					"jsonFile" : "target-events-Release-0c890e9235afc2027e83.json",
+					"name" : "events",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "gamma::@40e1479357977d89448f",
+					"jsonFile" : "target-gamma-Release-cd9b46499ac5243a7581.json",
+					"name" : "gamma",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "glew::@b2849b0debedf4deff95",
+					"jsonFile" : "target-glew-Release-72c34896ce3960d12086.json",
+					"name" : "glew",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "glew_s::@b2849b0debedf4deff95",
+					"jsonFile" : "target-glew_s-Release-57de3b8caed997434d58.json",
+					"name" : "glew_s",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "glewinfo::@b2849b0debedf4deff95",
+					"jsonFile" : "target-glewinfo-Release-66c0cf7968a3dc010842.json",
+					"name" : "glewinfo",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 2,
+					"id" : "glfw::@57bc79107c1dba865d55",
+					"jsonFile" : "target-glfw-Release-dd52a569c86ce4aa10d8.json",
+					"name" : "glfw",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "glfwinfo::@40e1479357977d89448f",
+					"jsonFile" : "target-glfwinfo-Release-0964ee47873e323f4486.json",
+					"name" : "glfwinfo",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "icon::@40e1479357977d89448f",
+					"jsonFile" : "target-icon-Release-ab57bcd6f39b3d1f9cc5.json",
+					"name" : "icon",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "iconify::@40e1479357977d89448f",
+					"jsonFile" : "target-iconify-Release-5a95ae64c48ad17e4536.json",
+					"name" : "iconify",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "inputlag::@40e1479357977d89448f",
+					"jsonFile" : "target-inputlag-Release-61fb107aa7d511d000d8.json",
+					"name" : "inputlag",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "joysticks::@40e1479357977d89448f",
+					"jsonFile" : "target-joysticks-Release-8f9a48c2f6870ccb23ed.json",
+					"name" : "joysticks",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "monitors::@40e1479357977d89448f",
+					"jsonFile" : "target-monitors-Release-02ede22d8619166a4d94.json",
+					"name" : "monitors",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "msaa::@40e1479357977d89448f",
+					"jsonFile" : "target-msaa-Release-55ddc8daa3d36320f23d.json",
+					"name" : "msaa",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "opacity::@40e1479357977d89448f",
+					"jsonFile" : "target-opacity-Release-9d3c39e15ee3d6b89b43.json",
+					"name" : "opacity",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "reopen::@40e1479357977d89448f",
+					"jsonFile" : "target-reopen-Release-6612f743601ab0be9683.json",
+					"name" : "reopen",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "tearing::@40e1479357977d89448f",
+					"jsonFile" : "target-tearing-Release-edc484bed8b05f9140c7.json",
+					"name" : "tearing",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "threads::@40e1479357977d89448f",
+					"jsonFile" : "target-threads-Release-d2045746c68d65640826.json",
+					"name" : "threads",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "timeout::@40e1479357977d89448f",
+					"jsonFile" : "target-timeout-Release-557e2124991662388d2f.json",
+					"name" : "timeout",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "title::@40e1479357977d89448f",
+					"jsonFile" : "target-title-Release-c7bbe10b5da87947ee57.json",
+					"name" : "title",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "triangle-vulkan::@40e1479357977d89448f",
+					"jsonFile" : "target-triangle-vulkan-Release-8a6bb113eb14fbd604de.json",
+					"name" : "triangle-vulkan",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 1,
+					"id" : "uninstall::@2e6040e4e34af4110be0",
+					"jsonFile" : "target-uninstall-Release-7bca2a3bff51398f1f5e.json",
+					"name" : "uninstall",
+					"projectIndex" : 1
+				},
+				{
+					"directoryIndex" : 4,
+					"id" : "visualinfo::@b2849b0debedf4deff95",
+					"jsonFile" : "target-visualinfo-Release-98c3e1196346a2b22985.json",
+					"name" : "visualinfo",
+					"projectIndex" : 2
+				},
+				{
+					"directoryIndex" : 3,
+					"id" : "windows::@40e1479357977d89448f",
+					"jsonFile" : "target-windows-Release-b1ed7d5669ddc32cadad.json",
+					"name" : "windows",
+					"projectIndex" : 1
+				}
+			]
+		}
+	],
+	"kind" : "codemodel",
+	"paths" : 
+	{
+		"build" : "C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2",
+		"source" : "C:/Users/Chris/source/repos/MagicGUI"
+	},
+	"version" : 
+	{
+		"major" : 2,
+		"minor" : 0
+	}
+}

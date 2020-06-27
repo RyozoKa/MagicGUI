@@ -39,6 +39,7 @@ public:
 	void SetStateBackground(Texture*, ButtonState);
 	void SetStateColor(Color, ButtonState);
 
+
 private:
 	
 	void SetState(ButtonState);
@@ -52,5 +53,13 @@ private:
 	virtual void OnMouseRightReleased(float X, float Y);
 	virtual void OnKeyPressed(int Key, int Mod);
 	virtual void OnScroll(float YOffset);
+
+	//These should be private. To set button colors, user the SetState functions above.
+	virtual void SetColor(Color C);
+	virtual void SetImage(Texture* T);
+	virtual void Draw()
+	{
+		Image::Draw();
+	}
 
 };

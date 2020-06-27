@@ -18,7 +18,6 @@ void Window::Tick(double dt)
 void Window::AddItem(Widget& Item)
 {
 	C.AddItem(&Item);
-	GridSystem.InsertWidget(Item);
 }
 
 void Window::IsClosing()
@@ -238,24 +237,26 @@ void Window::Focus()
 
 void Window::OnCursor(double X, double Y)
 {
-	Widget* W;
+	Widget* W = LastHit;
 	
-	//Don't perform another hit test if we don't have to
-	if(CursorPos.X == X && CursorPos.Y == Y || (LastHit && LastHit->TestCollision(CursorPos)))
-		W = LastHit;
-	else
+	//if(CursorPos.X != X || CursorPos.Y != Y) 	
 	{
+		//Cursor moved, are we still inside the widget?
 		CursorPos.X = X;
 		CursorPos.Y = Y;
-		W = GridSystem.GetWidget(CursorPos);
-		if (LastHit != nullptr && LastHit != W)
-			LastHit->OnMouseLeave(X, Y);
+		if (!LastHit || !LastHit->TestCollision(CursorPos)) //If not, find the new widget
+			W = GridSystem.GetWidget(CursorPos);
+			if (LastHit != W)
+			{
+				if (LastHit != nullptr)
+					LastHit->OnMouseLeave(X, Y);
+				if(W)
+					W->OnMouseEnter(X, Y);
+				LastHit = W;
+			}
+			else if (W && W->Items.size() > 0)
+				W->OnMouseEnter(X, Y);
 	}
-	
-	if (W)
-		W->OnMouseEnter(X, Y);
-	LastHit = W;
-	//TODO: Deal with redirects later
 }
 
 void Window::OnKeyPress(int Key, int Mod)
@@ -345,4 +346,64 @@ void MouseClickCallback(GLFWwindow* Wnd, int Button, int Action, int Mods)
 void OnScrollCallback(GLFWwindow* Wnd, double XOffset, double YOffset)
 {
 	Wnd->Wnd->OnScroll(XOffset, YOffset);
+}
+
+//Stacked scissor box
+struct Scissor
+{
+	Vect2 Position;
+	Vect2 Size;
+};
+
+HDynamicArray<Scissor> Stack;
+
+Scissor CurrentScissor;
+
+void ScissorBox(Vect2 Pos, Vect2 Size)
+{
+	if (!CurrentScissor.Size.IsEmpty())
+	{
+		Stack.Insert(CurrentScissor);		//-- Push previous box to the stack
+
+		Vect2& CurrentPos = CurrentScissor.Position;
+		Vect2& CurrentSize = CurrentScissor.Size;
+
+		//Perform necessary box clipping
+		Vect2 LastPos = CurrentPos;
+		CurrentPos.X = MAX(CurrentPos.X, Pos.X);
+		CurrentPos.Y = MAX(CurrentPos.Y, Pos.Y);
+
+		CurrentSize.X = MIN(LastPos.X + CurrentSize.X, Pos.X + Size.X);
+		CurrentSize.Y = MIN(LastPos.Y + CurrentSize.Y, Pos.Y + Size.Y);
+		CurrentSize -= CurrentPos;
+
+		//Very important that we don't pass negatives to the scissor box
+		CurrentSize.X = MAX(CurrentSize.X, 0.f);
+		CurrentSize.Y = MAX(CurrentSize.Y, 0.f);
+	}
+	else
+	{
+		CurrentScissor.Position = Pos;
+		CurrentScissor.Size = Size;
+
+		CurrentScissor.Size.X = MAX(CurrentScissor.Size.X, 0.f);
+		CurrentScissor.Size.Y = MAX(CurrentScissor.Size.Y, 0.f);
+	}
+	glScissor(CurrentScissor.Position.X, (glfwGetCurrentContext()->Wnd->WindowSize.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
+	glEnable(GL_SCISSOR_TEST);
+}
+
+void DisableScissor()
+{
+	if(Stack.Size())
+	{
+		CurrentScissor = Stack.PopLast();
+		glScissor(CurrentScissor.Position.X, (glfwGetCurrentContext()->Wnd->WindowSize.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
+	}
+	else
+	{
+		glDisable(GL_SCISSOR_TEST);
+		CurrentScissor.Position.Zero();
+		CurrentScissor.Size.Zero();
+	}
 }

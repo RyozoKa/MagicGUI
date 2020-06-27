@@ -1,16 +1,5 @@
 #include "Canvas.h"
 
-void Canvas::Tick(double Delta)
-{
-	//if (bUpdate)
-	//{
-	//	Draw();
-	//	bUpdate = false;
-	//}
-	//Update children and animation
-	Widget::Tick(Delta);
-}
-
 void Canvas::SetColor(Color C)
 {
 	Background.SetColor(C);

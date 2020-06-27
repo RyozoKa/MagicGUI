@@ -101,8 +101,8 @@ void Application::Execute()
 		Last = glfwGetTime();
 		Delta = Last - Start;
 		Start = Last;
-		if (Delta > 16.6666667)
-			Delta = 16.6666667;
+		if (Delta > 0.0166666667)
+			Delta = 0.0166666667;
 		int Val = (int)(16.6666667 - (Delta * 1000.f));
 		if(Val > 0)
 			std::this_thread::sleep_for(std::chrono::milliseconds( Val ));//(int)( 16.6666 - (Delta  * 1000.f)  )
