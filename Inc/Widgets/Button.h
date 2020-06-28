@@ -28,9 +28,11 @@ public:
 	Color ColoredStates[3];
 
 	//Callback events
-	Callbacks<> OnClick;
-	Callbacks<> OnRightClick;
-	
+	Callbacks<Widget*> OnClick;
+	Callbacks<Widget*> OnRightClick;
+	Callbacks<Widget*> OnRelease;
+	Callbacks<Widget*> OnRightRelease;
+
 	ButtonState GetCurrentState()
 	{
 		return CurrentState; 
@@ -40,7 +42,7 @@ public:
 	void SetStateColor(Color, ButtonState);
 
 
-private:
+protected:
 	
 	void SetState(ButtonState);
 

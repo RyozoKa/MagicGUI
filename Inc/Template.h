@@ -188,6 +188,20 @@ struct Vect2
 		return *this;
 	}
 
+	Vect2& operator *=(const float F)
+	{
+		X *= F;
+		Y *= F;
+		return *this;
+	}
+
+	Vect2& operator *=(const Vect2& F)
+	{
+		X *= F.X;
+		Y *= F.Y;
+		return *this;
+	}
+
 	//We'll never have larger values. These conversions are super fast.
 	void RoundUp()
 	{
@@ -594,5 +608,4 @@ using namespace google;
 void ScissorBox(Vect2 Pos, Vect2 Size);
 
 void DisableScissor();
-void DrawScissorRect();
 //Add new stuff here

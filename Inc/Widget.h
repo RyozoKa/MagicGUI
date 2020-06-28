@@ -153,8 +153,9 @@ public:
 	virtual void SetSize(const Vect2 Sz);
 	virtual void SetRotation(const Rotator Rot);
 	virtual void SetRadius(const float F);
-	virtual void SetPosition(const Vect2 Pos);
-
+	virtual void SetPosition(const Vect2 Pos);		//-- !!!OBS SetPosition does not automatically update the collision grid
+													//-- If you want to move a few children inside a Canvas, you manually have to call GridSystem->MoveWidget
+	virtual void Move(const Vect2 Offset);
 	//Etc
 	virtual void Draw();
 	virtual void RenderObjects() = 0;	//-- Override this and set the objects you wish to draw in a custom widget.
@@ -173,7 +174,7 @@ public:
 	virtual void OnScroll(float YOffset);
 
 	//Other events
-	virtual void Attached();
+	virtual void Attached();		//--	Called when this widget is attached to another widget
 
 	class Gridsubsystem* GridSystem;	//--	Grid to which this widget belongs. This could be the main window, or a scroll pane
 

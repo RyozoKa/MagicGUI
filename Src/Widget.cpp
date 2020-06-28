@@ -117,17 +117,17 @@ void Widget::Tick(double DT)
 	if(OldPos != Position || OldSize > DrawSize)
 	{
 		//Calculate the largest rect
-		Vect2 MinPos;// = Vect2::Min(OldPos, Position);
+		Vect2 MinPos;
 		MinPos.X = MIN(OldPos.X, Position.X) - 2.f;
 		MinPos.Y = MIN(OldPos.Y, Position.Y) - 2.f;
-		Vect2 FinalSize;// = Vect2::Max(OldSize, DrawSize);
+		Vect2 FinalSize;
 		FinalSize.X = MAX(OldPos.X + OldSize.X, Position.X + DrawSize.X) + 2.f;
 		FinalSize.Y = MAX(OldPos.Y + OldSize.Y, Position.Y + DrawSize.Y) + 2.f;
 		FinalSize -= MinPos;
 		GridSystem->UpdateSegment(*this, MinPos, FinalSize);
 	}
-	else if (bUpdate)
-		Draw();
+	else if (bUpdate && GridSystem->OwnerCanvas->ShouldDraw(this))
+		Draw();		//-- Avoid draw calls that are outside the canvas
 
 	for (int i = 0; i < Items.size(); ++i)
 		Items[i]->Tick(DT);
@@ -208,6 +208,14 @@ void Widget::SetPosition(const Vect2 Pos)
 	Position = Pos;
 	Keys[0].Pos = Pos;
 	bUpdate = true;
+}
+
+void Widget::Move(const Vect2 Offset)
+{
+	Position += Offset;
+	bUpdate = true;
+	for (int i = 0; i < Items.size(); ++i)
+		Items[i]->Move(Offset);
 }
 
 

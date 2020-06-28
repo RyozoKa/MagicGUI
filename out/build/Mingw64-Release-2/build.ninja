@@ -12,7 +12,7 @@
 
 # =============================================================================
 # Project: MagicGUI
-# Configuration: Release
+# Configuration: Debug
 # =============================================================================
 
 #############################################
@@ -41,7 +41,7 @@ build cmake_object_order_depends_target_MagicGUI: phony || CMakeFiles/MagicGUI.d
 build CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/fasttrigo.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\fasttrigo.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -49,7 +49,7 @@ build CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj: CXX_COMPILER__MagicGUI ../.
 build CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/WinBase.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\WinBase.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -57,7 +57,7 @@ build CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj: CXX_COMPILER__MagicGUI ../../
 build CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Window.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Window.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -65,7 +65,7 @@ build CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj: CXX_COMPILER__MagicGUI ../../.
 build CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Texture.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Texture.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -73,7 +73,7 @@ build CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj: CXX_COMPILER__MagicGUI ../../
 build CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widget.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widget.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -81,7 +81,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj: CXX_COMPILER__MagicGUI ../../.
 build CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Application.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Application.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -89,7 +89,7 @@ build CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj: CXX_COMPILER__MagicGUI ..
 build CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/Image.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Image.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
@@ -97,7 +97,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj: CXX_COMPILER__MagicGUI 
 build CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Shader.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Shader.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -105,7 +105,7 @@ build CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj: CXX_COMPILER__MagicGUI ../../.
 build CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Windows.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Windows.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -113,7 +113,7 @@ build CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj: CXX_COMPILER__MagicGUI ../../
 build CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/Canvas.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Canvas.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
@@ -121,7 +121,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj: CXX_COMPILER__MagicGUI
 build CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Gridsubsystem.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Gridsubsystem.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -129,7 +129,7 @@ build CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj: CXX_COMPILER__MagicGUI 
 build CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/StaticAllocator.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\StaticAllocator.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -137,7 +137,7 @@ build CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj: CXX_COMPILER__MagicGU
 build CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/Button.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Button.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
@@ -145,7 +145,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj: CXX_COMPILER__MagicGUI
 build CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Themes/ThemeManager.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Themes\ThemeManager.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Themes
@@ -153,7 +153,7 @@ build CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj: CXX_COMPILER__Mag
 build CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/HString.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HString.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -161,7 +161,7 @@ build CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj: CXX_COMPILER__MagicGUI ../../
 build CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/HMath.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HMath.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -169,7 +169,7 @@ build CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj: CXX_COMPILER__MagicGUI ../../..
 build CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/HIO.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HIO.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
@@ -177,7 +177,7 @@ build CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj: CXX_COMPILER__MagicGUI ../../../S
 build CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/ScrollPanel.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\ScrollPanel.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
@@ -185,7 +185,15 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj: CXX_COMPILER__Mag
 build CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/ClippedCanvas.cpp || cmake_object_order_depends_target_MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\ClippedCanvas.cpp.obj.d
-  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG   -std=gnu++2a
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
+
+build CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/SlideButton.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\SlideButton.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
   INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
@@ -198,8 +206,8 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj: CXX_COMPILER__M
 #############################################
 # Link the shared library libMagicGUI.dll
 
-build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj
-  LANGUAGE_COMPILE_FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -O3 -DNDEBUG
+build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj
+  LANGUAGE_COMPILE_FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g
   LINK_LIBRARIES = -Wl,-Bstatic  -lglfw3  -lgdi32  -lGLEW32  -lglu32  -lwinmm  -Wl,-Bdynamic  -lgdi32 -lopengl32 -lstdc++
   LINK_PATH = -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/glfw-3.3.2/src   -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/lib
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
@@ -387,7 +395,7 @@ build cmake_object_order_depends_target_glfw: phony || glfw-3.3.2/src/CMakeFiles
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\context.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -395,7 +403,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/context.c.obj: C_COMPILER__glfw ../../.
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\init.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -403,7 +411,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/init.c.obj: C_COMPILER__glfw ../../../g
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/input.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\input.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -411,7 +419,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/input.c.obj: C_COMPILER__glfw ../../../
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\monitor.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -419,7 +427,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/monitor.c.obj: C_COMPILER__glfw ../../.
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/vulkan.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\vulkan.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -427,7 +435,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/vulkan.c.obj: C_COMPILER__glfw ../../..
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\window.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -435,7 +443,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/window.c.obj: C_COMPILER__glfw ../../..
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_init.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_init.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -443,7 +451,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_init.c.obj: C_COMPILER__glfw ../.
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_joystick.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_joystick.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -451,7 +459,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_joystick.c.obj: C_COMPILER__glfw 
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_monitor.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_monitor.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -459,7 +467,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_monitor.c.obj: C_COMPILER__glfw .
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_time.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_time.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -467,7 +475,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_time.c.obj: C_COMPILER__glfw ../.
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_thread.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_thread.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -475,7 +483,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_thread.c.obj: C_COMPILER__glfw ..
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/win32_window.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\win32_window.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -483,7 +491,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_window.c.obj: C_COMPILER__glfw ..
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/wgl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\wgl_context.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -491,7 +499,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/wgl_context.c.obj: C_COMPILER__glfw ../
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/egl_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\egl_context.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -499,7 +507,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/egl_context.c.obj: C_COMPILER__glfw ../
 build glfw-3.3.2/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw ../../../glfw-3.3.2/src/osmesa_context.c || cmake_object_order_depends_target_glfw
   DEFINES = -DUNICODE -DWINVER=0x0501 -D_GLFW_USE_CONFIG_H -D_UNICODE
   DEP_FILE = glfw-3.3.2\src\CMakeFiles\glfw.dir\osmesa_context.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -Wall -std=gnu99 -Wdeclaration-after-statement
+  FLAGS = -g   -Wall -std=gnu99 -Wdeclaration-after-statement
   INCLUDES = -I../../../glfw-3.3.2/include -I../../../glfw-3.3.2/src -Iglfw-3.3.2/src
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   OBJECT_FILE_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
@@ -513,7 +521,7 @@ build glfw-3.3.2/src/CMakeFiles/glfw.dir/osmesa_context.c.obj: C_COMPILER__glfw 
 # Link the static library glfw-3.3.2\src\libglfw3.a
 
 build glfw-3.3.2/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw glfw-3.3.2/src/CMakeFiles/glfw.dir/context.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/init.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/input.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/monitor.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/vulkan.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/window.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_init.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_joystick.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_monitor.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_time.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_thread.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/win32_window.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/wgl_context.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/egl_context.c.obj glfw-3.3.2/src/CMakeFiles/glfw.dir/osmesa_context.c.obj
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = glfw-3.3.2\src\CMakeFiles\glfw.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -589,21 +597,21 @@ build cmake_object_order_depends_target_clipboard: phony || cmake_object_order_d
 
 build glfw-3.3.2/tests/CMakeFiles/clipboard.dir/clipboard.c.obj: C_COMPILER__clipboard ../../../glfw-3.3.2/tests/clipboard.c || cmake_object_order_depends_target_clipboard
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\clipboard.dir\clipboard.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir
 
 build glfw-3.3.2/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj: C_COMPILER__clipboard ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_clipboard
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\clipboard.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: C_COMPILER__clipboard ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_clipboard
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\clipboard.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir\__\deps
@@ -617,7 +625,7 @@ build glfw-3.3.2/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj: C_COMPILE
 # Link the executable glfw-3.3.2\tests\clipboard.exe
 
 build glfw-3.3.2/tests/clipboard.exe: C_EXECUTABLE_LINKER__clipboard glfw-3.3.2/tests/CMakeFiles/clipboard.dir/clipboard.c.obj glfw-3.3.2/tests/CMakeFiles/clipboard.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/clipboard.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\clipboard.dir
   POST_BUILD = cd .
@@ -637,21 +645,21 @@ build cmake_object_order_depends_target_events: phony || cmake_object_order_depe
 
 build glfw-3.3.2/tests/CMakeFiles/events.dir/events.c.obj: C_COMPILER__events ../../../glfw-3.3.2/tests/events.c || cmake_object_order_depends_target_events
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\events.dir\events.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir
 
 build glfw-3.3.2/tests/CMakeFiles/events.dir/__/deps/getopt.c.obj: C_COMPILER__events ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_events
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\events.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/events.dir/__/deps/glad_gl.c.obj: C_COMPILER__events ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_events
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\events.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir\__\deps
@@ -665,7 +673,7 @@ build glfw-3.3.2/tests/CMakeFiles/events.dir/__/deps/glad_gl.c.obj: C_COMPILER__
 # Link the executable glfw-3.3.2\tests\events.exe
 
 build glfw-3.3.2/tests/events.exe: C_EXECUTABLE_LINKER__events glfw-3.3.2/tests/CMakeFiles/events.dir/events.c.obj glfw-3.3.2/tests/CMakeFiles/events.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/events.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\events.dir
   POST_BUILD = cd .
@@ -685,21 +693,21 @@ build cmake_object_order_depends_target_msaa: phony || cmake_object_order_depend
 
 build glfw-3.3.2/tests/CMakeFiles/msaa.dir/msaa.c.obj: C_COMPILER__msaa ../../../glfw-3.3.2/tests/msaa.c || cmake_object_order_depends_target_msaa
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\msaa.dir\msaa.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir
 
 build glfw-3.3.2/tests/CMakeFiles/msaa.dir/__/deps/getopt.c.obj: C_COMPILER__msaa ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_msaa
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\msaa.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/msaa.dir/__/deps/glad_gl.c.obj: C_COMPILER__msaa ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_msaa
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\msaa.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir\__\deps
@@ -713,7 +721,7 @@ build glfw-3.3.2/tests/CMakeFiles/msaa.dir/__/deps/glad_gl.c.obj: C_COMPILER__ms
 # Link the executable glfw-3.3.2\tests\msaa.exe
 
 build glfw-3.3.2/tests/msaa.exe: C_EXECUTABLE_LINKER__msaa glfw-3.3.2/tests/CMakeFiles/msaa.dir/msaa.c.obj glfw-3.3.2/tests/CMakeFiles/msaa.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/msaa.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\msaa.dir
   POST_BUILD = cd .
@@ -745,28 +753,28 @@ build cmake_object_order_depends_target_glfwinfo: phony || cmake_object_order_de
 
 build glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/glfwinfo.c.obj: C_COMPILER__glfwinfo ../../../glfw-3.3.2/tests/glfwinfo.c || cmake_object_order_depends_target_glfwinfo
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\glfwinfo.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
 
 build glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/getopt.c.obj: C_COMPILER__glfwinfo ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_glfwinfo
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/glad_gl.c.obj: C_COMPILER__glfwinfo ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_glfwinfo
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/glad_vulkan.c.obj: C_COMPILER__glfwinfo ../../../glfw-3.3.2/deps/glad_vulkan.c || cmake_object_order_depends_target_glfwinfo
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps\glad_vulkan.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir\__\deps
@@ -780,7 +788,7 @@ build glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/glad_vulkan.c.obj: C_COMP
 # Link the executable glfw-3.3.2\tests\glfwinfo.exe
 
 build glfw-3.3.2/tests/glfwinfo.exe: C_EXECUTABLE_LINKER__glfwinfo glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/glfwinfo.c.obj glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/glad_gl.c.obj glfw-3.3.2/tests/CMakeFiles/glfwinfo.dir/__/deps/glad_vulkan.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\glfwinfo.dir
   POST_BUILD = cd .
@@ -800,21 +808,21 @@ build cmake_object_order_depends_target_iconify: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/iconify.dir/iconify.c.obj: C_COMPILER__iconify ../../../glfw-3.3.2/tests/iconify.c || cmake_object_order_depends_target_iconify
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\iconify.dir\iconify.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir
 
 build glfw-3.3.2/tests/CMakeFiles/iconify.dir/__/deps/getopt.c.obj: C_COMPILER__iconify ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_iconify
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\iconify.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/iconify.dir/__/deps/glad_gl.c.obj: C_COMPILER__iconify ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_iconify
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\iconify.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir\__\deps
@@ -828,7 +836,7 @@ build glfw-3.3.2/tests/CMakeFiles/iconify.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\iconify.exe
 
 build glfw-3.3.2/tests/iconify.exe: C_EXECUTABLE_LINKER__iconify glfw-3.3.2/tests/CMakeFiles/iconify.dir/iconify.c.obj glfw-3.3.2/tests/CMakeFiles/iconify.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/iconify.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\iconify.dir
   POST_BUILD = cd .
@@ -848,21 +856,21 @@ build cmake_object_order_depends_target_empty: phony || cmake_object_order_depen
 
 build glfw-3.3.2/tests/CMakeFiles/empty.dir/empty.c.obj: C_COMPILER__empty ../../../glfw-3.3.2/tests/empty.c || cmake_object_order_depends_target_empty
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\empty.dir\empty.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir
 
 build glfw-3.3.2/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.obj: C_COMPILER__empty ../../../glfw-3.3.2/deps/tinycthread.c || cmake_object_order_depends_target_empty
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\empty.dir\__\deps\tinycthread.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.obj: C_COMPILER__empty ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_empty
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\empty.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir\__\deps
@@ -876,7 +884,7 @@ build glfw-3.3.2/tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.obj: C_COMPILER__e
 # Link the executable glfw-3.3.2\tests\empty.exe
 
 build glfw-3.3.2/tests/empty.exe: C_EXECUTABLE_LINKER__empty glfw-3.3.2/tests/CMakeFiles/empty.dir/empty.c.obj glfw-3.3.2/tests/CMakeFiles/empty.dir/__/deps/tinycthread.c.obj glfw-3.3.2/tests/CMakeFiles/empty.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\empty.dir
@@ -897,21 +905,21 @@ build cmake_object_order_depends_target_monitors: phony || cmake_object_order_de
 
 build glfw-3.3.2/tests/CMakeFiles/monitors.dir/monitors.c.obj: C_COMPILER__monitors ../../../glfw-3.3.2/tests/monitors.c || cmake_object_order_depends_target_monitors
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\monitors.dir\monitors.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir
 
 build glfw-3.3.2/tests/CMakeFiles/monitors.dir/__/deps/getopt.c.obj: C_COMPILER__monitors ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_monitors
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\monitors.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/monitors.dir/__/deps/glad_gl.c.obj: C_COMPILER__monitors ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_monitors
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\monitors.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir\__\deps
@@ -925,7 +933,7 @@ build glfw-3.3.2/tests/CMakeFiles/monitors.dir/__/deps/glad_gl.c.obj: C_COMPILER
 # Link the executable glfw-3.3.2\tests\monitors.exe
 
 build glfw-3.3.2/tests/monitors.exe: C_EXECUTABLE_LINKER__monitors glfw-3.3.2/tests/CMakeFiles/monitors.dir/monitors.c.obj glfw-3.3.2/tests/CMakeFiles/monitors.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/monitors.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\monitors.dir
   POST_BUILD = cd .
@@ -945,14 +953,14 @@ build cmake_object_order_depends_target_reopen: phony || cmake_object_order_depe
 
 build glfw-3.3.2/tests/CMakeFiles/reopen.dir/reopen.c.obj: C_COMPILER__reopen ../../../glfw-3.3.2/tests/reopen.c || cmake_object_order_depends_target_reopen
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\reopen.dir\reopen.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\reopen.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\reopen.dir
 
 build glfw-3.3.2/tests/CMakeFiles/reopen.dir/__/deps/glad_gl.c.obj: C_COMPILER__reopen ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_reopen
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\reopen.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\reopen.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\reopen.dir\__\deps
@@ -966,7 +974,7 @@ build glfw-3.3.2/tests/CMakeFiles/reopen.dir/__/deps/glad_gl.c.obj: C_COMPILER__
 # Link the executable glfw-3.3.2\tests\reopen.exe
 
 build glfw-3.3.2/tests/reopen.exe: C_EXECUTABLE_LINKER__reopen glfw-3.3.2/tests/CMakeFiles/reopen.dir/reopen.c.obj glfw-3.3.2/tests/CMakeFiles/reopen.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\reopen.dir
   POST_BUILD = cd .
@@ -986,14 +994,14 @@ build cmake_object_order_depends_target_cursor: phony || cmake_object_order_depe
 
 build glfw-3.3.2/tests/CMakeFiles/cursor.dir/cursor.c.obj: C_COMPILER__cursor ../../../glfw-3.3.2/tests/cursor.c || cmake_object_order_depends_target_cursor
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\cursor.dir\cursor.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\cursor.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\cursor.dir
 
 build glfw-3.3.2/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj: C_COMPILER__cursor ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_cursor
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\cursor.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\cursor.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\cursor.dir\__\deps
@@ -1007,7 +1015,7 @@ build glfw-3.3.2/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj: C_COMPILER__
 # Link the executable glfw-3.3.2\tests\cursor.exe
 
 build glfw-3.3.2/tests/cursor.exe: C_EXECUTABLE_LINKER__cursor glfw-3.3.2/tests/CMakeFiles/cursor.dir/cursor.c.obj glfw-3.3.2/tests/CMakeFiles/cursor.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\cursor.dir
   POST_BUILD = cd .
@@ -1027,14 +1035,14 @@ build cmake_object_order_depends_target_gamma: phony || cmake_object_order_depen
 
 build glfw-3.3.2/tests/CMakeFiles/gamma.dir/gamma.c.obj: C_COMPILER__gamma ../../../glfw-3.3.2/tests/gamma.c || cmake_object_order_depends_target_gamma
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\gamma.dir\gamma.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\gamma.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\gamma.dir
 
 build glfw-3.3.2/tests/CMakeFiles/gamma.dir/__/deps/glad_gl.c.obj: C_COMPILER__gamma ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_gamma
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\gamma.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\gamma.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\gamma.dir\__\deps
@@ -1048,7 +1056,7 @@ build glfw-3.3.2/tests/CMakeFiles/gamma.dir/__/deps/glad_gl.c.obj: C_COMPILER__g
 # Link the executable glfw-3.3.2\tests\gamma.exe
 
 build glfw-3.3.2/tests/gamma.exe: C_EXECUTABLE_LINKER__gamma glfw-3.3.2/tests/CMakeFiles/gamma.dir/gamma.c.obj glfw-3.3.2/tests/CMakeFiles/gamma.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\gamma.dir
@@ -1069,14 +1077,14 @@ build cmake_object_order_depends_target_icon: phony || cmake_object_order_depend
 
 build glfw-3.3.2/tests/CMakeFiles/icon.dir/icon.c.obj: C_COMPILER__icon ../../../glfw-3.3.2/tests/icon.c || cmake_object_order_depends_target_icon
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\icon.dir\icon.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\icon.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\icon.dir
 
 build glfw-3.3.2/tests/CMakeFiles/icon.dir/__/deps/glad_gl.c.obj: C_COMPILER__icon ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_icon
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\icon.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\icon.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\icon.dir\__\deps
@@ -1090,7 +1098,7 @@ build glfw-3.3.2/tests/CMakeFiles/icon.dir/__/deps/glad_gl.c.obj: C_COMPILER__ic
 # Link the executable glfw-3.3.2\tests\icon.exe
 
 build glfw-3.3.2/tests/icon.exe: C_EXECUTABLE_LINKER__icon glfw-3.3.2/tests/CMakeFiles/icon.dir/icon.c.obj glfw-3.3.2/tests/CMakeFiles/icon.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\icon.dir
@@ -1111,21 +1119,21 @@ build cmake_object_order_depends_target_inputlag: phony || cmake_object_order_de
 
 build glfw-3.3.2/tests/CMakeFiles/inputlag.dir/inputlag.c.obj: C_COMPILER__inputlag ../../../glfw-3.3.2/tests/inputlag.c || cmake_object_order_depends_target_inputlag
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\inputlag.dir\inputlag.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir
 
 build glfw-3.3.2/tests/CMakeFiles/inputlag.dir/__/deps/getopt.c.obj: C_COMPILER__inputlag ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_inputlag
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\inputlag.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/inputlag.dir/__/deps/glad_gl.c.obj: C_COMPILER__inputlag ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_inputlag
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\inputlag.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir\__\deps
@@ -1139,7 +1147,7 @@ build glfw-3.3.2/tests/CMakeFiles/inputlag.dir/__/deps/glad_gl.c.obj: C_COMPILER
 # Link the executable glfw-3.3.2\tests\inputlag.exe
 
 build glfw-3.3.2/tests/inputlag.exe: C_EXECUTABLE_LINKER__inputlag glfw-3.3.2/tests/CMakeFiles/inputlag.dir/inputlag.c.obj glfw-3.3.2/tests/CMakeFiles/inputlag.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/inputlag.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\inputlag.dir
@@ -1160,14 +1168,14 @@ build cmake_object_order_depends_target_joysticks: phony || cmake_object_order_d
 
 build glfw-3.3.2/tests/CMakeFiles/joysticks.dir/joysticks.c.obj: C_COMPILER__joysticks ../../../glfw-3.3.2/tests/joysticks.c || cmake_object_order_depends_target_joysticks
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\joysticks.dir\joysticks.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\joysticks.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\joysticks.dir
 
 build glfw-3.3.2/tests/CMakeFiles/joysticks.dir/__/deps/glad_gl.c.obj: C_COMPILER__joysticks ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_joysticks
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\joysticks.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\joysticks.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\joysticks.dir\__\deps
@@ -1181,7 +1189,7 @@ build glfw-3.3.2/tests/CMakeFiles/joysticks.dir/__/deps/glad_gl.c.obj: C_COMPILE
 # Link the executable glfw-3.3.2\tests\joysticks.exe
 
 build glfw-3.3.2/tests/joysticks.exe: C_EXECUTABLE_LINKER__joysticks glfw-3.3.2/tests/CMakeFiles/joysticks.dir/joysticks.c.obj glfw-3.3.2/tests/CMakeFiles/joysticks.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\joysticks.dir
@@ -1202,21 +1210,21 @@ build cmake_object_order_depends_target_threads: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/threads.dir/threads.c.obj: C_COMPILER__threads ../../../glfw-3.3.2/tests/threads.c || cmake_object_order_depends_target_threads
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\threads.dir\threads.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir
 
 build glfw-3.3.2/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.obj: C_COMPILER__threads ../../../glfw-3.3.2/deps/tinycthread.c || cmake_object_order_depends_target_threads
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\threads.dir\__\deps\tinycthread.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/threads.dir/__/deps/glad_gl.c.obj: C_COMPILER__threads ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_threads
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\threads.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir\__\deps
@@ -1230,7 +1238,7 @@ build glfw-3.3.2/tests/CMakeFiles/threads.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\threads.exe
 
 build glfw-3.3.2/tests/threads.exe: C_EXECUTABLE_LINKER__threads glfw-3.3.2/tests/CMakeFiles/threads.dir/threads.c.obj glfw-3.3.2/tests/CMakeFiles/threads.dir/__/deps/tinycthread.c.obj glfw-3.3.2/tests/CMakeFiles/threads.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\threads.dir
@@ -1251,14 +1259,14 @@ build cmake_object_order_depends_target_opacity: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/opacity.dir/opacity.c.obj: C_COMPILER__opacity ../../../glfw-3.3.2/tests/opacity.c || cmake_object_order_depends_target_opacity
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\opacity.dir\opacity.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\opacity.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\opacity.dir
 
 build glfw-3.3.2/tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.obj: C_COMPILER__opacity ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_opacity
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\opacity.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\opacity.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\opacity.dir\__\deps
@@ -1272,7 +1280,7 @@ build glfw-3.3.2/tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\opacity.exe
 
 build glfw-3.3.2/tests/opacity.exe: C_EXECUTABLE_LINKER__opacity glfw-3.3.2/tests/CMakeFiles/opacity.dir/opacity.c.obj glfw-3.3.2/tests/CMakeFiles/opacity.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\opacity.dir
@@ -1293,14 +1301,14 @@ build cmake_object_order_depends_target_triangle-vulkan: phony || cmake_object_o
 
 build glfw-3.3.2/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj: C_COMPILER__triangle-vulkan ../../../glfw-3.3.2/tests/triangle-vulkan.c || cmake_object_order_depends_target_triangle-vulkan
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir\triangle-vulkan.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir
 
 build glfw-3.3.2/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj: C_COMPILER__triangle-vulkan ../../../glfw-3.3.2/deps/glad_vulkan.c || cmake_object_order_depends_target_triangle-vulkan
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir\__\deps\glad_vulkan.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir\__\deps
@@ -1314,7 +1322,7 @@ build glfw-3.3.2/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj:
 # Link the executable glfw-3.3.2\tests\triangle-vulkan.exe
 
 build glfw-3.3.2/tests/triangle-vulkan.exe: C_EXECUTABLE_LINKER__triangle-vulkan glfw-3.3.2/tests/CMakeFiles/triangle-vulkan.dir/triangle-vulkan.c.obj glfw-3.3.2/tests/CMakeFiles/triangle-vulkan.dir/__/deps/glad_vulkan.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\triangle-vulkan.dir
@@ -1335,14 +1343,14 @@ build cmake_object_order_depends_target_tearing: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/tearing.dir/tearing.c.obj: C_COMPILER__tearing ../../../glfw-3.3.2/tests/tearing.c || cmake_object_order_depends_target_tearing
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\tearing.dir\tearing.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\tearing.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\tearing.dir
 
 build glfw-3.3.2/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: C_COMPILER__tearing ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_tearing
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\tearing.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\tearing.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\tearing.dir\__\deps
@@ -1356,7 +1364,7 @@ build glfw-3.3.2/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\tearing.exe
 
 build glfw-3.3.2/tests/tearing.exe: C_EXECUTABLE_LINKER__tearing glfw-3.3.2/tests/CMakeFiles/tearing.dir/tearing.c.obj glfw-3.3.2/tests/CMakeFiles/tearing.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\tearing.dir
@@ -1388,14 +1396,14 @@ build cmake_object_order_depends_target_timeout: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/timeout.dir/timeout.c.obj: C_COMPILER__timeout ../../../glfw-3.3.2/tests/timeout.c || cmake_object_order_depends_target_timeout
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\timeout.dir\timeout.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\timeout.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\timeout.dir
 
 build glfw-3.3.2/tests/CMakeFiles/timeout.dir/__/deps/glad_gl.c.obj: C_COMPILER__timeout ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_timeout
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\timeout.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\timeout.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\timeout.dir\__\deps
@@ -1409,7 +1417,7 @@ build glfw-3.3.2/tests/CMakeFiles/timeout.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\timeout.exe
 
 build glfw-3.3.2/tests/timeout.exe: C_EXECUTABLE_LINKER__timeout glfw-3.3.2/tests/CMakeFiles/timeout.dir/timeout.c.obj glfw-3.3.2/tests/CMakeFiles/timeout.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\timeout.dir
@@ -1430,14 +1438,14 @@ build cmake_object_order_depends_target_title: phony || cmake_object_order_depen
 
 build glfw-3.3.2/tests/CMakeFiles/title.dir/title.c.obj: C_COMPILER__title ../../../glfw-3.3.2/tests/title.c || cmake_object_order_depends_target_title
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\title.dir\title.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\title.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\title.dir
 
 build glfw-3.3.2/tests/CMakeFiles/title.dir/__/deps/glad_gl.c.obj: C_COMPILER__title ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_title
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\title.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\title.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\title.dir\__\deps
@@ -1451,7 +1459,7 @@ build glfw-3.3.2/tests/CMakeFiles/title.dir/__/deps/glad_gl.c.obj: C_COMPILER__t
 # Link the executable glfw-3.3.2\tests\title.exe
 
 build glfw-3.3.2/tests/title.exe: C_EXECUTABLE_LINKER__title glfw-3.3.2/tests/CMakeFiles/title.dir/title.c.obj glfw-3.3.2/tests/CMakeFiles/title.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\title.dir
@@ -1472,21 +1480,21 @@ build cmake_object_order_depends_target_windows: phony || cmake_object_order_dep
 
 build glfw-3.3.2/tests/CMakeFiles/windows.dir/windows.c.obj: C_COMPILER__windows ../../../glfw-3.3.2/tests/windows.c || cmake_object_order_depends_target_windows
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\windows.dir\windows.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir
 
 build glfw-3.3.2/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj: C_COMPILER__windows ../../../glfw-3.3.2/deps/getopt.c || cmake_object_order_depends_target_windows
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\windows.dir\__\deps\getopt.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir\__\deps
 
 build glfw-3.3.2/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj: C_COMPILER__windows ../../../glfw-3.3.2/deps/glad_gl.c || cmake_object_order_depends_target_windows
   DEP_FILE = glfw-3.3.2\tests\CMakeFiles\windows.dir\__\deps\glad_gl.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -std=gnu99
+  FLAGS = -g   -std=gnu99
   INCLUDES = -I../../../glfw-3.3.2/deps -I../../../glfw-3.3.2/include
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir
   OBJECT_FILE_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir\__\deps
@@ -1500,7 +1508,7 @@ build glfw-3.3.2/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj: C_COMPILER_
 # Link the executable glfw-3.3.2\tests\windows.exe
 
 build glfw-3.3.2/tests/windows.exe: C_EXECUTABLE_LINKER__windows glfw-3.3.2/tests/CMakeFiles/windows.dir/windows.c.obj glfw-3.3.2/tests/CMakeFiles/windows.dir/__/deps/getopt.c.obj glfw-3.3.2/tests/CMakeFiles/windows.dir/__/deps/glad_gl.c.obj | glfw-3.3.2/src/libglfw3.a || glfw-3.3.2/src/libglfw3.a
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   LINK_FLAGS = -mwindows
   LINK_LIBRARIES = glfw-3.3.2/src/libglfw3.a  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glfw-3.3.2\tests\CMakeFiles\windows.dir
@@ -1569,7 +1577,7 @@ build cmake_object_order_depends_target_glewinfo: phony || cmake_object_order_de
 build glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/__/src/glewinfo.c.obj: C_COMPILER__glewinfo ../../../glew-2.1.0/src/glewinfo.c || cmake_object_order_depends_target_glewinfo
   DEFINES = -DGLEW_NO_GLU
   DEP_FILE = glew-2.1.0\build\cmake\CMakeFiles\glewinfo.dir\__\__\src\glewinfo.c.obj.d
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   INCLUDES = -I../../../glew-2.1.0/build/cmake/../../include
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glewinfo.dir
   OBJECT_FILE_DIR = glew-2.1.0\build\cmake\CMakeFiles\glewinfo.dir\__\__\src
@@ -1589,9 +1597,9 @@ build glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/glewinfo.rc.obj: RC_COMP
 #############################################
 # Link the executable bin\glewinfo.exe
 
-build bin/glewinfo.exe: C_EXECUTABLE_LINKER__glewinfo glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/__/src/glewinfo.c.obj glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/glewinfo.rc.obj | lib/libglew32.dll.a || bin/glew32.dll
-  FLAGS = -O3 -DNDEBUG
-  LINK_LIBRARIES = lib/libglew32.dll.a  -lopengl32  -lglu32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build bin/glewinfo.exe: C_EXECUTABLE_LINKER__glewinfo glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/__/src/glewinfo.c.obj glew-2.1.0/build/cmake/CMakeFiles/glewinfo.dir/__/glewinfo.rc.obj | lib/libglew32d.dll.a || bin/glew32d.dll
+  FLAGS = -g
+  LINK_LIBRARIES = lib/libglew32d.dll.a  -lopengl32  -lglu32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glewinfo.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -1611,7 +1619,7 @@ build cmake_object_order_depends_target_glew: phony || glew-2.1.0/build/cmake/CM
 build glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/__/src/glew.c.obj: C_COMPILER__glew ../../../glew-2.1.0/src/glew.c || cmake_object_order_depends_target_glew
   DEFINES = -DGLEW_BUILD -DGLEW_NO_GLU -Dglew_EXPORTS
   DEP_FILE = glew-2.1.0\build\cmake\CMakeFiles\glew.dir\__\__\src\glew.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -fno-builtin -fno-stack-protector
+  FLAGS = -g   -fno-builtin -fno-stack-protector
   INCLUDES = -I../../../glew-2.1.0/build/cmake/../../include
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew.dir
   OBJECT_FILE_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew.dir\__\__\src
@@ -1629,17 +1637,17 @@ build glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/glew.rc.obj: RC_COMPILER__gl
 
 
 #############################################
-# Link the shared library bin\glew32.dll
+# Link the shared library bin\glew32d.dll
 
-build bin/glew32.dll lib/libglew32.dll.a: C_SHARED_LIBRARY_LINKER__glew glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/__/src/glew.c.obj glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/glew.rc.obj
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build bin/glew32d.dll lib/libglew32d.dll.a: C_SHARED_LIBRARY_LINKER__glew glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/__/src/glew.c.obj glew-2.1.0/build/cmake/CMakeFiles/glew.dir/__/glew.rc.obj
+  LANGUAGE_COMPILE_FLAGS = -g
   LINK_LIBRARIES = -nostdlib  -lopengl32  -lglu32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
   RESTAT = 1
-  TARGET_FILE = bin\glew32.dll
-  TARGET_IMPLIB = lib\libglew32.dll.a
+  TARGET_FILE = bin\glew32d.dll
+  TARGET_IMPLIB = lib\libglew32d.dll.a
   TARGET_PDB = glew32.dll.dbg
 
 # =============================================================================
@@ -1654,7 +1662,7 @@ build cmake_object_order_depends_target_glew_s: phony || glew-2.1.0/build/cmake/
 build glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/__/src/glew.c.obj: C_COMPILER__glew_s ../../../glew-2.1.0/src/glew.c || cmake_object_order_depends_target_glew_s
   DEFINES = -DGLEW_NO_GLU -DGLEW_STATIC
   DEP_FILE = glew-2.1.0\build\cmake\CMakeFiles\glew_s.dir\__\__\src\glew.c.obj.d
-  FLAGS = -O3 -DNDEBUG   -fno-builtin -fno-stack-protector
+  FLAGS = -g   -fno-builtin -fno-stack-protector
   INCLUDES = -I../../../glew-2.1.0/build/cmake/../../include
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew_s.dir
   OBJECT_FILE_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew_s.dir\__\__\src
@@ -1672,14 +1680,14 @@ build glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/glew.rc.obj: RC_COMPILER__
 
 
 #############################################
-# Link the static library lib\libglew32.a
+# Link the static library lib\libglew32d.a
 
-build lib/libglew32.a: C_STATIC_LIBRARY_LINKER__glew_s glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/__/src/glew.c.obj glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/glew.rc.obj
-  LANGUAGE_COMPILE_FLAGS = -O3 -DNDEBUG
+build lib/libglew32d.a: C_STATIC_LIBRARY_LINKER__glew_s glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/__/src/glew.c.obj glew-2.1.0/build/cmake/CMakeFiles/glew_s.dir/__/glew.rc.obj
+  LANGUAGE_COMPILE_FLAGS = -g
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\glew_s.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
-  TARGET_FILE = lib\libglew32.a
+  TARGET_FILE = lib\libglew32d.a
   TARGET_PDB = glew32.a.dbg
 
 # =============================================================================
@@ -1694,7 +1702,7 @@ build cmake_object_order_depends_target_visualinfo: phony || cmake_object_order_
 build glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/__/src/visualinfo.c.obj: C_COMPILER__visualinfo ../../../glew-2.1.0/src/visualinfo.c || cmake_object_order_depends_target_visualinfo
   DEFINES = -DGLEW_NO_GLU
   DEP_FILE = glew-2.1.0\build\cmake\CMakeFiles\visualinfo.dir\__\__\src\visualinfo.c.obj.d
-  FLAGS = -O3 -DNDEBUG
+  FLAGS = -g
   INCLUDES = -I../../../glew-2.1.0/build/cmake/../../include
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\visualinfo.dir
   OBJECT_FILE_DIR = glew-2.1.0\build\cmake\CMakeFiles\visualinfo.dir\__\__\src
@@ -1714,9 +1722,9 @@ build glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/visualinfo.rc.obj: RC_
 #############################################
 # Link the executable bin\visualinfo.exe
 
-build bin/visualinfo.exe: C_EXECUTABLE_LINKER__visualinfo glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/__/src/visualinfo.c.obj glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/visualinfo.rc.obj | lib/libglew32.dll.a || bin/glew32.dll
-  FLAGS = -O3 -DNDEBUG
-  LINK_LIBRARIES = lib/libglew32.dll.a  -lopengl32  -lglu32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
+build bin/visualinfo.exe: C_EXECUTABLE_LINKER__visualinfo glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/__/src/visualinfo.c.obj glew-2.1.0/build/cmake/CMakeFiles/visualinfo.dir/__/visualinfo.rc.obj | lib/libglew32d.dll.a || bin/glew32d.dll
+  FLAGS = -g
+  LINK_LIBRARIES = lib/libglew32d.dll.a  -lopengl32  -lglu32  -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = glew-2.1.0\build\cmake\CMakeFiles\visualinfo.dir
   POST_BUILD = cd .
   PRE_LINK = cd .
@@ -1814,11 +1822,11 @@ build gamma: phony glfw-3.3.2/tests/gamma.exe
 
 build gamma.exe: phony glfw-3.3.2/tests/gamma.exe
 
-build glew: phony bin/glew32.dll
+build glew: phony bin/glew32d.dll
 
-build glew32.dll: phony bin/glew32.dll
+build glew32d.dll: phony bin/glew32d.dll
 
-build glew_s: phony lib/libglew32.a
+build glew_s: phony lib/libglew32d.a
 
 build glewinfo: phony bin/glewinfo.exe
 
@@ -1846,7 +1854,7 @@ build joysticks: phony glfw-3.3.2/tests/joysticks.exe
 
 build joysticks.exe: phony glfw-3.3.2/tests/joysticks.exe
 
-build libglew32.a: phony lib/libglew32.a
+build libglew32d.a: phony lib/libglew32d.a
 
 build libglfw3.a: phony glfw-3.3.2/src/libglfw3.a
 
@@ -1911,7 +1919,7 @@ build all: phony libMagicGUI.dll glfw-3.3.2/all glew-2.1.0/build/cmake/all
 #############################################
 # Folder: C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/glew-2.1.0/build/cmake
 
-build glew-2.1.0/build/cmake/all: phony bin/glewinfo.exe bin/glew32.dll lib/libglew32.a bin/visualinfo.exe
+build glew-2.1.0/build/cmake/all: phony bin/glewinfo.exe bin/glew32d.dll lib/libglew32d.a bin/visualinfo.exe
 
 # =============================================================================
 

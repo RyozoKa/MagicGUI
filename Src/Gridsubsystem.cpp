@@ -18,7 +18,7 @@ unsigned int Gridsubsystem::GetBlockIndex(const Vect2 Pos)
 
 Widget* Gridsubsystem::GetWidget(const Vect2 Pos)
 {
-	Block& B = GetBlock(Pos);
+	Block& B = GetBlock(Pos - OwnerCanvas->Offset);
 	return B.GetWidget(Pos);
 }
 

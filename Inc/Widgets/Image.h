@@ -14,7 +14,7 @@ public:
 	//Widget interface
 	virtual void Tick(double);
 
-	Image()
+	Image() : Widget()
 	{
 		bUpdate = true;
 		ImgObj.Owner = this;

@@ -4,13 +4,15 @@
 void Button::SetStateBackground(Texture* T, ButtonState S)
 {
 	States[S] = T;
-	//DrawType |= TYPE::TYPE_TEXTURE;
+	if (T && S == CurrentState)
+		SetImage(T);
 }
 
 void Button::SetStateColor(Color C, ButtonState S)
 {
 	ColoredStates[S] = C;
-	//DrawType |= TYPE::TYPE_COLOR
+	if (S == CurrentState)
+		SetColor(C);
 }
 
 void Button::SetState(ButtonState S)
@@ -39,23 +41,25 @@ void Button::OnMouseLeave(float X, float Y)
 void Button::OnMouseLeftClick(float X, float Y)
 {
 	SetState(ButtonState::STATE_Pressed);
+	OnClick.DelegateCallbacks(this);
 }
 
 void Button::OnMouseRightClick(float X, float Y)
 {
 	SetState(ButtonState::STATE_Pressed);
+	OnRightClick.DelegateCallbacks(this);
 }
 
 void Button::OnMouseLeftReleased(float X, float Y)
 {
 	SetState(ButtonState::STATE_Hover);
-	OnClick.DelegateCallbacks();
+	OnRelease.DelegateCallbacks(this);
 }
 
 void Button::OnMouseRightReleased(float X, float Y)
 {
 	SetState(ButtonState::STATE_Hover);
-	OnRightClick.DelegateCallbacks();
+	OnRightRelease.DelegateCallbacks(this);
 }
 
 void Button::OnKeyPressed(int Key, int Mod)

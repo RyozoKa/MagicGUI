@@ -22,6 +22,8 @@ public:
 
 	ClippedCanvas() : Canvas()
 	{
+		SetColor(Color(235, 240, 168));
+		SetMode(TYPE::TYPE_COLOR);
 	}
 
 	~ClippedCanvas()
@@ -38,14 +40,14 @@ public:
 	virtual void OnMouseLeftReleased(float X, float Y);
 	virtual void OnMouseRightReleased(float X, float Y);
 	virtual void OnKeyPressed(int Key, int Mod);
-
+	virtual void AddItem(Widget*);
 	virtual void Attached();
-
-	virtual void SetSize(const Vect2 Sz)
-	{
-		Widget::SetSize(Sz);
-		Background.SetPrimitive(Sz);
-	}
-
+	void Scroll(Vect2 Offset);
+	virtual void SetPosition(const Vect2 Pos);
 	virtual void RenderObjects();
+
+	virtual bool TestCollision(const Vect2& V)
+	{
+		return Widget::TestCollision(V);
+	}
 };

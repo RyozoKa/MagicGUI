@@ -16,6 +16,7 @@ class MAGICGUIAPI Canvas : public Widget
 public:
 
 	RenderObject Background;
+	Vect2 Offset = Vect2(0.f, 0.f);			//-- Collision grid offset. Only used when applying scroll offsets to avoid moving the grid.
 
 	//Canvas interface
 	void SetColor(const Color);		//-- Background color
@@ -39,5 +40,10 @@ public:
 	virtual bool TestCollision(const Vect2&)
 	{
 		return false;
+	}
+
+	bool ShouldDraw(Widget* W)
+	{
+		return (Position + Size) > W->Position;
 	}
 };

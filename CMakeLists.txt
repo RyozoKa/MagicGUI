@@ -6,7 +6,7 @@ cmake_minimum_required (VERSION 3.8)
 project ("MagicGUI")
 set(CMAKE_CXX_STANDARD 20)
 # Add source to this project's executable.
-add_library (MagicGUI SHARED "Src/fasttrigo.cpp" "Src/WinBase.cpp" "Src/Window.cpp" "Src/Texture.cpp" "Src/Widget.cpp" "Src/Application.cpp" "Src/Widgets/Image.cpp" "Src/Shader.cpp" "Src/Windows.cpp"  "Src/Widgets/Canvas.cpp" "Src/Gridsubsystem.cpp" "Src/StaticAllocator.cpp" "Src/Widgets/Button.cpp" "Src/Themes/ThemeManager.cpp" "Src/HString.cpp" "Src/HMath.cpp" "Src/HIO.cpp" "Src/Widgets/ScrollPanel.cpp" "Src/Widgets/ClippedCanvas.cpp")
+add_library (MagicGUI SHARED "Src/fasttrigo.cpp" "Src/WinBase.cpp" "Src/Window.cpp" "Src/Texture.cpp" "Src/Widget.cpp" "Src/Application.cpp" "Src/Widgets/Image.cpp" "Src/Shader.cpp" "Src/Windows.cpp"  "Src/Widgets/Canvas.cpp" "Src/Gridsubsystem.cpp" "Src/StaticAllocator.cpp" "Src/Widgets/Button.cpp" "Src/Themes/ThemeManager.cpp" "Src/HString.cpp" "Src/HMath.cpp" "Src/HIO.cpp" "Src/Widgets/ScrollPanel.cpp" "Src/Widgets/ClippedCanvas.cpp"  "Src/Widgets/SlideButton.cpp")
 target_include_directories(MagicGUI PUBLIC "glew-2.1.0/include")
 target_include_directories(MagicGUI PUBLIC "./Inc/Widgets")
 target_include_directories(MagicGUI PUBLIC "./Inc/Themes")

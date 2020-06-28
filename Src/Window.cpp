@@ -244,18 +244,16 @@ void Window::OnCursor(double X, double Y)
 		//Cursor moved, are we still inside the widget?
 		CursorPos.X = X;
 		CursorPos.Y = Y;
-		if (!LastHit || !LastHit->TestCollision(CursorPos)) //If not, find the new widget
+		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
 			W = GridSystem.GetWidget(CursorPos);
-			if (LastHit != W)
-			{
-				if (LastHit != nullptr)
-					LastHit->OnMouseLeave(X, Y);
-				if(W)
-					W->OnMouseEnter(X, Y);
-				LastHit = W;
-			}
-			else if (W && W->Items.size() > 0)
+		if (LastHit != W)
+		{
+			if (LastHit != nullptr)
+				LastHit->OnMouseLeave(X, Y);
+			if(W)
 				W->OnMouseEnter(X, Y);
+			LastHit = W;
+		}
 	}
 }
 
@@ -289,16 +287,16 @@ void Window::OnMouseClick(int Key)
 
 void Window::OnMouseRelease(int Key)
 {
-	if (!LastHit)
+	if (!Focused)
 		return;
 
 	switch(Key)
 	{
 		case MOUSE_BUTTON_LEFT:
-			LastHit->OnMouseLeftReleased(CursorPos.X, CursorPos.Y);
+			Focused->OnMouseLeftReleased(CursorPos.X, CursorPos.Y);
 		break;
 		case MOUSE_BUTTON_RIGHT:
-			LastHit->OnMouseRightReleased(CursorPos.X, CursorPos.Y);
+			Focused->OnMouseRightReleased(CursorPos.X, CursorPos.Y);
 		break;
 	}
 }

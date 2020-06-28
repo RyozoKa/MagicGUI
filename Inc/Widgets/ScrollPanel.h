@@ -7,7 +7,11 @@
 
 #pragma once
 
-#include "Button.h"
+#include "SlideButton.h"
+#include "ClippedCanvas.h"
+
+MAGICGUIAPI void YScrollCallback(Widget* W, float YOffset);
+MAGICGUIAPI void XScrollCallback(Widget* W, float XOffset);
 
 class MAGICGUIAPI ScrollPanel : public Widget
 {
@@ -24,47 +28,64 @@ class MAGICGUIAPI ScrollPanel : public Widget
 
 	Vect2 ScrollAreaLen;	//-- Relative area length with scroll bar size taken into account
 
-	float ScrollbarWidth = 16;
+	float ScrollbarWidth = 12;
 	float ScrollAreaWidth = 20;
 	float BorderWidth = (ScrollAreaWidth - ScrollbarWidth) / 2;
-	RenderObject PanelCanvas;
-	Button VerticalScroll;
-	Button HorizontalScroll;
-	bool bHorizontalFocus = false;
 
-	ScrollPanel()
+	float InnerPaddingWidth = 5.f;	//-- Padding thickness around Canvas edge	
+	const float ScrollScale = 10.f;
+	SlideButton VerticalScroll;
+	SlideButton HorizontalScroll;
+	
+	RenderObject Background;
+	ClippedCanvas CC;
+public:
+
+	ScrollPanel() : Widget()
 	{
-		VerticalScroll.bHidden = true;
-		HorizontalScroll.bHidden = true;
-		VerticalScroll.SetStateColor(Color(122, 122, 122), Button::ButtonState::STATE_Normal);
-		VerticalScroll.SetStateColor(Color(64, 64, 64), Button::ButtonState::STATE_Hover);
-		VerticalScroll.SetStateColor(Color(64, 64, 64), Button::ButtonState::STATE_Pressed);
-		HorizontalScroll.SetStateColor(Color(122, 122, 122), Button::ButtonState::STATE_Normal);
-		HorizontalScroll.SetStateColor(Color(64, 64, 64), Button::ButtonState::STATE_Hover);
-		HorizontalScroll.SetStateColor(Color(64, 64, 64), Button::ButtonState::STATE_Pressed);
+		CC.Owner = this;
+		Background.Owner = this;
+		Background.SetColor(Color(79, 79, 78));
+
+		//VerticalScroll.bHidden = true;
+		//HorizontalScroll.bHidden = true;
+		VerticalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Normal);
+		VerticalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Hover);
+		VerticalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Pressed);
+		HorizontalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Normal);
+		HorizontalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Hover);
+		HorizontalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Pressed);
 		HorizontalScroll.SetType(TYPE::TYPE_COLOR);
-		AddItem(&VerticalScroll);
-		AddItem(&HorizontalScroll);
+		VerticalScroll.SetType(TYPE::TYPE_COLOR);
+		VerticalScroll.bVertical = true;
+
+		HorizontalScroll.OnSlide += &XScrollCallback;
+		VerticalScroll.OnSlide += &YScrollCallback;
 	}
 
 	//ScrollPanel
 	void CalculateScroll();
-	void ScrollHorizontal(float XOffset);
-	void ScrollVertical(float YOffset);
-
+	//void ScrollHorizontal(float XOffset);
+	//void ScrollVertical(float YOffset);
 
 	//Widget interface
-	//virtual void OnMouseEnter(float X, float Y);
-	//virtual void OnMouseLeave(float X, float Y);
-	//virtual void OnMouseLeftClick(float X, float Y);
-	//virtual void OnMouseRightClick(float X, float Y);
-	//virtual void OnMouseLeftReleased(float X, float Y);
-	//virtual void OnMouseRightReleased(float X, float Y);
-	//virtual void OnKeyPressed(int Key, int Mod);
+	virtual void OnMouseEnter(float X, float Y);
+	virtual void OnMouseLeave(float X, float Y);
+	virtual void OnMouseLeftClick(float X, float Y);
+	virtual void OnMouseRightClick(float X, float Y);
+	virtual void OnMouseLeftReleased(float X, float Y);
+	virtual void OnMouseRightReleased(float X, float Y);
+	virtual void OnKeyPressed(int Key, int Mod);
 	virtual void OnScroll(float YOffset);
 	virtual void AddItem(Widget*);
 	virtual void RenderObjects();
 
+	void XScroll(float XOffset);
+	void YScroll(float YOffset);
+
 	virtual void SetSize(const Vect2 Sz);
+	virtual void SetPosition(const Vect2 Pos);
+
+	virtual void Attached();
 
 };

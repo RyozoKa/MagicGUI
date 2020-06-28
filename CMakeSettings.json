@@ -3,7 +3,7 @@
     {
       "name": "Mingw64-Release-2",
       "generator": "Ninja",
-      "configurationType": "Release",
+      "configurationType": "Debug",
       "buildRoot": "C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2",
       "installRoot": "${projectDir\\out\\install\\${name}",
       "cmakeCommandArgs": "",
