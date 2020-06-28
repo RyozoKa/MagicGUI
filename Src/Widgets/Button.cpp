@@ -29,13 +29,11 @@ void Button::SetState(ButtonState S)
 void Button::OnMouseEnter(float X, float Y)
 {
 	SetState(ButtonState::STATE_Hover);
-	printf("Entered\n");
 }
 
 void Button::OnMouseLeave(float X, float Y)
 {
 	SetState(ButtonState::STATE_Normal);
-	printf("Left\n");
 }
 
 void Button::OnMouseLeftClick(float X, float Y)

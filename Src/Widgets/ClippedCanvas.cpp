@@ -44,24 +44,52 @@ void ClippedCanvas::SegmentRender(Vect2 Pos, Vect2 ASize)
 
 void ClippedCanvas::OnMouseEnter(float X, float Y)
 {
-	//if (LastHit)
-	//	LastHit->OnMouseEnter(X, Y);
+	if (LastHit)
+		LastHit->OnMouseEnter(X, Y);
 }
 
 void ClippedCanvas::OnMouseLeave(float X, float Y)
 {
-	//if (LastHit)
-	//	LastHit->OnMouseLeave(X, Y);
+	if (LastHit)
+		LastHit->OnMouseLeave(X, Y);
 }
 
 void ClippedCanvas::OnMouseLeftClick(float X, float Y)
 {
+	if(GridSystem->bUpdate)
+	{
+		Widget* W = LastHit;
+		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
+			W = GridSystem->GetWidget(CursorPos);
+		if (LastHit != W)
+		{
+			if (LastHit != nullptr)
+				LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
+			if(W)
+				W->OnMouseEnter(CursorPos.X, CursorPos.Y);
+			LastHit = W;
+		}
+	}
 	if (LastHit)
 		LastHit->OnMouseLeftClick(X, Y);
 }
 
 void ClippedCanvas::OnMouseRightClick(float X, float Y)
 {
+	if(GridSystem->bUpdate)
+	{
+		Widget* W = LastHit;
+		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
+			W = GridSystem->GetWidget(CursorPos);
+		if (LastHit != W)
+		{
+			if (LastHit != nullptr)
+				LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
+			if(W)
+				W->OnMouseEnter(CursorPos.X, CursorPos.Y);
+			LastHit = W;
+		}
+	}
 	if (LastHit)
 		LastHit->OnMouseRightClick(X, Y);
 }

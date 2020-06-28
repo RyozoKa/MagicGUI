@@ -13,9 +13,14 @@
 MAGICGUIAPI void YScrollCallback(Widget* W, float YOffset);
 MAGICGUIAPI void XScrollCallback(Widget* W, float XOffset);
 
+MAGICGUIAPI void OnClickDown(Widget* W);
+MAGICGUIAPI void OnClickUp(Widget* W);
+MAGICGUIAPI void OnClickLeft(Widget* W);
+MAGICGUIAPI void OnClickRight(Widget* W);
+
 class MAGICGUIAPI ScrollPanel : public Widget
 {
-
+	public:
 	//ScrollPanel
 	Vect2 ScrollOffset;		//-- Current scroll position
 
@@ -30,6 +35,7 @@ class MAGICGUIAPI ScrollPanel : public Widget
 
 	float ScrollbarWidth = 12;
 	float ScrollAreaWidth = 20;
+	Vect2 ButtonSize = {ScrollbarWidth, ScrollbarWidth};
 	float BorderWidth = (ScrollAreaWidth - ScrollbarWidth) / 2;
 
 	float InnerPaddingWidth = 5.f;	//-- Padding thickness around Canvas edge	
@@ -37,9 +43,14 @@ class MAGICGUIAPI ScrollPanel : public Widget
 	SlideButton VerticalScroll;
 	SlideButton HorizontalScroll;
 	
+	Button Up;
+	Button Down;
+	Button Left;
+	Button Right;
+
 	RenderObject Background;
 	ClippedCanvas CC;
-public:
+
 
 	ScrollPanel() : Widget()
 	{
@@ -49,18 +60,28 @@ public:
 
 		//VerticalScroll.bHidden = true;
 		//HorizontalScroll.bHidden = true;
-		VerticalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Normal);
-		VerticalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Hover);
-		VerticalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Pressed);
-		HorizontalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Normal);
-		HorizontalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Hover);
-		HorizontalScroll.SetStateColor(Color(176, 176, 176), Button::ButtonState::STATE_Pressed);
+		VerticalScroll.SetStateColor(Color(163, 163, 163), Button::ButtonState::STATE_Normal);
+		VerticalScroll.SetStateColor(Color(214, 214, 214), Button::ButtonState::STATE_Hover);
+		VerticalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Pressed);
+		HorizontalScroll.SetStateColor(Color(163, 163, 163), Button::ButtonState::STATE_Normal);
+		HorizontalScroll.SetStateColor(Color(214, 214, 214), Button::ButtonState::STATE_Hover);
+		HorizontalScroll.SetStateColor(Color(255, 255, 255), Button::ButtonState::STATE_Pressed);
 		HorizontalScroll.SetType(TYPE::TYPE_COLOR);
 		VerticalScroll.SetType(TYPE::TYPE_COLOR);
 		VerticalScroll.bVertical = true;
 
 		HorizontalScroll.OnSlide += &XScrollCallback;
 		VerticalScroll.OnSlide += &YScrollCallback;
+
+		Up.OnClick += &OnClickUp;
+		Down.OnClick += &OnClickDown;
+		Left.OnClick += OnClickLeft;
+		Right.OnClick += OnClickRight;
+
+		Up.SetSize(ButtonSize);
+		Down.SetSize(ButtonSize);
+		Left.SetSize(ButtonSize);
+		Right.SetSize(ButtonSize);
 	}
 
 	//ScrollPanel

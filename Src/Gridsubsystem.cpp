@@ -25,7 +25,7 @@ Widget* Gridsubsystem::GetWidget(const Vect2 Pos)
 Block& Gridsubsystem::InsertWidget(Widget& W)
 {
 	//We'll need to get all the blocks covered and insert the widget
-
+	bUpdate = true;
 	//Get the index for the first block
 	int Index = GetBlockIndex(W.Position);
 

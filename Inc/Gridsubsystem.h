@@ -30,7 +30,7 @@ public:
 	class Canvas* OwnerCanvas;
 	//These are the number of horizontal and vertical blocks
 	const Vect2 GridSize = { 120, 68 };
-
+	bool bUpdate = false;		//-- Used to keep track of moving objects and update focused Widget if needed
 	//Get block -> Very fast
 	Block& GetBlock(const Vect2 Pos);
 	unsigned int GetBlockIndex(const Vect2 Pos);

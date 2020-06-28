@@ -23,6 +23,17 @@ void ScrollPanel::CalculateScroll()
 
 	HorizontalScroll.SlideStop = HScrollPos.X + ScrollAreaLen.X;
 	VerticalScroll.SlideStop = VScrollPos.Y + ScrollAreaLen.Y;
+
+	if (!VScrollPos.IsEmpty())
+	{
+		Up.SetPosition(VScrollPos - Vect2(0.f, ButtonSize.Y + BorderWidth));
+		Left.SetPosition(HScrollPos - Vect2(ButtonSize.Y + BorderWidth, 0.f));
+	}
+	if (ScrollAreaSize > 0.f)
+	{
+		Down.SetPosition(VScrollPos + Vect2(0.f, ScrollAreaSize.Y + BorderWidth));
+		Right.SetPosition(HScrollPos + Vect2(ScrollAreaSize.X + BorderWidth, 0.f));
+	}
 }
 
 void ScrollPanel::OnMouseEnter(float X, float Y)
@@ -35,6 +46,27 @@ void ScrollPanel::OnMouseLeave(float X, float Y)
 
 void ScrollPanel::OnMouseLeftClick(float X, float Y)
 {
+	//For Horizontal scroll bar
+	//Is within the scroll area
+
+	if(X >= HScrollPos.X && Y >= HScrollPos.Y &&
+	   X <= (HScrollPos.X + ScrollAreaSize.X) && 
+	   Y <= (HScrollPos.Y + ScrollAreaWidth) )
+	{
+		if (X > (HorizontalScroll.Position.X + HorizontalScroll.Size.X))
+			HorizontalScroll.OnScroll(-2);
+		else
+			HorizontalScroll.OnScroll(2);
+	}
+	else if(X >= VScrollPos.X && Y >= VScrollPos.Y &&
+	   X <= (VScrollPos.X + ScrollAreaWidth) && 
+	   Y <= (VScrollPos.Y + ScrollAreaSize.Y) )
+	{
+		if (Y > (VerticalScroll.Position.Y + VerticalScroll.Size.Y))
+			VerticalScroll.OnScroll(-2);
+		else
+			VerticalScroll.OnScroll(2);
+	}
 }
 
 void ScrollPanel::OnMouseRightClick(float X, float Y)
@@ -91,7 +123,7 @@ void ScrollPanel::AddItem(Widget* W)
 		CalculatedSize.X = (WPosRelative + W->Size).X + InnerPaddingWidth;
 	if ((WPosRelative + W->Size).Y > (CalculatedSize + InnerPaddingWidth).Y)
 		CalculatedSize.Y = (WPosRelative + W->Size).Y + InnerPaddingWidth;
-	CalculatedSize.X = 500;
+
 	CalculateScroll();
 }
 
@@ -139,11 +171,11 @@ void ScrollPanel::SetSize(const Vect2 Sz)
 		CalculatedSize = CC.Size;
 
 	//Define scroll areas
-	VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth);
-	HScrollPos = Position + Vect2(BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
+	VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth + ButtonSize.Y + BorderWidth);
+	HScrollPos = Position + Vect2(BorderWidth + ButtonSize.X + BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
 
 	//Define total length
-	ScrollAreaSize = Size - ScrollAreaWidth - BorderWidth - BorderWidth;
+	ScrollAreaSize = Size - ScrollAreaWidth - BorderWidth - BorderWidth - (ButtonSize * 2) - BorderWidth - BorderWidth;
 
 	//Calculate scroll size
 	CalculateScroll();
@@ -155,8 +187,8 @@ void ScrollPanel::SetPosition(const Vect2 Pos)
 	CC.SetPosition(Pos + 1.f);
 
 	//Define scroll areas
-	VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth);
-	HScrollPos = Position + Vect2(BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
+	VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth + ButtonSize.Y + BorderWidth);
+	HScrollPos = Position + Vect2(BorderWidth + ButtonSize.X + BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
 	
 	//Calculate scroll size
 	CalculateScroll();
@@ -167,6 +199,10 @@ void ScrollPanel::Attached()
 	Widget::AddItem(&CC);
 	Widget::AddItem(&VerticalScroll);
 	Widget::AddItem(&HorizontalScroll);
+	Widget::AddItem(&Up);
+	Widget::AddItem(&Down);
+	Widget::AddItem(&Left);
+	Widget::AddItem(&Right);
 }
 
 void YScrollCallback(Widget* W, float YOffset)
@@ -176,4 +212,24 @@ void YScrollCallback(Widget* W, float YOffset)
 void XScrollCallback(Widget* W, float XOffset)
 {
 	((ScrollPanel*)W->Owner)->XScroll(XOffset);
+}
+
+void OnClickDown(Widget* W)
+{
+	((ScrollPanel*)W->Owner)->VerticalScroll.OnScroll(-2);
+}
+
+void OnClickUp(Widget* W)
+{
+	((ScrollPanel*)W->Owner)->VerticalScroll.OnScroll(2);
+}
+
+void OnClickLeft(Widget* W)
+{
+	((ScrollPanel*)W->Owner)->HorizontalScroll.OnScroll(2);
+}
+
+void OnClickRight(Widget* W)
+{
+	((ScrollPanel*)W->Owner)->HorizontalScroll.OnScroll(-2);
 }

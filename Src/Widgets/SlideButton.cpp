@@ -48,7 +48,6 @@ void SlideButton::OnScroll(float YOffset)
 	}
 	else
 	{
-		YOffset = Window->CursorPos.X - LastCursor.X;
 		if ( (Position.X + YOffset) > SlideStop)
 			YOffset = SlideStop - Position.X;
 

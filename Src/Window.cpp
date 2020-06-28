@@ -269,6 +269,20 @@ void Window::OnKeyRelease(int Key, int Mod)
 
 void Window::OnMouseClick(int Key)
 {
+	if(GridSystem.bUpdate)
+	{
+		Widget* W = LastHit;
+		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
+			W = GridSystem.GetWidget(CursorPos);
+		if (LastHit != W)
+		{
+			if (LastHit != nullptr)
+				LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
+			if(W)
+				W->OnMouseEnter(CursorPos.X, CursorPos.Y);
+			LastHit = W;
+		}
+	}
 	Focused = LastHit;
 	if (!LastHit)
 		return;
