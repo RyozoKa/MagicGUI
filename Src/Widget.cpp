@@ -4,7 +4,7 @@
 #include "Window.h"
 #include <cstdio>
 
-static unsigned int GZindex = 1;
+unsigned int GZindex = 1;
 
 void Widget::Tick(double DT)
 {
@@ -141,7 +141,7 @@ void Widget::AddKeypoint(Keypoint Point)
 
 bool Widget::TestCollision(const Vect2& Pos)
 {
-	if (bHidden || !bEnabled)
+	if (bHidden || !bEnabled || !bCollide)
 		return false;
 	switch (CollisionType)
 	{
@@ -205,7 +205,17 @@ void Widget::SetPosition(const Vect2 Pos)
 {
 	//if(bAnimating)
 	//	return;
-	Position = Pos;
+
+	//Move widget if necessary
+	if (Position != Vect2(-1.f, -1.f) && Position.GetBlock() != Pos.GetBlock() && GridSystem)
+	{
+		GridSystem->RemoveWidget(*this);
+		Position = Pos;
+		GridSystem->InsertWidget(*this);
+	}
+	else
+		Position = Pos;
+
 	Keys[0].Pos = Pos;
 	bUpdate = true;
 }
@@ -257,6 +267,18 @@ void Widget::Update()
 	bUpdate = true;
 	//printf("Updated\n");
 }
+void Widget::Show()
+{
+	bHidden = false;
+	bUpdate = true;
+}
+
+void Widget::Hide()
+{
+	bHidden = true;
+	SegmentRender(Position, Size);
+}
+
 void Widget::SegmentRender(Vect2 Pos, Vect2 Size)
 	{
 		if (bUpdate)
@@ -297,6 +319,10 @@ void Widget::OnKeyPressed(int Key, int Mod)
 
 void Widget::OnScroll(float YOffset)
 {}
+
+void Widget::OnCursor(double X, double Y)
+{
+}
 
 void Widget::Attached()
 {

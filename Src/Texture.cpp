@@ -8,8 +8,8 @@
 #include <immintrin.h>
 
 google::dense_hash_map<HASH, Texture*> Texture::_HashTable;
-unsigned short RenderObject::RenderIdx;
-RenderObject* RenderObject::RenderItems[5120];
+//unsigned short RenderObject::RenderIdx;
+//RenderObject* RenderObject::RenderItems[5120];
 int Texture::EMPTY = -1;
 
 RenderState CurrentState = RenderState::STATE_Normal;
@@ -192,14 +192,128 @@ void RenderObject::SetPrimitive(Vect2 Prim)
 			glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
 			glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vect2) * 8, Vertices);
 		}
-
-		
 	}
 	else
 		bPending = true;
 
 	glBindVertexArray(0);
 
+}
+
+void RenderObject::SetPrimitive(Vect2 Prim, Vect2 UVSize)
+{
+	Size = Prim;
+	UVCoordsClip.Y = 1.f - (Size.Y / UVSize.Y);
+	UVCoordsClip.X = (Size.X / UVSize.X);
+
+	if (Vertices)
+		free(Vertices);	//Clear any potentially old vertices
+						//Relative positioning.
+	//Adjust origin
+	Vect2 Origin = Prim / 2;
+
+	Vertices = (Vect2*)malloc(sizeof(Vect2) * 8);
+	Vertices[0] = Origin;								//Top right
+	Vertices[1] = { UVCoordsClip.X , 1.f };				//UV Coords X
+	Vertices[2] = { Origin.X  , -Origin.Y };			//Bottom right
+	Vertices[3] = { UVCoordsClip.X, UVCoordsClip.Y };	//UV Coords XY
+	Vertices[4] = { -Origin.X, -Origin.Y };				//Bottom left
+	Vertices[5] = { 0.f , UVCoordsClip.Y };				//Y
+	Vertices[6] = { -Origin.X, Origin.Y };				//Top left
+	Vertices[7] = { 0.f, 1.f };							//0
+	NumVertices = 6;
+
+	//Default rectangle
+	unsigned int indices[] =
+	{  // note that we start from 0!
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
+	};
+
+	if (Application::bDriverInit)
+	{
+		if (!VertexBuffer /*Don't need to check the others*/)
+		{
+			glGenVertexArrays(1, &VertexArray);
+			glBindVertexArray(VertexArray);
+			glGenBuffers(1, &VertexBuffer);
+			glGenBuffers(1, &ElementBuffer);
+
+			
+			glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(Vect2) * 8, Vertices, GL_DYNAMIC_DRAW);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBuffer);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
+		}
+		else 
+		{
+			glBindVertexArray(VertexArray);
+			glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vect2) * 8, Vertices);
+		}
+	}
+	else
+		bPending = true;
+
+	glBindVertexArray(0);
+}
+
+void RenderObject::SetTextureClipping(Vect2 UVSize)
+{
+	UVCoordsClip.Y = 1.f - (Size.Y / UVSize.Y);
+	UVCoordsClip.X = (Size.X / UVSize.X);
+	if (Vertices)
+		free(Vertices);	//Clear any potentially old vertices
+						//Relative positioning.
+	//Adjust origin
+	Vect2 Origin = Size / 2;
+
+	Vertices = (Vect2*)malloc(sizeof(Vect2) * 8);
+	Vertices[0] = Origin;								//Top right
+	Vertices[1] = { UVCoordsClip.X , 1.f };				//UV Coords X
+	Vertices[2] = { Origin.X  , -Origin.Y };			//Bottom right
+	Vertices[3] = { UVCoordsClip.X, UVCoordsClip.Y };	//UV Coords XY
+	Vertices[4] = { -Origin.X, -Origin.Y };				//Bottom left
+	Vertices[5] = { 0.f , UVCoordsClip.Y };				//Y
+	Vertices[6] = { -Origin.X, Origin.Y };				//Top left
+	Vertices[7] = { 0.f, 1.f };							//0
+	NumVertices = 6;
+
+	//Default rectangle
+	unsigned int indices[] =
+	{  // note that we start from 0!
+		0, 1, 3,   // first triangle
+		1, 2, 3    // second triangle
+	};
+
+	if (Application::bDriverInit)
+	{
+		if (!VertexBuffer /*Don't need to check the others*/)
+		{
+			glGenVertexArrays(1, &VertexArray);
+			glBindVertexArray(VertexArray);
+			glGenBuffers(1, &VertexBuffer);
+			glGenBuffers(1, &ElementBuffer);
+
+			
+			glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+			glBufferData(GL_ARRAY_BUFFER, sizeof(Vect2) * 8, Vertices, GL_DYNAMIC_DRAW);
+
+			glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBuffer);
+			glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(indices), indices, GL_DYNAMIC_DRAW);
+		}
+		else 
+		{
+			glBindVertexArray(VertexArray);
+			glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+			glBufferSubData(GL_ARRAY_BUFFER, 0, sizeof(Vect2) * 8, Vertices);
+		}
+	}
+	else
+		bPending = true;
+
+	glBindVertexArray(0);
 }
 
 void RenderObject::DriverStartup()
@@ -248,35 +362,42 @@ void RenderObject::DriverStartup()
 //Material
 void RenderObject::DrawObject(const Vect2 Location)
 {
-	if (RenderMode == TYPE::TYPE_NONE)
-		return;
+	//if (RenderMode == TYPE::TYPE_NONE)
+	//	return;
 	//glfwMakeContextCurrent(Owner->Window->WindowHandle);
 	//glViewport(0, 0, Owner->Window->WindowSize.X, Owner->Window->WindowSize.Y);
 	
 	glBindVertexArray(VertexArray);
 	glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBuffer);
-
-	glUniform2f(Shader.Viewport, 2.f / (float)Owner->Window->WindowSize.X, 2.f / (float)Owner->Window->WindowSize.Y);
+	glUniform3f(Shader.ColorOffset, RedOffset, GreenOffset, BlueOffset);
+	glUniform2f(Shader.Viewport, 2.f / (float)RenderBuffer::WindowFrame->Size.X, 2.f / (float)RenderBuffer::WindowFrame->Size.Y);
 	glUniformMatrix2fv(Shader.Rotation, 1, GL_FALSE, (const GLfloat*)Owner->RotMatrix.M);
-	glUniform2f(Shader.Position, Location.X, (Owner->Window->WindowSize.Y - Location.Y) - Size.Y);
-	glUniform2f(Shader.RectSize, Owner->Size.X, Owner->Size.Y);
+	glUniform2f(Shader.Position, Location.X, (RenderBuffer::CurrentFrame->Size.Y - Location.Y) - Size.Y);
+	glUniform2f(Shader.RectSize, Size.X, Size.Y);
+	
 	switch (RenderMode)
 	{
 	case TYPE::TYPE_TEXTURE:
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, Image->_InternalID);
 		glUniform4f(Shader.Color, 1.f, 1.f, 1.f, 1.f);
+		glUniform2f(Shader.UVCoords, TexOffset.X / Image->Width, TexOffset.Y / Image->Height);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
 		break;
 	case TYPE::TYPE_BLEND: 
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, Image->_InternalID);
 		glUniform4f(Shader.Color, Red, Green, Blue, Alpha);
+		glUniform2f(Shader.UVCoords, TexOffset.X / Image->Width, TexOffset.Y / Image->Height);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
 		break;
 	case TYPE::TYPE_COLOR:
 		glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, Texture::EMPTY);
 		glUniform4f(Shader.Color, Red, Green, Blue, Alpha);
+		glUniform2f(Shader.UVCoords, 0, 0);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
 		break;
 	}
 
@@ -288,8 +409,5 @@ void RenderObject::DrawObject(const Vect2 Location)
 	glDrawElements(GL_TRIANGLES, NumVertices, GL_UNSIGNED_INT, 0);
 	//glFlush();
 	glBindVertexArray(0);
+	RenderBuffer::CurrentFrame->bUpdate = true;
 }
-
-Vect2 ScissorSize;
-Vect2 ScissorPos;
-bool bScissorState = false;

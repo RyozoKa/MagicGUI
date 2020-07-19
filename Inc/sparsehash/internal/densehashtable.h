@@ -1003,8 +1003,10 @@ class dense_hashtable {
     // First, double-check we're not trying to erase delkey or emptyval.
     assert((!settings.use_empty() || !equals(key, get_key(val_info.emptyval)))
            && "Erasing the empty key");
-    assert((!settings.use_deleted() || !equals(key, key_info.delkey))
-           && "Erasing the deleted key");
+   // assert((!settings.use_deleted() || !equals(key, key_info.delkey))
+   //        && "Erasing the deleted key");
+    if (!settings.use_deleted() || !equals(key, key_info.delkey))
+        return 0;
     const_iterator pos = find(key);   // shrug: shouldn't need to be const
     if ( pos != end() ) {
       assert(!test_deleted(pos));  // or find() shouldn't have returned it

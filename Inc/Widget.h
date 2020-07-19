@@ -38,7 +38,7 @@ public:
 
 	virtual void Tick(double);
 
-	Vect2 Position;
+	Vect2 Position = { -1.f, -1.f };
 	Vect2 OriginalPos;
 	Vect2 Size;
 	Vect2 DrawSize;
@@ -78,7 +78,7 @@ public:
 	bool bTransparent = false;
 	bool bEnabled = true;				//-- Enable or disable widget
 	bool bHidden = false;				//-- Visibility
-
+	bool bCollide = true;
 	//Animation internals
 	bool bAnimating = false;			//-- Move object interpolated according to keypoints
 	bool bReturnAnim = false;			//-- Return object to starting position
@@ -160,7 +160,8 @@ public:
 	virtual void Draw();
 	virtual void RenderObjects() = 0;	//-- Override this and set the objects you wish to draw in a custom widget.
 	virtual void Update();				//-- Set to redraw in the next tick
-
+	virtual void Show();
+	virtual void Hide();
 	virtual void SegmentRender(Vect2 Pos, Vect2 Size);
 
 	//Input Events
@@ -172,6 +173,7 @@ public:
 	virtual void OnMouseRightReleased(float X, float Y);
 	virtual void OnKeyPressed(int Key, int Mod);
 	virtual void OnScroll(float YOffset);
+	virtual void OnCursor(double X, double Y);
 
 	//Other events
 	virtual void Attached();		//--	Called when this widget is attached to another widget

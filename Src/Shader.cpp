@@ -77,8 +77,9 @@ void GShader::InitializeShader(const char* VertexShader, const char* FragmentSha
 	Position = glGetUniformLocation(ID, "Position");
 	Rotation = glGetUniformLocation(ID, "Rotation");
 	RectSize = glGetUniformLocation(ID, "Size");
-
+	ColorOffset = glGetUniformLocation(ID, "ColorOffset");
 	Color = glGetUniformLocation(ID, "Color");
+	UVCoords = glGetUniformLocation(ID, "UVOffset");
 	bValid = true;
 }
 

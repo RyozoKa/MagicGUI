@@ -1,6 +1,14 @@
 
 #include "Button.h"
 
+void Button::SetText(String S, String FontName, int FontHeight)
+{
+	Text.SetText(S, FontName, FontHeight);
+	//Calculate text offset
+	TextOffset = (Size - Text.Size) / 2;
+	Text.SetPosition(Position + TextOffset);
+}
+
 void Button::SetStateBackground(Texture* T, ButtonState S)
 {
 	States[S] = T;
@@ -24,6 +32,7 @@ void Button::SetState(ButtonState S)
 		SetImage( States[S] );
 	if (DrawType & TYPE::TYPE_COLOR)
 		SetColor( ColoredStates[S] );
+	Text.bUpdate = true;
 }
 
 void Button::OnMouseEnter(float X, float Y)
@@ -76,4 +85,10 @@ void Button::SetColor(Color C)
 void Button::SetImage(Texture* T)
 {
 	Image::SetImage(T);
+}
+
+void Button::SetPosition(const Vect2 Pos)
+{
+	Text.SetPosition(Position + TextOffset);
+	Image::SetPosition(Pos);
 }

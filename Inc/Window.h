@@ -7,7 +7,7 @@
 
 #include "Texture.h"
 #include "Widget.h"
-#include "Canvas.h"
+#include "WindowCanvas.h"
 #include "Gridsubsystem.h"
 
 enum MODE
@@ -58,11 +58,10 @@ public:
 	static Window* OpenWindows[255];
 	static unsigned int WndIdx;
 	static class GLFWwindow* Context;	//--	Using a single context
-
+	Vect2 CursorPos;
 	class GLFWwindow* WindowHandle;
 
-	Widget* LastHit = nullptr;
-	Widget* Focused = nullptr;
+
 	
 	Vect2 WindowSize;					//--	Current Window size, relative to Viewport matrix
 	MODE CurrentMode;					//--	Window mode
@@ -70,22 +69,21 @@ public:
 	unsigned int ShaderProg;			//--	Shader program for this window.
 	unsigned int WndIndex;				//--	Index into the static registry. Used to avoid on demand lookup
 
-	Canvas C;							//--	Main Canvas for this window
+	WindowCanvas C;							//--	Main Canvas for this window
 
-	Vect2 CursorPos;
+	
 
-	Window(const Vect2 Size) : GridSystem(&C)
+	Window(const Vect2 Size)
 	{
 		//Initialize canvas widget here
 		C.Window = this;
-		C.GridSystem = &GridSystem;
 		C.ZIndex = 0;	//Canvas will always be 0 indexed, to avoid collision detection
 		WindowSize = Size;
 		C.SetSize(Size);
-		GridSystem.InsertWidget(C);	//Is necessary
+		C.Attached();
 	}
 
-	Gridsubsystem GridSystem;
+	
 };
 
 /*

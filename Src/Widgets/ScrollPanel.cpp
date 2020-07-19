@@ -118,7 +118,7 @@ void ScrollPanel::OnScroll(float YOffset)
 void ScrollPanel::AddItem(Widget* W)
 {
 	CC.AddItem(W);
-	Vect2 WPosRelative = W->Position - CC.Position;
+	Vect2 WPosRelative = W->Position;
 	if ((WPosRelative + W->Size).X > (CalculatedSize + InnerPaddingWidth).X)
 		CalculatedSize.X = (WPosRelative + W->Size).X + InnerPaddingWidth;
 	if ((WPosRelative + W->Size).Y > (CalculatedSize + InnerPaddingWidth).Y)
@@ -143,8 +143,7 @@ void ScrollPanel::XScroll(float XOffset)
 	else if (-((ScrollOffset.X - CC.Size.X) + XOffset) > CalculatedSize.X)
 		XOffset += (-((ScrollOffset.X - CC.Size.X) + XOffset) - CalculatedSize.X);
 	ScrollOffset.X += XOffset;
-	CC.Offset.X = ScrollOffset.X;
-	CC.Scroll({ XOffset, 0.f });
+	CC.ScrollX(-XOffset);
 }
 
 void ScrollPanel::YScroll(float YOffset)
@@ -157,8 +156,8 @@ void ScrollPanel::YScroll(float YOffset)
 	else if (-((ScrollOffset.Y - CC.Size.Y) + YOffset) > CalculatedSize.Y)
 		YOffset += (-((ScrollOffset.Y - CC.Size.Y) + YOffset) - CalculatedSize.Y);
 	ScrollOffset.Y += YOffset;
-	CC.Offset.Y = ScrollOffset.Y;
-	CC.Scroll({ 0.f, YOffset });
+
+	CC.ScrollY(-YOffset);
 }
 
 void ScrollPanel::SetSize(const Vect2 Sz)

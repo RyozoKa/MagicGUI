@@ -34,12 +34,6 @@ void Image::SetType(TYPE T)
 	bUpdate = true;
 }
 
-void Image::SetPosition(const Vect2 Pos)
-{
-	Position = Pos;
-	bUpdate = true;
-}
-
 void Image::RenderObjects()
 {
 	ImgObj.DrawObject(Position);

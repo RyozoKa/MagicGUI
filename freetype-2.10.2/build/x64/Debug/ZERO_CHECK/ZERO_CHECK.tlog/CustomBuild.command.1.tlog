@@ -1,0 +1,10 @@
+^C:\USERS\CHRIS\SOURCE\REPOS\MAGICGUI\FREETYPE-2.10.2\BUILD\CMAKEFILES\EBF0416DE644DAEE30C525BE90DEA53D\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/Chris/source/repos/MagicGUI/freetype-2.10.2 -BC:/Users/Chris/source/repos/MagicGUI/freetype-2.10.2/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/Users/Chris/source/repos/MagicGUI/freetype-2.10.2/build/freetype.sln
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

@@ -38,7 +38,7 @@ class MAGICGUIAPI ScrollPanel : public Widget
 	Vect2 ButtonSize = {ScrollbarWidth, ScrollbarWidth};
 	float BorderWidth = (ScrollAreaWidth - ScrollbarWidth) / 2;
 
-	float InnerPaddingWidth = 5.f;	//-- Padding thickness around Canvas edge	
+	float InnerPaddingWidth = 0.f;	//-- Padding thickness around Canvas edge	
 	const float ScrollScale = 10.f;
 	SlideButton VerticalScroll;
 	SlideButton HorizontalScroll;
@@ -49,7 +49,7 @@ class MAGICGUIAPI ScrollPanel : public Widget
 	Button Right;
 
 	RenderObject Background;
-	ClippedCanvas CC;
+	Canvas &CC = *new Canvas;
 
 
 	ScrollPanel() : Widget()
@@ -57,7 +57,7 @@ class MAGICGUIAPI ScrollPanel : public Widget
 		CC.Owner = this;
 		Background.Owner = this;
 		Background.SetColor(Color(79, 79, 78));
-
+		CC.SetColor({ 252, 255, 219, 255 });
 		//VerticalScroll.bHidden = true;
 		//HorizontalScroll.bHidden = true;
 		VerticalScroll.SetStateColor(Color(163, 163, 163), Button::ButtonState::STATE_Normal);

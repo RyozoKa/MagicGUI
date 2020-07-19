@@ -42,6 +42,21 @@ void window_close_callback(GLFWwindow* window)
 	window->Wnd->IsClosing();
 }
 
+void GLAPIENTRY
+MessageCallback( GLenum source,
+                 GLenum type,
+                 GLuint id,
+                 GLenum severity,
+                 GLsizei length,
+                 const GLchar* message,
+                 const void* userParam )
+{
+	if(type != 0x8251)
+  printf( "GL CALLBACK: %s type = 0x%x, severity = 0x%x, message = %s\n",
+           ( type == GL_DEBUG_TYPE_ERROR ? "** GL ERROR **" : "" ),
+            type, severity, message );
+}
+
 Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, bool Borderless)
 {
 	GLFWwindow* Wd;
@@ -142,6 +157,17 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 		}
 		Window::OpenWindows[Wds->WndIndex] = Wds;
 		++Window::WndIdx;
+		RenderBuffer::WindowFrame = &Wds->C.Buffer;
+		RenderBuffer::CurrentFrame = &Wds->C.Buffer;
+
+		glEnable(GL_BLEND);
+		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+		glDisable(GL_DEPTH_TEST);  
+		glDisable(GL_CULL_FACE);
+
+		glEnable              ( GL_DEBUG_OUTPUT );
+		glDebugMessageCallback( MessageCallback, 0 );
+
 		return Wds;
 }
 
@@ -150,6 +176,7 @@ void Window::SetPosition(const Vect2 Pos)
 	glfwSetWindowPos(WindowHandle, Pos.X, Pos.Y);
 }
 
+//Not called when created. See constructor!
 void Window::SetSize(const Vect2 Size)
 {
 	glfwSetWindowSize(WindowHandle, Size.X, Size.Y);
@@ -237,30 +264,14 @@ void Window::Focus()
 
 void Window::OnCursor(double X, double Y)
 {
-	Widget* W = LastHit;
-	
-	//if(CursorPos.X != X || CursorPos.Y != Y) 	
-	{
-		//Cursor moved, are we still inside the widget?
-		CursorPos.X = X;
-		CursorPos.Y = Y;
-		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
-			W = GridSystem.GetWidget(CursorPos);
-		if (LastHit != W)
-		{
-			if (LastHit != nullptr)
-				LastHit->OnMouseLeave(X, Y);
-			if(W)
-				W->OnMouseEnter(X, Y);
-			LastHit = W;
-		}
-	}
+	CursorPos.X = X;
+	CursorPos.Y = Y;
+	C.OnCursor(X, Y);
 }
 
 void Window::OnKeyPress(int Key, int Mod)
 {
-	if (Focused)
-		Focused->OnKeyPressed(Key, Mod);
+	C.OnKeyPress(Key, Mod);
 }
 
 void Window::OnKeyRelease(int Key, int Mod)
@@ -269,56 +280,33 @@ void Window::OnKeyRelease(int Key, int Mod)
 
 void Window::OnMouseClick(int Key)
 {
-	if(GridSystem.bUpdate)
-	{
-		Widget* W = LastHit;
-		if (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0) //If not, find the new widget
-			W = GridSystem.GetWidget(CursorPos);
-		if (LastHit != W)
-		{
-			if (LastHit != nullptr)
-				LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
-			if(W)
-				W->OnMouseEnter(CursorPos.X, CursorPos.Y);
-			LastHit = W;
-		}
-	}
-	Focused = LastHit;
-	if (!LastHit)
-		return;
 	switch(Key)
 	{
 		case MOUSE_BUTTON_LEFT:
-			LastHit->OnMouseLeftClick(CursorPos.X, CursorPos.Y);
+			C.OnMouseLeftClick(CursorPos.X, CursorPos.Y);
 		break;
 		case MOUSE_BUTTON_RIGHT:
-			LastHit->OnMouseRightClick(CursorPos.X, CursorPos.Y);
+			C.OnMouseRightClick(CursorPos.X, CursorPos.Y);
 		break;
 	}
-
-	printf("%f %f %p %i\n", CursorPos.X, CursorPos.Y, LastHit, Key);
 }
 
 void Window::OnMouseRelease(int Key)
 {
-	if (!Focused)
-		return;
-
 	switch(Key)
 	{
 		case MOUSE_BUTTON_LEFT:
-			Focused->OnMouseLeftReleased(CursorPos.X, CursorPos.Y);
+			C.OnMouseLeftReleased(CursorPos.X, CursorPos.Y);
 		break;
 		case MOUSE_BUTTON_RIGHT:
-			Focused->OnMouseRightReleased(CursorPos.X, CursorPos.Y);
+			C.OnMouseRightReleased(CursorPos.X, CursorPos.Y);
 		break;
 	}
 }
 
 void Window::OnScroll(double XOffset, double YOffset)
 {
-	if (Focused)
-		Focused->OnScroll(YOffset);
+	C.OnScroll(YOffset);
 }
 
 
@@ -371,8 +359,11 @@ HDynamicArray<Scissor> Stack;
 
 Scissor CurrentScissor;
 
+#include "RenderBuffer.h"
+
 void ScissorBox(Vect2 Pos, Vect2 Size)
 {
+	//Pos += RenderBuffer::CurrentFrame->AbsPosition;
 	if (!CurrentScissor.Size.IsEmpty())
 	{
 		Stack.Insert(CurrentScissor);		//-- Push previous box to the stack
@@ -401,7 +392,7 @@ void ScissorBox(Vect2 Pos, Vect2 Size)
 		CurrentScissor.Size.X = MAX(CurrentScissor.Size.X, 0.f);
 		CurrentScissor.Size.Y = MAX(CurrentScissor.Size.Y, 0.f);
 	}
-	glScissor(CurrentScissor.Position.X, (glfwGetCurrentContext()->Wnd->WindowSize.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
+	glScissor(CurrentScissor.Position.X, (RenderBuffer::CurrentFrame->Size.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
 	glEnable(GL_SCISSOR_TEST);
 }
 
@@ -410,7 +401,7 @@ void DisableScissor()
 	if(Stack.Size())
 	{
 		CurrentScissor = Stack.PopLast();
-		glScissor(CurrentScissor.Position.X, (glfwGetCurrentContext()->Wnd->WindowSize.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
+		glScissor(CurrentScissor.Position.X, (RenderBuffer::CurrentFrame->Size.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
 	}
 	else
 	{

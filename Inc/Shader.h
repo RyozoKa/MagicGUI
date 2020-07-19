@@ -2,7 +2,8 @@
 
 /*
 	Basic Shader object
-
+	Revision:
+		Christopher Békési
 */
 
 class MAGICGUIAPI GShader
@@ -22,6 +23,8 @@ public:
 
 	//Fragment uniforms
 	unsigned int Color;
+	unsigned int ColorOffset;
+	unsigned int UVCoords;
 
 	bool bValid;	//False by default
 

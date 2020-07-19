@@ -188,7 +188,12 @@ class dense_hash_map {
                           const key_equal& eql = key_equal(),
                           const allocator_type& alloc = allocator_type())
     : rep(expected_max_items_in_table, hf, eql, SelectKey(), SetKey(), alloc) {
-      set_empty_key(*(Empty = new Key));
+      Empty = new Key;
+      Del = new Key;
+      *Del = 0;
+      *Empty = 1;
+      set_empty_key(*(Empty));
+      set_deleted_key(*(Del));
       //set_deleted_key(*(Del = new Key));
      // printf("Created keys\n");
   }
@@ -203,7 +208,7 @@ class dense_hash_map {
     : rep(expected_max_items_in_table, hf, eql, SelectKey(), SetKey(), alloc) {
     set_empty_key(empty_key_val);
     rep.insert(f, l);
-    printf("Created no keys\n");
+    
   }
   // We use the default copy constructor
   // We use the default operator=()

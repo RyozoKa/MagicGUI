@@ -18,8 +18,8 @@ unsigned int Gridsubsystem::GetBlockIndex(const Vect2 Pos)
 
 Widget* Gridsubsystem::GetWidget(const Vect2 Pos)
 {
-	Block& B = GetBlock(Pos - OwnerCanvas->Offset);
-	return B.GetWidget(Pos);
+	Block& B = GetBlock(Pos + OwnerCanvas->Offset);
+	return B.GetWidget(Pos + OwnerCanvas->Offset);
 }
 
 Block& Gridsubsystem::InsertWidget(Widget& W)
@@ -74,19 +74,19 @@ Block& Gridsubsystem::RemoveWidget(Widget& W)
 	return Grid[Index];
 }
 
-void Gridsubsystem::MoveWidget(Widget& W, const Vect2 Pos)
+void Gridsubsystem::MoveWidget(Widget& W, const Vect2 Delta)
 {
 	//Did the widget leave any blocks?
 	//TODO: Optimize this so we don't remove from blocks that does not need to be removed from
 	//Optimization1: Only move if we end up on a different block
-	if (W.Position.GetBlock() != (W.Position + Pos).GetBlock())
+	if (W.Position.GetBlock() != (W.Position + Delta).GetBlock())
 	{
 		RemoveWidget(W);
-		W.Position += Pos;
+		W.Position += Delta;
 		InsertWidget(W);
 	}
 	else
-		W.Position += Pos;
+		W.Position += Delta;
 }
 
 //This is responsible for redrawing everything within a scissor box in the correct order

@@ -79,7 +79,7 @@ public:
 	}
 
 
-	static bool Exists(unsigned char*);
+	static bool Exists(const char * file);
 protected:
 	int fd;
 	struct stat filestat;

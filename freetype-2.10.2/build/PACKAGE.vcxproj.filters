@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\Chris\source\repos\MagicGUI\freetype-2.10.2\build\CMakeFiles\ebf0416de644daee30c525be90dea53d\PACKAGE_force.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{81BFDDD5-A91C-3154-A64F-CEF3C53582D3}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

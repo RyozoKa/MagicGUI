@@ -42,7 +42,7 @@ build CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj: CXX_COMPILER__MagicGUI ../.
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\fasttrigo.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -50,7 +50,7 @@ build CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj: CXX_COMPILER__MagicGUI ../../
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\WinBase.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -58,7 +58,7 @@ build CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj: CXX_COMPILER__MagicGUI ../../.
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Window.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -66,7 +66,7 @@ build CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj: CXX_COMPILER__MagicGUI ../../
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Texture.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -74,7 +74,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj: CXX_COMPILER__MagicGUI ../../.
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widget.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -82,7 +82,7 @@ build CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj: CXX_COMPILER__MagicGUI ..
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Application.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -90,7 +90,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj: CXX_COMPILER__MagicGUI 
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Image.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -98,7 +98,7 @@ build CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj: CXX_COMPILER__MagicGUI ../../.
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Shader.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -106,7 +106,7 @@ build CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj: CXX_COMPILER__MagicGUI ../../
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Windows.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -114,7 +114,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj: CXX_COMPILER__MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Canvas.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -122,7 +122,7 @@ build CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj: CXX_COMPILER__MagicGUI 
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Gridsubsystem.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -130,7 +130,7 @@ build CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj: CXX_COMPILER__MagicGU
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\StaticAllocator.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -138,7 +138,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj: CXX_COMPILER__MagicGUI
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Button.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -146,7 +146,7 @@ build CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj: CXX_COMPILER__Mag
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Themes\ThemeManager.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Themes
 
@@ -154,7 +154,7 @@ build CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj: CXX_COMPILER__MagicGUI ../../
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HString.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -162,7 +162,7 @@ build CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj: CXX_COMPILER__MagicGUI ../../..
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HMath.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -170,7 +170,7 @@ build CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj: CXX_COMPILER__MagicGUI ../../../S
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\HIO.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
@@ -178,7 +178,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj: CXX_COMPILER__Mag
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\ScrollPanel.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -186,7 +186,7 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj: CXX_COMPILER__M
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\ClippedCanvas.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -194,7 +194,55 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj: CXX_COMPILER__Mag
   DEFINES = -DBUILD -DMagicGUI_EXPORTS
   DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\SlideButton.cpp.obj.d
   FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
-  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
+
+build CMakeFiles/MagicGUI.dir/Src/Widgets/TabPanel.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/TabPanel.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\TabPanel.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
+
+build CMakeFiles/MagicGUI.dir/Src/RenderBuffer.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/RenderBuffer.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\RenderBuffer.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
+
+build CMakeFiles/MagicGUI.dir/Src/Widgets/WindowCanvas.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/WindowCanvas.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\WindowCanvas.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
+
+build CMakeFiles/MagicGUI.dir/Src/Font.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Font.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Font.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
+
+build CMakeFiles/MagicGUI.dir/Src/TextRenderer.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/TextRenderer.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\TextRenderer.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
+
+build CMakeFiles/MagicGUI.dir/Src/Widgets/Label.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Widgets/Label.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Widgets\Label.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Widgets
 
@@ -206,10 +254,10 @@ build CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj: CXX_COMPILER__Mag
 #############################################
 # Link the shared library libMagicGUI.dll
 
-build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj
+build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ClippedCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/TabPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/RenderBuffer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/WindowCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Font.cpp.obj CMakeFiles/MagicGUI.dir/Src/TextRenderer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Label.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g
-  LINK_LIBRARIES = -Wl,-Bstatic  -lglfw3  -lgdi32  -lGLEW32  -lglu32  -lwinmm  -Wl,-Bdynamic  -lgdi32 -lopengl32 -lstdc++
-  LINK_PATH = -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/glfw-3.3.2/src   -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/lib
+  LINK_LIBRARIES = -Wl,-Bstatic  -lglfw3  -lgdi32  -lGLEW32  -lglu32  -lwinmm  -lfreetype  -lz  -Wl,-Bdynamic  -lgdi32 -lopengl32 -lstdc++
+  LINK_PATH = -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/glfw-3.3.2/src   -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/lib   -LC:/Users/Chris/source/repos/MagicGUI/freetype-2.10.2/objs/.libs
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   POST_BUILD = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "robocopy . C:\Bin libMagicGUI.dll & Ver > nul ""
   PRE_LINK = cd .
@@ -217,6 +265,42 @@ build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMa
   TARGET_FILE = libMagicGUI.dll
   TARGET_IMPLIB = libMagicGUI.dll.a
   TARGET_PDB = MagicGUI.dll.dbg
+
+
+#############################################
+# Utility command for package
+
+build CMakeFiles/package.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build package: phony CMakeFiles/package.util
+
+
+#############################################
+# Utility command for install/strip
+
+build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build install/strip: phony CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for package_source
+
+build CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CPackSourceConfig.cmake"
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build package_source: phony CMakeFiles/package_source.util
 
 
 #############################################
@@ -271,18 +355,6 @@ build rebuild_cache: phony CMakeFiles/rebuild_cache.util
 
 build list_install_components: phony
 
-
-#############################################
-# Utility command for install/strip
-
-build CMakeFiles/install/strip.util: CUSTOM_COMMAND all
-  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
-  DESC = Installing the project stripped...
-  pool = console
-  restat = 1
-
-build install/strip: phony CMakeFiles/install/strip.util
-
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
 # C:/Users/Chris/source/repos/MagicGUI/CMakeLists.txt
@@ -302,9 +374,33 @@ build glfw-3.3.2/install/strip: phony glfw-3.3.2/CMakeFiles/install/strip.util
 
 
 #############################################
+# Utility command for package_source
+
+build glfw-3.3.2/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CPackSourceConfig.cmake"
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/package_source: phony glfw-3.3.2/CMakeFiles/package_source.util
+
+
+#############################################
 # Utility command for uninstall
 
 build glfw-3.3.2/uninstall: phony glfw-3.3.2/CMakeFiles/uninstall
+
+
+#############################################
+# Utility command for package
+
+build glfw-3.3.2/CMakeFiles/package.util: CUSTOM_COMMAND glfw-3.3.2/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/package: phony glfw-3.3.2/CMakeFiles/package.util
 
 
 #############################################
@@ -530,6 +626,42 @@ build glfw-3.3.2/src/libglfw3.a: C_STATIC_LIBRARY_LINKER__glfw glfw-3.3.2/src/CM
 
 
 #############################################
+# Utility command for package
+
+build glfw-3.3.2/src/CMakeFiles/package.util: CUSTOM_COMMAND glfw-3.3.2/src/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/src/package: phony glfw-3.3.2/src/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for install/strip
+
+build glfw-3.3.2/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND glfw-3.3.2/src/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glfw-3.3.2\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
+  DESC = Installing the project stripped...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/src/install/strip: phony glfw-3.3.2/src/CMakeFiles/install/strip.util
+
+
+#############################################
+# Utility command for package_source
+
+build glfw-3.3.2/src/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CPackSourceConfig.cmake"
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/src/package_source: phony glfw-3.3.2/src/CMakeFiles/package_source.util
+
+
+#############################################
 # Utility command for install/local
 
 build glfw-3.3.2/src/CMakeFiles/install/local.util: CUSTOM_COMMAND glfw-3.3.2/src/all
@@ -568,18 +700,6 @@ build glfw-3.3.2/src/edit_cache: phony glfw-3.3.2/src/CMakeFiles/edit_cache.util
 # Utility command for list_install_components
 
 build glfw-3.3.2/src/list_install_components: phony
-
-
-#############################################
-# Utility command for install/strip
-
-build glfw-3.3.2/src/CMakeFiles/install/strip.util: CUSTOM_COMMAND glfw-3.3.2/src/all
-  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glfw-3.3.2\src && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake"
-  DESC = Installing the project stripped...
-  pool = console
-  restat = 1
-
-build glfw-3.3.2/src/install/strip: phony glfw-3.3.2/src/CMakeFiles/install/strip.util
 
 # =============================================================================
 # Write statements declared in CMakeLists.txt:
@@ -1520,6 +1640,30 @@ build glfw-3.3.2/tests/windows.exe: C_EXECUTABLE_LINKER__windows glfw-3.3.2/test
 
 
 #############################################
+# Utility command for package
+
+build glfw-3.3.2/tests/CMakeFiles/package.util: CUSTOM_COMMAND glfw-3.3.2/tests/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/tests/package: phony glfw-3.3.2/tests/CMakeFiles/package.util
+
+
+#############################################
+# Utility command for package_source
+
+build glfw-3.3.2/tests/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CPackSourceConfig.cmake"
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build glfw-3.3.2/tests/package_source: phony glfw-3.3.2/tests/CMakeFiles/package_source.util
+
+
+#############################################
 # Utility command for list_install_components
 
 build glfw-3.3.2/tests/list_install_components: phony
@@ -1690,6 +1834,18 @@ build lib/libglew32d.a: C_STATIC_LIBRARY_LINKER__glew_s glew-2.1.0/build/cmake/C
   TARGET_FILE = lib\libglew32d.a
   TARGET_PDB = glew32.a.dbg
 
+
+#############################################
+# Utility command for package_source
+
+build glew-2.1.0/build/cmake/CMakeFiles/package_source.util: CUSTOM_COMMAND
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackSourceConfig.cmake C:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/CPackSourceConfig.cmake"
+  DESC = Run CPack packaging tool for source...
+  pool = console
+  restat = 1
+
+build glew-2.1.0/build/cmake/package_source: phony glew-2.1.0/build/cmake/CMakeFiles/package_source.util
+
 # =============================================================================
 # Object build statements for EXECUTABLE target visualinfo
 
@@ -1734,27 +1890,15 @@ build bin/visualinfo.exe: C_EXECUTABLE_LINKER__visualinfo glew-2.1.0/build/cmake
 
 
 #############################################
-# Utility command for install/local
+# Utility command for package
 
-build glew-2.1.0/build/cmake/CMakeFiles/install/local.util: CUSTOM_COMMAND glew-2.1.0/build/cmake/all
-  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glew-2.1.0\build\cmake && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
-  DESC = Installing only the local directory...
+build glew-2.1.0/build/cmake/CMakeFiles/package.util: CUSTOM_COMMAND glew-2.1.0/build/cmake/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2 && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cpack.exe" --config ./CPackConfig.cmake"
+  DESC = Run CPack packaging tool...
   pool = console
   restat = 1
 
-build glew-2.1.0/build/cmake/install/local: phony glew-2.1.0/build/cmake/CMakeFiles/install/local.util
-
-
-#############################################
-# Utility command for install
-
-build glew-2.1.0/build/cmake/CMakeFiles/install.util: CUSTOM_COMMAND glew-2.1.0/build/cmake/all
-  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glew-2.1.0\build\cmake && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
-  DESC = Install the project...
-  pool = console
-  restat = 1
-
-build glew-2.1.0/build/cmake/install: phony glew-2.1.0/build/cmake/CMakeFiles/install.util
+build glew-2.1.0/build/cmake/package: phony glew-2.1.0/build/cmake/CMakeFiles/package.util
 
 
 #############################################
@@ -1784,6 +1928,30 @@ build glew-2.1.0/build/cmake/rebuild_cache: phony glew-2.1.0/build/cmake/CMakeFi
 # Utility command for list_install_components
 
 build glew-2.1.0/build/cmake/list_install_components: phony
+
+
+#############################################
+# Utility command for install
+
+build glew-2.1.0/build/cmake/CMakeFiles/install.util: CUSTOM_COMMAND glew-2.1.0/build/cmake/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glew-2.1.0\build\cmake && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -P cmake_install.cmake"
+  DESC = Install the project...
+  pool = console
+  restat = 1
+
+build glew-2.1.0/build/cmake/install: phony glew-2.1.0/build/cmake/CMakeFiles/install.util
+
+
+#############################################
+# Utility command for install/local
+
+build glew-2.1.0/build/cmake/CMakeFiles/install/local.util: CUSTOM_COMMAND glew-2.1.0/build/cmake/all
+  COMMAND = cmd.exe /C "cd /D C:\Users\Chris\source\repos\MagicGUI\out\build\Mingw64-Release-2\glew-2.1.0\build\cmake && "C:\Program Files (x86)\Microsoft Visual Studio\2019\Professional\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake"
+  DESC = Installing only the local directory...
+  pool = console
+  restat = 1
+
+build glew-2.1.0/build/cmake/install/local: phony glew-2.1.0/build/cmake/CMakeFiles/install/local.util
 
 
 #############################################

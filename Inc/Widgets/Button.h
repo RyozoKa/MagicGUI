@@ -2,6 +2,7 @@
 
 #include "Image.h"
 #include "ThemeManager.h"
+#include "Label.h"
 
 class MAGICGUIAPI Button : public Image
 {
@@ -14,6 +15,7 @@ public:
 		SetStateBackground(ThemeManager::GetTextureFor(C_BUTTON_HOVER), STATE_Hover);
 		DrawType = TYPE::TYPE_TEXTURE;
 		SetState(STATE_Normal);
+		SetSize(Vect2(128.f, 32.f));
 	}
 
 	enum ButtonState
@@ -26,6 +28,14 @@ public:
 
 	class Texture* States[3];
 	Color ColoredStates[3];
+
+	//Text
+	Label Text;
+	Vect2 TextOffset;
+	virtual void SetText(String S, String FontName, int FontHeight);
+
+	//Misc
+	unsigned int Index = 0;
 
 	//Callback events
 	Callbacks<Widget*> OnClick;
@@ -41,6 +51,11 @@ public:
 	void SetStateBackground(Texture*, ButtonState);
 	void SetStateColor(Color, ButtonState);
 
+	virtual void SetPosition(const Vect2 Pos);
+	virtual void Attached()
+	{
+		AddItem(&Text);
+	}
 
 protected:
 	
@@ -59,6 +74,7 @@ protected:
 	//These should be private. To set button colors, user the SetState functions above.
 	virtual void SetColor(Color C);
 	virtual void SetImage(Texture* T);
+	
 	virtual void Draw()
 	{
 		Image::Draw();

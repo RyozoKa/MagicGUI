@@ -54,10 +54,6 @@ public:
 		if (_Size >= _Alloc)
 		{
 			_Alloc <<= 1;
-			//T* New = new T[_Alloc];
-			//memcpy(New, _Data, _Size * sizeof(T));
-			//delete[] _Data;
-			//_Data = New;
 			_Data = (T*)realloc(_Data, _Size * sizeof(T));
 		}
 		_Data[_Size++] = D;

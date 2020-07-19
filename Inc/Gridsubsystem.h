@@ -1,3 +1,9 @@
+/*
+	A grid based subsystem handling high efficiency collision tests
+	Revision:
+	Christopher Békési 2020-04-20
+*/
+
 #pragma once
 
 
@@ -25,7 +31,8 @@ class Gridsubsystem
 {
 public:
 
-	Gridsubsystem(class Canvas* COwner) : OwnerCanvas(COwner) {}
+	Gridsubsystem(class Canvas* COwner) : OwnerCanvas(COwner) 
+	{}
 
 	class Canvas* OwnerCanvas;
 	//These are the number of horizontal and vertical blocks

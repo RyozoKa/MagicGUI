@@ -91,17 +91,16 @@ class MAGICGUIAPI RenderObject
 	unsigned int VertexArray = 0;
 	unsigned int ElementBuffer = 0;
 	
-	float Red, Green, Blue, Alpha;
+	float Red = 0.f, Green = 0.f, Blue = 0.f, Alpha = 1.f;
 	Texture* Image = NULL;
 	bool bPending;					//--	This is set initially, in case the driver has not yet been initialized. Any upload to the GPU needs to be delayed until DriverStartup() is called.
-
+	float RedOffset = 0.f, GreenOffset = 0.f, BlueOffset = 0.f;				//--	Color addition for brightening a texture
+	//Not currently used
 	unsigned int	ShaderProgram;	//--	Shader program used for this RenderObject
 
 	class Widget* Owner;
 
-	//RenderObject registry
-	static RenderObject* RenderItems[5120];	//More than enough
-	static unsigned short RenderIdx;
+	
 
 	//Store GPU data locally too.
 	Vect2 * Vertices;
@@ -110,8 +109,13 @@ class MAGICGUIAPI RenderObject
 	//Quad primitive
 	Vect2 Size;
 
+	//UV offset
+	Vect2 TexOffset = { 0.f, 0.f };
 
-	void SetImage(const char* File, unsigned char TM);
+	//UV coords
+	Vect2 UVCoordsClip = { 0.f , 0.f }; //Lower left texture clipping
+
+	void SetImage(const char* File, unsigned char TM);	//-- Relic!!
 
 	void SetImage(HASH ID);
 
@@ -122,6 +126,8 @@ class MAGICGUIAPI RenderObject
 	void SetRenderMode(TYPE Mode);
 
 	void SetPrimitive(Vect2 Prim);
+	void SetPrimitive(Vect2 Prim, Vect2 UVSize);
+	void SetTextureClipping(Vect2 UVSize);
 
 	//Constructor
 	RenderObject()
@@ -141,9 +147,6 @@ class MAGICGUIAPI RenderObject
 
 //Current scissor box, allows for two nested boxes.
 //This should be redone to simulate multiple scissor boxes later
-extern Vect2 ScissorSize;
-extern Vect2 ScissorPos;
-extern bool bScissorState;
 
 
 /*

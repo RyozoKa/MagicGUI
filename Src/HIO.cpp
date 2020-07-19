@@ -208,3 +208,9 @@ bool FileInfo::ExistsLive()
 {
 	return bExists = stat(File, &filestat) && S_ISREG(filestat.st_mode);
 }
+
+bool FileBase::Exists(const char * file)
+{
+	struct stat filestat;
+	return !stat(file, &filestat) && S_ISREG(filestat.st_mode);
+}
