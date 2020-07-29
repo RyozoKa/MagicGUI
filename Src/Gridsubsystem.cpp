@@ -24,6 +24,8 @@ Widget* Gridsubsystem::GetWidget(const Vect2 Pos)
 
 Block& Gridsubsystem::InsertWidget(Widget& W)
 {
+	if (&W == OwnerCanvas)
+		return Grid[0];
 	//We'll need to get all the blocks covered and insert the widget
 	bUpdate = true;
 	//Get the index for the first block
@@ -126,7 +128,18 @@ void Gridsubsystem::UpdateSegment(class Widget& W, const Vect2 Pos, const Vect2 
 	//Redraw segments
 	//Bug: This will draw things that won't show up but still disables its update. We don't want that!
 	OwnerCanvas->bUpdate = true;
-	OwnerCanvas->SegmentRender(Pos, Size);
+	//OwnerCanvas->SegmentRender(Pos, Size);
+	for(int i = 0; i < OwnerCanvas->Items.size(); ++i)
+	{
+		if (/*Items[i]->bUpdate &&*/ RectOverlap(Pos, Pos + Size, OwnerCanvas->Items[i]->Position, OwnerCanvas->Items[i]->Position + OwnerCanvas->Items[i]->Size))
+		{
+			bool bUpdateState = OwnerCanvas->Items[i]->bUpdate;
+			OwnerCanvas->Items[i]->bUpdate = true;
+			OwnerCanvas->Items[i]->SegmentRender(Pos, Size);
+			if(!RectWithin(OwnerCanvas->Items[i]->Position, OwnerCanvas->Items[i]->Size, Pos, Size))
+				OwnerCanvas->Items[i]->bUpdate = bUpdateState;	//If we've only drawn this partially, restore previous update state
+		}
+	}
 	DisableScissor();
 	CurrentState = RenderState::STATE_Normal;
 }
@@ -154,13 +167,13 @@ void Gridsubsystem::ResizeWidget(Widget& W, const Vect2& Delta)
 Widget* Block::GetWidget(const Vect2 Pos)
 {
 	Widget* Result = nullptr;
-	for (unsigned char i = 0; i < Num; ++i)
+	for (unsigned char i = 0; i < Num && Widgets[i]; ++i)
 	{
 		//Vect2& Loc = Widgets[i]->Position;
 		//Vect2 End = Loc + (Widgets[i]->Size);
 		//Simple rectangular collision primitive
 		//if (Pos >= Loc && Pos <= End)
-		if (Widgets[i] && Widgets[i]->ZIndex > 0 && (!Result || Result->ZIndex < Widgets[i]->ZIndex) && Widgets[i]->TestCollision(Pos))
+		if ( (!Result || Result->ZIndex < Widgets[i]->ZIndex) && Widgets[i]->TestCollision(Pos))
 			Result = Widgets[i];//return Widgets[i];
 	}
 	return Result;

@@ -13,12 +13,16 @@
 #define ADDCONTROL(Ctl) EnumMap[Ctl] = #Ctl;
 
 
+
 //Controls that can use the theme manager
 enum Controls
 {
 	C_BUTTON_DOWN,
 	C_BUTTON_HOVER,
 	C_BUTTON_NORMAL,
+	C_EXPAND_ICON,
+	C_EXPAND_ICON_HOVER,
+	C_EXPAND_ICON_CLICK,
 
 	C_ENDOF,
 	C_INVALID
@@ -29,6 +33,10 @@ extern MAGICGUIAPI const char* EnumMap[C_ENDOF];
 class MAGICGUIAPI ThemeManager
 {
 public:
+
+	//Standard defined system colors
+	static const Color CanvasWhite;
+
 	static class Texture* GetTextureFor(Controls);
 	static bool LoadTheme(const char* ThemeFile);
 
@@ -54,10 +62,11 @@ inline int InitArray()
 	ADDCONTROL(C_BUTTON_DOWN)
 	ADDCONTROL(C_BUTTON_HOVER)
 	ADDCONTROL(C_BUTTON_NORMAL)
-
+	ADDCONTROL(C_EXPAND_ICON)
+	ADDCONTROL(C_EXPAND_ICON_HOVER)
+	ADDCONTROL(C_EXPAND_ICON_CLICK)
 
 	Application::SubsystemModules += &ThemeManager::Init;
 	return 1;
 }
 
-const int iss = InitArray();

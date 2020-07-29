@@ -10,6 +10,13 @@
 	 
 */
 
+enum Expansion
+{
+	EXPAND_DOWN = 1,
+	EXPAND_UP = 2,
+	EXPAND_LEFT = 4,
+	EXPAND_RIGHT = 8
+};
 
 //Keypoints are absolute positions
 struct Keypoint
@@ -43,7 +50,7 @@ public:
 	Vect2 Size;
 	Vect2 DrawSize;
 	Rotator Rotation;
-
+	unsigned int Exp = 0;
 	//Internal
 	Mat2 RotMatrix;
 	ECollision CollisionType = ECollision_Rect;
@@ -86,6 +93,11 @@ public:
 	bool bCollapseVert = false;			//-- Collapse vertical draw
 	bool bExpandHor = false;			//-- Expand horizontal draw
 	bool bCollapseHor = false;			//-- Collapse horizontal draw
+	bool bStartVertCollapsed = false;
+	bool bStartHorCollapsed = false;
+
+	//Initialization control.
+	bool bInitialized = false;
 
 	//Properties that must be set
 	float VerticalDuration = 0.f;		//-- Vertical expansion duration
@@ -100,6 +112,9 @@ public:
 
 	//Collision detection against this Widget
 	virtual bool TestCollision(const Vect2&);
+	
+	//This gets called once right before the first tick, after configuration.
+	virtual void Initialize();
 
 	//Control functions for animations
 	virtual void Animate()
@@ -150,6 +165,7 @@ public:
 	virtual void AddItem(Widget*);
 
 	//Setters
+	virtual void SetExpansion(int E);
 	virtual void SetSize(const Vect2 Sz);
 	virtual void SetRotation(const Rotator Rot);
 	virtual void SetRadius(const float F);
@@ -177,7 +193,7 @@ public:
 
 	//Other events
 	virtual void Attached();		//--	Called when this widget is attached to another widget
-
+	virtual void OnWindowResize(Vect2 Delta);
 	class Gridsubsystem* GridSystem;	//--	Grid to which this widget belongs. This could be the main window, or a scroll pane
 
 };

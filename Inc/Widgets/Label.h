@@ -24,13 +24,17 @@ public:
 		TextObj.RedOffset = 1.f;
 		TextObj.GreenOffset = 1.f;
 		TextObj.BlueOffset = 1.f;
+		bHidden = true;
 	}
-	
+	virtual bool TestCollision(const Vect2&)
+	{
+		return false;
+	}
 	virtual void SetText(String S, String FontName, int FontHeight);
 	virtual void SetTextColor(Color TextColor);
 	virtual void RenderObjects();
 
-private:
+//private:
 
 	RenderObject TextObj;
 	class TextBuffer* TB = nullptr;

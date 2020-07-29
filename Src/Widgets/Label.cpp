@@ -6,12 +6,14 @@ void Label::SetText(String S, String FontName, int Height)
 {
 	if (TB)
 		TB->Detach();
+	Text = S;
 	if(S.IsEmpty())
 	{
-		ImgObj.SetRenderMode(TYPE::TYPE_NONE);
+		bHidden = true;	//Don't even process it
 		bUpdate = true;
 		return;
 	}
+	bHidden = false;
 	Font = Font::LoadTrueTypeFont8(FontName.Tochar(), Height);
 	TB = TextBuffer::GetDrawableUTF8Text(S, Font);
 	TextObj.SetPrimitive(TB->Size);
@@ -30,5 +32,7 @@ void Label::SetTextColor(Color TextColor)
 
 void Label::RenderObjects()
 {
+
+	ImgObj.DrawObject(Position);
 	TextObj.DrawObject(Position);
 }

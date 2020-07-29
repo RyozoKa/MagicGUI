@@ -212,7 +212,7 @@ struct Vect2
 	void RoundDown()
 	{
 		X = (float)(int)(X + 32768.) - 32768;
-		Y = (float)(int)(X + 32768.) - 32768;
+		Y = (float)(int)(Y + 32768.) - 32768;
 	}
 
 	float VSize()
@@ -327,10 +327,10 @@ struct Vect4
 
 struct Color
 {
-	unsigned char Red;
-	unsigned char Green;
-	unsigned char Blue;
-	unsigned char Alpha;
+	unsigned char Red	= 0;
+	unsigned char Green = 0;
+	unsigned char Blue	= 0;
+	unsigned char Alpha = 0;
 
 	Color() = default;
 	Color(unsigned char R, unsigned char G, unsigned char B, unsigned char A = 255)
@@ -346,22 +346,29 @@ struct Color
 //Euiler angles
 struct Rotator
 {
-	float Rot;
+	float Rot = 0;
+
+	Rotator() = default;
+	Rotator(float _Rot)
+	{
+		Rot = _Rot;
+	}
 };
 
 // 2x2 matrix
 struct Mat2
 {
 	float M[2][2];
-
+	Rotator Rot;
 	Mat2(const Rotator& R)
 	{
-		float fsin = -FT::sin(R.Rot * 0.0174532925f);
-		float fcos = -FT::cos(R.Rot * 0.0174532925f);
+		float fsin = FT::sin(R.Rot * 0.0174532925f);
+		float fcos = FT::cos(R.Rot * 0.0174532925f);
 		M[0][0] = fcos;
 		M[1][0] = -fsin;
 		M[0][1] = fsin;
 		M[1][1] = fcos;
+		Rot = R;
 	}
 	Mat2()
 	{
@@ -609,6 +616,5 @@ using namespace google;
 #include "HDynamicArray.h"
 
 void ScissorBox(Vect2 Pos, Vect2 Size);
-
 void DisableScissor();
 //Add new stuff here

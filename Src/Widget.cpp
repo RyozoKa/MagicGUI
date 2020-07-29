@@ -4,7 +4,7 @@
 #include "Window.h"
 #include <cstdio>
 
-unsigned int GZindex = 1;
+unsigned int GZindex = 0;
 
 void Widget::Tick(double DT)
 {
@@ -12,17 +12,38 @@ void Widget::Tick(double DT)
 	//Save current state
 	Vect2 OldPos = Position;
 	Vect2 OldSize = DrawSize;
+	Rotator OldRot = RotMatrix.Rot;
 	if (bAnimating)
 	{
 		bUpdate = true;
 		Vect2 Destination = Keys[CurrentKey].Pos;
 		Vect2 Source = Keys[CurrentKey - 1].Pos;
-		Vect2 Delta = ( (Destination - Source) * (DT / Keys[CurrentKey].Duration));
-		Vect2 AbsDelta = Delta;
-		AbsDelta.ToAbs();
-		if( (Destination - Position).ToAbs() < AbsDelta)
+		if (Destination != Source)
 		{
-			Delta = Destination - Position;
+			Vect2 Delta = ((Destination - Source) * (DT / Keys[CurrentKey].Duration));
+			Vect2 AbsDelta = Delta;
+			AbsDelta.ToAbs();
+			if ((Destination - Position).ToAbs() < AbsDelta)
+			{
+				Delta = Destination - Position;
+				if ((CurrentKey + 1) == NumKeys)
+				{
+					bAnimating = false;
+					bUpdate = false;
+					OnFinishedAnim.DelegateCallbacks(this);
+				}
+				else
+					++CurrentKey;
+			}
+			GridSystem->MoveWidget(*this, Delta);
+		}
+		//Currently rotations will cause minor collision glitches, but it's good enough for animations
+		float DestinationRot = Keys[CurrentKey].Rot.Rot;
+		float SourceRot = Keys[CurrentKey - 1].Rot.Rot;
+		float DeltaRot = (DestinationRot - SourceRot) * (DT / Keys[CurrentKey].Duration);
+		if( FAbs(RotMatrix.Rot.Rot - DestinationRot) < FAbs(DeltaRot))
+		{
+			DeltaRot = DestinationRot - RotMatrix.Rot.Rot;
 			if( (CurrentKey + 1) == NumKeys)
 			{
 				bAnimating = false;
@@ -32,28 +53,52 @@ void Widget::Tick(double DT)
 			else
 				++CurrentKey;
 		}
-		GridSystem->MoveWidget(*this, Delta);
+
+		if (FAbs(DeltaRot) > 0.f)
+			RotMatrix = Mat2(Rotator(DeltaRot + RotMatrix.Rot.Rot));
 	}
 	else if (bReturnAnim)
 	{
 		bUpdate = true;
 		Vect2 Destination = Keys[CurrentKey - 1].Pos;
 		Vect2 Source = Keys[CurrentKey].Pos;
-		Vect2 Delta = ( (Destination - Source) * (DT / Keys[CurrentKey].Duration));
-		Vect2 AbsDelta = Delta;
-		AbsDelta.ToAbs();
-		if( (Destination - Position).ToAbs() < AbsDelta)
+		if (Destination != Source)
 		{
-			Delta = Destination - Position;
+			Vect2 Delta = ((Destination - Source) * (DT / Keys[CurrentKey].Duration));
+			Vect2 AbsDelta = Delta;
+			AbsDelta.ToAbs();
+			if ((Destination - Position).ToAbs() < AbsDelta)
+			{
+				Delta = Destination - Position;
+				if (CurrentKey == 1)
+				{
+					bReturnAnim = false;
+					bUpdate = false;
+					OnFinishedAnimReturn.DelegateCallbacks(this);
+				}
+				else
+					--CurrentKey;
+			}
+			GridSystem->MoveWidget(*this, Delta);
+		}
+		float DestinationRot = Keys[CurrentKey - 1].Rot.Rot;
+		float SourceRot = Keys[CurrentKey].Rot.Rot;
+		float DeltaRot = (DestinationRot - SourceRot) * (DT / Keys[CurrentKey].Duration);
+		if( FAbs(RotMatrix.Rot.Rot - DestinationRot) < FAbs(DeltaRot))
+		{
+			DeltaRot = DestinationRot - RotMatrix.Rot.Rot;
 			if( CurrentKey == 1)
 			{
 				bReturnAnim = false;
+				bUpdate = false;
 				OnFinishedAnimReturn.DelegateCallbacks(this);
 			}
 			else
 				--CurrentKey;
 		}
-		GridSystem->MoveWidget(*this, Delta);
+
+		if (FAbs(DeltaRot) > 0.f)
+			RotMatrix = Mat2(Rotator(DeltaRot + RotMatrix.Rot.Rot));
 	}
 
 	//Sizing
@@ -63,9 +108,10 @@ void Widget::Tick(double DT)
 		bUpdate = true;
 		Vect2 Delta;
 		Delta.X	= ((Size.X - VertMin) * (DT / VerticalDuration));
-		if(DrawSize.X >= Size.X)
+		if(DrawSize.X + Delta.X >= Size.X)
 		{
-			DrawSize.X = Size.X;
+			//DrawSize.X = Size.X;
+			Delta.X = Size.X - DrawSize.X;
 			bExpandVert = false;
 			OnVerticalExpanded.DelegateCallbacks(this);
 		}
@@ -76,13 +122,13 @@ void Widget::Tick(double DT)
 		bUpdate = true;
 		Vect2 Delta;
 		Delta.X -= ((Size.X - VertMin) * (DT / VerticalDuration));
-		GridSystem->ResizeWidget(*this, Delta);
-		if(DrawSize.X <= VertMin)
+		if(DrawSize.X + Delta.X <= VertMin)
 		{
-			DrawSize.X = Size.X;
+			Delta.X = VertMin - DrawSize.X;
 			bCollapseVert = false;
 			OnVerticalCollapsed.DelegateCallbacks(this);
 		}
+		GridSystem->ResizeWidget(*this, Delta);
 	}
 	//Vertical
 	if(bExpandHor && HorizontalDuration > 0.f)
@@ -90,31 +136,31 @@ void Widget::Tick(double DT)
 		bUpdate = true;
 		Vect2 Delta;
 		Delta.Y += ((Size.Y - HorMin) * (DT / HorizontalDuration));
-		GridSystem->ResizeWidget(*this, Delta);
-		if(DrawSize.Y >= Size.Y)
+		if(DrawSize.Y + Delta.Y >= Size.Y)
 		{
-			DrawSize.Y = Size.Y;
+			Delta.Y = Size.Y - DrawSize.Y;
 			bExpandHor = false;
 			OnHorizontalExpanded.DelegateCallbacks(this);
 		}
+		GridSystem->ResizeWidget(*this, Delta);
 	}
 	else if(bCollapseHor && HorizontalDuration > 0.f)
 	{
 		bUpdate = true;
 		Vect2 Delta;
 		Delta.Y -= ((Size.Y - HorMin) * (DT / HorizontalDuration));
-		GridSystem->ResizeWidget(*this, Delta);
-		if(DrawSize.Y <= HorMin)
+		if(DrawSize.Y + Delta.Y <= HorMin)
 		{
-			DrawSize.Y = Size.Y;
+			Delta.Y = HorMin - DrawSize.Y;
 			bCollapseHor = false;
 			OnHorizontalCollapsed.DelegateCallbacks(this);
 		}
+		GridSystem->ResizeWidget(*this, Delta);
 	}
 
 	//Update old segment if necessary spanning over the old + new frame to avoid unnecessary calls.
 	//This will take care of all Z indexing too
-	if(OldPos != Position || OldSize > DrawSize)
+	if(OldPos != Position || OldSize.X > DrawSize.X || OldSize.Y > DrawSize.Y)
 	{
 		//Calculate the largest rect
 		Vect2 MinPos;
@@ -126,7 +172,18 @@ void Widget::Tick(double DT)
 		FinalSize -= MinPos;
 		GridSystem->UpdateSegment(*this, MinPos, FinalSize);
 	}
-	else if (bUpdate && GridSystem->OwnerCanvas->ShouldDraw(this))
+	else if(RotMatrix.Rot.Rot != OldRot.Rot)
+	{
+		//Calculate largest bounding rect
+		float MaxSize = MAX(Size.X, Size.Y);
+		MaxSize = Vect2(MaxSize, MaxSize).VSize();
+		Vect2 Origin = Position + (Size / 2);
+		Vect2 Pos = Origin - (MaxSize / 2);
+		Vect2 Sz = Vect2(MaxSize, MaxSize);
+		GridSystem->UpdateSegment(*this, Pos, Sz);
+
+	}
+	else if (bUpdate /* && GridSystem->OwnerCanvas->ShouldDraw(this)*/)
 		Draw();		//-- Avoid draw calls that are outside the canvas
 
 	for (int i = 0; i < Items.size(); ++i)
@@ -171,6 +228,17 @@ bool Widget::TestCollision(const Vect2& Pos)
 	return false;
 }
 
+void Widget::Initialize()
+{
+	if (bStartHorCollapsed)
+		DrawSize.Y = HorMin;
+	if (bStartVertCollapsed)
+		DrawSize.X = VertMin;
+
+	for (int i = 0; i < Items.size(); ++i)
+		Items[i]->Initialize();
+}
+
 void Widget::AddItem(Widget* W)
 {
 	Items.push_back(W);
@@ -182,16 +250,42 @@ void Widget::AddItem(Widget* W)
 	W->Attached();
 }
 
+void Widget::SetExpansion(int E)
+{
+	Exp = E;
+}
+
 void Widget::SetSize(const Vect2 Sz)
 {
-	Size = Sz;
-	DrawSize = Sz;
+	//Owner might still be null if not yet attached.
+	if (Owner && DrawSize != Vect2(-1.f, -1.f) && DrawSize.GetBlock() != Sz.GetBlock() && Owner->GridSystem)
+	{
+		Owner->GridSystem->RemoveWidget(*this);
+		
+		//We need to respect the DrawSize configurations!!!
+		if(DrawSize.X == Size.X)
+			DrawSize.X = Sz.X;
+		if(DrawSize.Y == Size.Y)
+			DrawSize.Y = Sz.Y;
+		Size = Sz;
+
+		Owner->GridSystem->InsertWidget(*this);
+	}
+	else
+	{
+		if(DrawSize.X == Size.X)
+			DrawSize.X = Sz.X;
+		if(DrawSize.Y == Size.Y)
+			DrawSize.Y = Sz.Y;
+		Size = Sz;
+	}
+	
 	Update();	//Update all the children
 }
 
 void Widget::SetRotation(const Rotator Rot)
 {
-	Rotation = Rot;
+	Keys[0].Rot = Rotation = Rot;
 	RotMatrix = Mat2(Rot);
 }
 
@@ -207,17 +301,18 @@ void Widget::SetPosition(const Vect2 Pos)
 	//	return;
 
 	//Move widget if necessary
-	if (Position != Vect2(-1.f, -1.f) && Position.GetBlock() != Pos.GetBlock() && GridSystem)
+	if (Owner && Position != Vect2(-1.f, -1.f) && Position.GetBlock() != Pos.GetBlock() && Owner->GridSystem)
 	{
-		GridSystem->RemoveWidget(*this);
+		Owner->GridSystem->RemoveWidget(*this);
 		Position = Pos;
-		GridSystem->InsertWidget(*this);
+		Owner->GridSystem->InsertWidget(*this);
 	}
 	else
 		Position = Pos;
 
 	Keys[0].Pos = Pos;
-	bUpdate = true;
+	Keys[0].Rot.Rot = 0.f;
+	Update();
 }
 
 void Widget::Move(const Vect2 Offset)
@@ -231,7 +326,8 @@ void Widget::Move(const Vect2 Offset)
 
 void Widget::Draw()
 {
-	
+	if (bHidden)
+		return;
 	//Perform segmented drawing if needed. We don't care about rendering overlays because Controls aren't meant to be stacked on top of eachother unless they are children.
 	if(CurrentState == RenderState::STATE_Normal)
 	{
@@ -251,7 +347,6 @@ void Widget::Draw()
 		ScissorBox(Position, DrawSize);
 	}
 	//Draw objects if visible
-	if (!bHidden)
 		RenderObjects();
 
 	if(bScissor)
@@ -326,4 +421,60 @@ void Widget::OnCursor(double X, double Y)
 
 void Widget::Attached()
 {
+}
+
+void Widget::OnWindowResize(Vect2 Delta)
+{
+	Vect2 ADelta = Delta;
+	//Take care of top left first
+	Vect2 FinalDelta;
+	Vect2 FinalPos;
+	bool bUpdated = false;
+	if(Exp & EXPAND_UP)
+	{
+		//SetPosition(Position - Vect2(0.f, (Delta.Y / 2)));
+		FinalPos += Vect2(0.f, (Delta.Y / 2));
+		Delta.Y /= 2;
+		FinalDelta += Vect2(0.f, Delta.Y);
+		//SetSize(Size + Vect2(0.f, Delta.Y));
+		bUpdated = true;
+
+	}
+	if(Exp & EXPAND_LEFT)
+	{
+		//SetPosition(Position - Vect2((Delta.X / 2), 0.f));
+		FinalPos += Vect2((Delta.X / 2), 0.f);
+		Delta.X /= 2;
+		FinalDelta += Vect2(Delta.X, 0.f);
+		//SetSize(Size + Vect2(Delta.X, 0.f));
+		bUpdated = true;
+	}
+	if(Exp & EXPAND_DOWN)
+	{
+		FinalDelta += Vect2(0.f, Delta.Y);
+		//SetSize(Size + Vect2(0.f, Delta.Y));
+
+		bUpdated = true;
+		//Update();
+	}
+	if (Exp & EXPAND_RIGHT)
+	{
+		FinalDelta += Vect2(Delta.X, 0.f);
+		//SetSize(Size + Vect2(Delta.X, 0.f));
+		bUpdated = true;
+	}
+
+	if(!FinalDelta.IsEmpty())
+		SetSize(Size + FinalDelta);
+
+	if (!FinalPos.IsEmpty())
+		SetPosition(Position - FinalPos);
+
+	if(bUpdated)
+		Update();
+
+	for (int i = 0; i < Items.size(); ++i)
+	{
+		Items[i]->OnWindowResize(ADelta);
+	}
 }

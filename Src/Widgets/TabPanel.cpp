@@ -9,6 +9,7 @@ void TabPanel::SetSize(const Vect2 Sz)
 {
 	Widget::SetSize(Sz);
 	TabCanvas.SetPrimitive(Sz);
+	ImageStrip.SetPrimitive(Vect2(Sz.X, 32.f));
 	for (int i = 0; i < Tabs.Size(); ++i)
 		Tabs[i]->SetSize(Sz - Vect2(0.f, TabStripHeight));
 }
@@ -27,6 +28,8 @@ void TabPanel::RenderObjects()
 {
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 	TabCanvas.DrawObject(Position);
+	if (bShowFullStrip)
+		ImageStrip.DrawObject(Position);
 	//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
 }
@@ -65,7 +68,8 @@ void TabPanel::Tick(double DT)
 		//bUpdate = Tabs[CurrentTab]->bUpdate;
 	//}
 	Widget::Tick(DT);
-	//Tabs[CurrentTab]->bUpdate = false;
+	//if(CurrentTab != -1)
+	//	Tabs[CurrentTab]->Tick(DT);
 	//for (int i = 0; i < Tabs.Size(); ++i)
 	//	Tabs[i]->TabButton.Tick(DT);
 }
@@ -77,7 +81,8 @@ void TabPanel::SegmentRender(Vect2 Pos, Vect2 Size)
 	//	Tabs[CurrentTab]->SegmentRender(Pos, Size);
 	//	bUpdate = Tabs[CurrentTab]->bUpdate;
 	//}
-	Widget::SegmentRender(Pos, Size);
+	if(CurrentTab != -1)
+		Tabs[CurrentTab]->SegmentRender(Pos, Size);
 	//for (int i = 0; i < Tabs.Size(); ++i)
 	//	Tabs[i]->TabButton.SegmentRender(Pos, Size);
 }

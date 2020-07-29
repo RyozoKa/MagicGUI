@@ -111,6 +111,7 @@ void RenderObject::SetImage(const char* File, unsigned char TM)
 void RenderObject::SetImage(HASH ID)
 {
 	Image = Texture::GetTexture(ID);
+	RenderMode |= TYPE::TYPE_TEXTURE;
 }
 
 void RenderObject::SetImage(Texture* Tx)
@@ -360,18 +361,22 @@ void RenderObject::DriverStartup()
 //Size
 //Location
 //Material
-void RenderObject::DrawObject(const Vect2 Location)
+void RenderObject::DrawObject(const Vect2 Pos)
 {
-	//if (RenderMode == TYPE::TYPE_NONE)
-	//	return;
+	if (RenderMode == TYPE::TYPE_NONE || (RenderMode != TYPE::TYPE_TEXTURE && Alpha == 0.f))
+		return;
 	//glfwMakeContextCurrent(Owner->Window->WindowHandle);
 	//glViewport(0, 0, Owner->Window->WindowSize.X, Owner->Window->WindowSize.Y);
 	
+	
+	Vect2 Location = Pos;
+	Location.RoundDown();
+
 	glBindVertexArray(VertexArray);
 	glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBuffer);
 	glUniform3f(Shader.ColorOffset, RedOffset, GreenOffset, BlueOffset);
-	glUniform2f(Shader.Viewport, 2.f / (float)RenderBuffer::WindowFrame->Size.X, 2.f / (float)RenderBuffer::WindowFrame->Size.Y);
+	glUniform2f(Shader.Viewport, 2.f / (float)RenderBuffer::CurrentFrame->Size.X, 2.f / (float)RenderBuffer::CurrentFrame->Size.Y);
 	glUniformMatrix2fv(Shader.Rotation, 1, GL_FALSE, (const GLfloat*)Owner->RotMatrix.M);
 	glUniform2f(Shader.Position, Location.X, (RenderBuffer::CurrentFrame->Size.Y - Location.Y) - Size.Y);
 	glUniform2f(Shader.RectSize, Size.X, Size.Y);

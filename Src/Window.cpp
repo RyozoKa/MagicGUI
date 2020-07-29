@@ -29,11 +29,19 @@ void Window::IsClosing()
 }
 
 //This doesn't get called on hardcoded resize
+//This has been rebuilt to avoid dumb spam. It gets called for every pixel in progress. It wastes CPU
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
 	if (window->Wnd)
 	{
+		window->Wnd->bPendingResize = true;
+		window->Wnd->NewSize = Vect2(width, height);
+		/*Vect2 OldSize = window->Wnd->WindowSize;
 		window->Wnd->SetSize({ (float) width, (float) height });
+		Vect2 NewSize(width, height);
+		window->Wnd->C.OnWindowResize(NewSize - OldSize);*/
+		//ScissorResize(NewSize - OldSize);
+		//window->Wnd->C.Buffer.Size = NewSize;
 	}
 }
 
@@ -117,16 +125,27 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 			}
 			Application::bDriverInit = true;
 			Application::SubsystemModules.DelegateCallbacks();
+
+			glEnable(GL_BLEND);
+			glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+			glDisable(GL_DEPTH_TEST);  
+			glDisable(GL_CULL_FACE); 
+
+			glEnable              ( GL_DEBUG_OUTPUT );
+			glDebugMessageCallback( MessageCallback, 0 );
+
+			//glfwWindowHint(GLFW_SAMPLES, 4);
+			//glEnable(GL_MULTISAMPLE);
 		}
 		else
 			Wd = glfwCreateWindow(Size.X, Size.Y, Title, Mode == MD_FULLSCREEN ? Application::primary : nullptr, Context);
-
+		
 		if(!Wd)
 		{
 			glfwTerminate();
 			exit(-1);
 		}
-		
+		glViewport(0, 0, Size.X, Size.Y);
 		Window* Wds = new Window(Size); 
 		Wd->Wnd = Wds;
 		Wds->WindowHandle = Wd;
@@ -144,6 +163,7 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 		glfwSetKeyCallback(Wd, &KeyCallback);
 		glfwSetMouseButtonCallback(Wd, &MouseClickCallback);
 		glfwSetScrollCallback(Wd, &OnScrollCallback);
+		glfwSetCursorEnterCallback(Wd, &CursorEnterCallback);
 
 		//glDisable(GL_DEPTH_TEST);
 		//Iterating over these are fast.
@@ -157,16 +177,9 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 		}
 		Window::OpenWindows[Wds->WndIndex] = Wds;
 		++Window::WndIdx;
+
 		RenderBuffer::WindowFrame = &Wds->C.Buffer;
 		RenderBuffer::CurrentFrame = &Wds->C.Buffer;
-
-		glEnable(GL_BLEND);
-		glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
-		glDisable(GL_DEPTH_TEST);  
-		glDisable(GL_CULL_FACE);
-
-		glEnable              ( GL_DEBUG_OUTPUT );
-		glDebugMessageCallback( MessageCallback, 0 );
 
 		return Wds;
 }
@@ -226,6 +239,11 @@ void Window::Restore()
 void Window::SetTitle(const char* Title)
 {
 	glfwSetWindowTitle(WindowHandle, Title);
+}
+
+void Window::SetLimit(int MinWidth, int MinHeight, int MaxWidth, int MaxHeight)
+{
+	glfwSetWindowSizeLimits(WindowHandle, MinWidth, MinHeight, MaxWidth, MaxHeight);
 }
 
 //Toggle Maximized/Restore
@@ -316,6 +334,18 @@ void CursorCallback(GLFWwindow* Wnd, double X, double Y)
 	
 }
 
+void CursorEnterCallback(GLFWwindow* window, int entered)
+{
+	if (entered)
+	{
+//		window->Wnd->C.OnCursor(window->Wnd->CursorPos.X, window->Wnd->CursorPos.Y);
+	}
+	else
+	{
+		window->Wnd->C.OnMouseLeave(window->Wnd->CursorPos.X, window->Wnd->CursorPos.Y);
+	}
+}
+
 void KeyCallback(GLFWwindow* Wnd, int Key, int Scancode, int Action, int Mods)
 {
 	switch(Action)
@@ -361,6 +391,8 @@ Scissor CurrentScissor;
 
 #include "RenderBuffer.h"
 
+bool bHasScissor = false;
+
 void ScissorBox(Vect2 Pos, Vect2 Size)
 {
 	//Pos += RenderBuffer::CurrentFrame->AbsPosition;
@@ -383,15 +415,22 @@ void ScissorBox(Vect2 Pos, Vect2 Size)
 		//Very important that we don't pass negatives to the scissor box
 		CurrentSize.X = MAX(CurrentSize.X, 0.f);
 		CurrentSize.Y = MAX(CurrentSize.Y, 0.f);
+
+		CurrentPos.X = MAX(CurrentPos.X, 0.f);
+		CurrentPos.Y = MAX(CurrentPos.Y, 0.f);
 	}
 	else
 	{
-		CurrentScissor.Position = Pos;
-		CurrentScissor.Size = Size;
+		//CurrentScissor.Position = Pos;
 
-		CurrentScissor.Size.X = MAX(CurrentScissor.Size.X, 0.f);
-		CurrentScissor.Size.Y = MAX(CurrentScissor.Size.Y, 0.f);
+		CurrentScissor.Position.X = MAX(Pos.X, 0.f);
+		CurrentScissor.Position.Y = MAX(Pos.Y, 0.f);
+		//CurrentScissor.Size = Size;
+
+		CurrentScissor.Size.X = MAX(Size.X, 0.f);
+		CurrentScissor.Size.Y = MAX(Size.Y, 0.f);
 	}
+	bHasScissor = true;
 	glScissor(CurrentScissor.Position.X, (RenderBuffer::CurrentFrame->Size.Y - CurrentScissor.Position.Y) - CurrentScissor.Size.Y, CurrentScissor.Size.X, CurrentScissor.Size.Y);
 	glEnable(GL_SCISSOR_TEST);
 }
@@ -405,6 +444,7 @@ void DisableScissor()
 	}
 	else
 	{
+		bHasScissor = false;
 		glDisable(GL_SCISSOR_TEST);
 		CurrentScissor.Position.Zero();
 		CurrentScissor.Size.Zero();

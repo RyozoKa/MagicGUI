@@ -8,7 +8,7 @@
 #pragma once
 
 #include "SlideButton.h"
-#include "ClippedCanvas.h"
+#include "Canvas.h"
 
 MAGICGUIAPI void YScrollCallback(Widget* W, float YOffset);
 MAGICGUIAPI void XScrollCallback(Widget* W, float XOffset);
@@ -55,6 +55,7 @@ class MAGICGUIAPI ScrollPanel : public Widget
 	ScrollPanel() : Widget()
 	{
 		CC.Owner = this;
+		SetExpansion(Expansion::EXPAND_DOWN | Expansion::EXPAND_RIGHT);
 		Background.Owner = this;
 		Background.SetColor(Color(79, 79, 78));
 		CC.SetColor({ 252, 255, 219, 255 });

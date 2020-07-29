@@ -28,5 +28,5 @@ public:
 	virtual void RenderObjects();
 	
 	RenderObject ImgObj;
-	TYPE DrawType;						//-- Keep trak of the current draw type
+	int DrawType;						//-- Keep trak of the current draw type
 };

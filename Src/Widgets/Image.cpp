@@ -10,12 +10,14 @@ void Image::Tick(double DT)
 void Image::SetImage(Texture* Tx)
 {
 	ImgObj.SetImage(Tx);
+	DrawType |= TYPE::TYPE_TEXTURE;
 	bUpdate = true;
 }
 
 void Image::SetColor(const Color Cf)
 {
 	ImgObj.SetColor(Cf);
+	DrawType |= TYPE::TYPE_COLOR;
 	bUpdate = true;
 }
 

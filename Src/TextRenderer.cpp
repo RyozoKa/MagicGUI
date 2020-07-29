@@ -7,6 +7,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 {
 	//Pre-calculate metrics
 	int MaxWidth = 0;
+	//FontMap->Height *= 1.4;
 	int MaxHeight = FontMap->Height;
 	int CurrentMaxHeight = MaxHeight;	//-- This is used for 
 	for (int i = 0; i < S.Length(); ++i)
@@ -44,10 +45,10 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 		glGenTextures(1, (GLuint*)&Tx._InternalID);
 		glBindTexture(GL_TEXTURE_2D, Tx._InternalID);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, Size.X, Size.Y, 0, GL_RGBA, GL_UNSIGNED_BYTE, 0);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
-		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+		//glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
 		glFramebufferTexture2D(GL_FRAMEBUFFER, GL_COLOR_ATTACHMENT0, GL_TEXTURE_2D, Tx._InternalID, 0);
 		GLenum DrawBuffers[1] = { GL_COLOR_ATTACHMENT0 };
 		glDrawBuffers(1, DrawBuffers);
@@ -78,6 +79,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 				CaretPos = 0;
 				continue;
 			}
+			//FontMap->CharMap[S[i]].Size *= 1.4;
 			int NegOffset = FontMap->CharMap[S[i]].Size.Y - FontMap->CharMap[S[i]].Bearing.Y;	//Negative offset delta
 			Vect2 FontSize = FontMap->CharMap[S[i]].Size;
 			Vect2 Origin = FontSize / 2;
@@ -114,6 +116,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 			glBindTexture(GL_TEXTURE_2D, FontMap->CharMap[S[i]].TextureID);
 			glUniform4f(Shader.Color, 0.f, 0.f, 0.f, 1.f);
 			glUniform2f(Shader.UVCoords, 0, 0);
+			glUniform3f(Shader.ColorOffset, 0.f, 0.f, 0.f);
 			CaretPos += FontMap->CharMap[S[i]].Advance;
 
 			glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
@@ -126,6 +129,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 		glBindFramebuffer(GL_FRAMEBUFFER, RenderBuffer::CurrentFrame->FBO);
 	}
 	glBindVertexArray(0);
+	glFlush();
 }
 
 Texture* TextBuffer::GetTexture()

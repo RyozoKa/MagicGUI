@@ -3,11 +3,15 @@
 #include <ft2build.h>
 #include FT_FREETYPE_H  
 
+#include "RenderBuffer.h"
+
 dense_hash_map<HASH, Map16*> Font::UTF16Maps;
 dense_hash_map<HASH, Map8*> Font::UTF8Maps;
 
 Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
 {
+    if (!FontPath || FontPath[0] == 0)
+        FontPath = "Fonts/arial.ttf";   //Default
     HASH HName = HashName(FontPath) + Height;
 
     //Mitigate duplicates.
@@ -36,7 +40,6 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
     }
 
     FT_Set_Pixel_Sizes(face, 0, Height); 
-  
     Map8* Map = new Map8;
     Map->Height = Height;
     Map->FontName = HName;
@@ -53,6 +56,15 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
         unsigned int texture;
         glGenTextures(1, &texture);
         glBindTexture(GL_TEXTURE_2D, texture);
+
+        //Sharpen
+        //for (int i = 0; i < (face->glyph->bitmap.width * face->glyph->bitmap.rows); ++i)
+        {
+            //if (face->glyph->bitmap.buffer[i] > 80)
+             //   face->glyph->bitmap.buffer[i] = 255;// : face->glyph->bitmap.buffer[i] = 0;
+            //else
+            //    face->glyph->bitmap.buffer[i] = 0;
+        }
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
@@ -65,20 +77,20 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
             face->glyph->bitmap.buffer
         );
         // set texture options
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
         // now store character for later use
         Character character = {
             texture, 
             Vect2((float)face->glyph->bitmap.width, (float)face->glyph->bitmap.rows),
             Vect2(face->glyph->bitmap_left, face->glyph->bitmap_top),
-            face->glyph->advance.x >> 6
+            (face->glyph->advance.x >> 6)
         };
         Map->CharMap[c] = character;
     }
-    glPixelStorei(GL_UNPACK_ALIGNMENT, 4); 
+   // glPixelStorei(GL_UNPACK_ALIGNMENT, 4); 
     UTF8Maps[HName] = Map;
     return Map;
 }
@@ -86,7 +98,8 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
 Map16* Font::LoadTrueTypeFont16(const char * FontPath, int Height)
 {
     
-
+    if (!FontPath || FontPath[0] == 0)
+        FontPath = "Fonts/arial.ttf";
     HASH HName = HashName(FontPath) + Height;
 
     //Mitigate duplicates.
@@ -137,19 +150,20 @@ Map16* Font::LoadTrueTypeFont16(const char * FontPath, int Height)
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
-            GL_RED,
+            GL_ALPHA,
             face->glyph->bitmap.width,
             face->glyph->bitmap.rows,
             0,
-            GL_RED,
+            GL_ALPHA,
             GL_UNSIGNED_BYTE,
             face->glyph->bitmap.buffer
         );
         // set texture options
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
-        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+        glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+        glGenerateMipmap(GL_TEXTURE_2D);
         // now store character for later use
         Character character = {
             texture, 

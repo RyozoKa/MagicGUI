@@ -8,6 +8,7 @@ public:
 
 	WindowCanvas() : Canvas()
 	{
+		GridSystem = &LocalGridSystem;
 	}
 
 	//Override
@@ -15,11 +16,15 @@ public:
 	virtual void SegmentRender(Vect2 Pos, Vect2 Size);
 
 	virtual void AddItem(Widget*);
+	virtual void Draw()
+	{
+		Widget::Draw();
+	}
 
 	virtual void SetSize(const Vect2 Sz)
 	{
 		Widget::SetSize(Sz);
-		Background.SetPrimitive(Sz);
+		BackgroundImage.SetSize(Sz);
 		Buffer.Size = Sz;
 	}
 

@@ -4,6 +4,10 @@
 #include <cstdio>
 #include "Texture.h"
 
+const Color ThemeManager::CanvasWhite(252, 255, 219);
+
+const int iss = InitArray();
+
 Texture* ThemeManager::TextureMap[C_ENDOF];
 const char* EnumMap[C_ENDOF] = {};
 

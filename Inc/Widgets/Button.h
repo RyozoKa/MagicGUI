@@ -8,6 +8,10 @@ class MAGICGUIAPI Button : public Image
 {
 public:
 
+	virtual void Tick(double dt)
+	{
+		Image::Tick(dt);
+	}
 	Button() : Image()
 	{
 		SetStateBackground(ThemeManager::GetTextureFor(C_BUTTON_DOWN), STATE_Pressed);
@@ -20,13 +24,12 @@ public:
 
 	enum ButtonState
 	{
-		STATE_Invalid,
 		STATE_Normal,
 		STATE_Pressed,
 		STATE_Hover
-	} CurrentState = STATE_Invalid;
+	} CurrentState = STATE_Normal;
 
-	class Texture* States[3];
+	class Texture* States[3] = { nullptr };
 	Color ColoredStates[3];
 
 	//Text
@@ -36,6 +39,11 @@ public:
 
 	//Misc
 	unsigned int Index = 0;
+
+	//Control
+	bool bToggleButton = false;		//-- Is toggle button?
+	bool bClickLock = false;		//-- lock button when switched on
+	bool bOn = false;				//-- Button state
 
 	//Callback events
 	Callbacks<Widget*> OnClick;
@@ -56,10 +64,17 @@ public:
 	{
 		AddItem(&Text);
 	}
+	
+	virtual void SetSize(const Vect2 Sz)
+	{
+		Image::SetSize(Sz);
+		TextOffset = (Size - Text.Size) / 2;
+		Text.SetPosition(Position + TextOffset);
+	}
+
+	void SetState(ButtonState);
 
 protected:
-	
-	void SetState(ButtonState);
 
 	//Widget interface
 	virtual void OnMouseEnter(float X, float Y);
@@ -77,7 +92,9 @@ protected:
 	
 	virtual void Draw()
 	{
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 		Image::Draw();
+		//glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 	}
 
 };

@@ -4,7 +4,7 @@
 	Revision:
 	2020-03-11 Christopher Békési
 */
-
+#pragma once
 #include "Texture.h"
 #include "Widget.h"
 #include "WindowCanvas.h"
@@ -34,6 +34,7 @@ public:
 	void Maximize();
 	void Restore();
 	void SetTitle(const char* Title);
+	void SetLimit(int MinWidth, int MinHeight, int MaxWidth = GLFW_DONT_CARE, int MaxHeight = GLFW_DONT_CARE);
 	//Toggle Maximized/Restore
 	void ToggleWindow();
 	void ToggleFullscreen();
@@ -69,14 +70,16 @@ public:
 	unsigned int ShaderProg;			//--	Shader program for this window.
 	unsigned int WndIndex;				//--	Index into the static registry. Used to avoid on demand lookup
 
-	WindowCanvas C;							//--	Main Canvas for this window
+	WindowCanvas C;						//--	Main Canvas for this window
 
-	
+	bool bPendingResize = false;
+	Vect2 NewSize;
 
 	Window(const Vect2 Size)
 	{
 		//Initialize canvas widget here
 		C.Window = this;
+		C.Owner = &C;	//Ugly hack but it works well.
 		C.ZIndex = 0;	//Canvas will always be 0 indexed, to avoid collision detection
 		WindowSize = Size;
 		C.SetSize(Size);
@@ -92,6 +95,7 @@ public:
 */
 
 void CursorCallback(GLFWwindow* Wnd, double X, double Y);
+void CursorEnterCallback(GLFWwindow* window, int entered);
 void KeyCallback(GLFWwindow* Wnd, int Key, int Scancode, int Action, int Mods);
 void MouseClickCallback(GLFWwindow* Wnd, int Button, int Action, int Mods);
 void OnScrollCallback(GLFWwindow* Wnd, double XOffset, double YOffset);

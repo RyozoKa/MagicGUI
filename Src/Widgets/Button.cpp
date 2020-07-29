@@ -12,14 +12,23 @@ void Button::SetText(String S, String FontName, int FontHeight)
 void Button::SetStateBackground(Texture* T, ButtonState S)
 {
 	States[S] = T;
-	if (T && S == CurrentState)
-		SetImage(T);
+	if (S == CurrentState)
+	{
+		if(T)
+			SetImage(T);
+		else
+		{
+			DrawType &= ~TYPE::TYPE_TEXTURE;
+			ImgObj.RenderMode &= ~TYPE::TYPE_TEXTURE;
+		}
+
+	}
 }
 
 void Button::SetStateColor(Color C, ButtonState S)
 {
 	ColoredStates[S] = C;
-	if (S == CurrentState)
+	if (S == CurrentState && C.Alpha > 0)
 		SetColor(C);
 }
 
@@ -28,9 +37,10 @@ void Button::SetState(ButtonState S)
 	if (CurrentState == S)
 		return;
 	CurrentState = S;
-	if( States[S] && (DrawType & TYPE::TYPE_TEXTURE) )
+	SetType(TYPE::TYPE_NONE);
+	if( States[S]  )
 		SetImage( States[S] );
-	if (DrawType & TYPE::TYPE_COLOR)
+	if (ColoredStates[S].Alpha > 0)
 		SetColor( ColoredStates[S] );
 	Text.bUpdate = true;
 }
@@ -42,11 +52,16 @@ void Button::OnMouseEnter(float X, float Y)
 
 void Button::OnMouseLeave(float X, float Y)
 {
-	SetState(ButtonState::STATE_Normal);
+	if(bToggleButton && bOn)
+		SetState(ButtonState::STATE_Pressed);
+	else
+		SetState(ButtonState::STATE_Normal);
 }
 
 void Button::OnMouseLeftClick(float X, float Y)
 {
+	if(!bClickLock || !bOn)
+		bOn = !bOn;
 	SetState(ButtonState::STATE_Pressed);
 	OnClick.DelegateCallbacks(this);
 }
@@ -59,8 +74,15 @@ void Button::OnMouseRightClick(float X, float Y)
 
 void Button::OnMouseLeftReleased(float X, float Y)
 {
-	SetState(ButtonState::STATE_Hover);
-	OnRelease.DelegateCallbacks(this);
+	if(bToggleButton)
+	{
+		if(!bOn)
+			SetState(ButtonState::STATE_Hover);
+	}
+	else
+		SetState(ButtonState::STATE_Hover);
+	if(!bClickLock || bOn)
+		OnRelease.DelegateCallbacks(this);
 }
 
 void Button::OnMouseRightReleased(float X, float Y)

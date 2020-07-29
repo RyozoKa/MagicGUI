@@ -17,7 +17,9 @@ public:
 
 	SlideButton() : Button()
 	{
-	
+		SetStateBackground(nullptr, Button::STATE_Pressed);
+		SetStateBackground(nullptr, Button::STATE_Normal);
+		SetStateBackground(nullptr, Button::STATE_Hover);
 	}
 
 	virtual void OnMouseEnter(float X, float Y);
@@ -27,4 +29,9 @@ public:
 	virtual void OnScroll(float YOffset);
 
 	virtual void Tick(double DT);
+
+	virtual void RenderObjects()
+	{
+		Image::RenderObjects();
+	}
 };

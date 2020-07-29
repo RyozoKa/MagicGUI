@@ -23,6 +23,12 @@ public:
 		C->bHidden = true;
 	}
 
+	Button TabButton;
+	bool bUpdate = true;
+	int Index;
+	class TabPanel* Owner;
+	Canvas* C = new Canvas;
+
 private:
 
 	void SetSize(const Vect2 Size);
@@ -30,14 +36,6 @@ private:
 	void Tick(double DT);
 	void SegmentRender(Vect2 Pos, Vect2 Size);
 	
-
-	//Offscreen buffer
-	//RenderBuffer FrameBuffer;
-	Button TabButton;
-	bool bUpdate = true;
-	int Index;
-	class TabPanel* Owner;
-	Canvas* C = new Canvas;
 	friend class TabPanel;
 };
 
@@ -47,6 +45,7 @@ public:
 	TabPanel()
 	{
 		bUpdate = true;
+		ImageStrip.Owner = this;
 		TabCanvas.Owner = this;
 		TabCanvas.SetColor(Color(79, 79, 78));
 		TabCanvas.SetRenderMode(TYPE::TYPE_COLOR);
@@ -69,12 +68,15 @@ public:
 
 	const float DefaultTabStripHeight = 32.f;
 	float TabStripHeight = DefaultTabStripHeight;
+	bool bShowTabs = true;
+	bool bShowFullStrip = false;
 
 private:
 	
 	HDynamicArray<TabPage*> Tabs;
-	RenderObject TabCanvas;
+	RenderObject TabCanvas;		//-- Actual background
+	RenderObject ImageStrip;	//-- Menu bar background masking
 	int CurrentTab = -1;
-	bool bShowTabs = true;
+	
 
 };
