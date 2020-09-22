@@ -26,6 +26,7 @@ struct Map8
 	Character CharMap[255];
 	int Height;
 	HASH FontName;
+	String Name;
 };
 
 struct Map16

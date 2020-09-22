@@ -691,9 +691,15 @@ GLFWbool _glfwCreateContextWGL(_GLFWwindow* window,
             setAttrib(WGL_CONTEXT_PROFILE_MASK_ARB, mask);
 
         setAttrib(0, 0);
-
-        window->context.wgl.handle =
-            wglCreateContextAttribsARB(window->context.wgl.dc, share, attribs);
+        //Chris: Fixed to work with a single context on multiple windows.
+        if (share)
+            window->context.wgl.handle = share;
+        else
+            window->context.wgl.handle = 
+                wglCreateContextAttribsARB(window->context.wgl.dc, share, attribs);
+        //int bShare = wglShareLists(share, window->context.wgl.handle);
+        //if (!bShare)
+        //    printf("Failed to share window!\n");
         if (!window->context.wgl.handle)
         {
             const DWORD error = GetLastError();

@@ -118,13 +118,23 @@ void ScrollPanel::OnScroll(float YOffset)
 void ScrollPanel::AddItem(Widget* W)
 {
 	CC.AddItem(W);
+
+	bool bUpdated = false;
+
 	Vect2 WPosRelative = W->Position;
 	if ((WPosRelative + W->Size).X > (CalculatedSize + InnerPaddingWidth).X)
+	{
 		CalculatedSize.X = (WPosRelative + W->Size).X + InnerPaddingWidth;
+		bUpdated = true;
+	}
 	if ((WPosRelative + W->Size).Y > (CalculatedSize + InnerPaddingWidth).Y)
+	{
 		CalculatedSize.Y = (WPosRelative + W->Size).Y + InnerPaddingWidth;
+		bUpdated = true;
+	}
 
-	CalculateScroll();
+	if(bUpdated)
+		CalculateScroll();	//-- Avoid calling this unless we actually have something new.
 }
 
 void ScrollPanel::RenderObjects()
@@ -185,12 +195,16 @@ void ScrollPanel::SetPosition(const Vect2 Pos)
 	Widget::SetPosition(Pos);
 	CC.SetPosition(Pos + 1.f);
 
-	//Define scroll areas
-	VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth + ButtonSize.Y + BorderWidth);
-	HScrollPos = Position + Vect2(BorderWidth + ButtonSize.X + BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
+	
 	
 	//Calculate scroll size
-	CalculateScroll();
+	if (Size.X != 0.f && Size.Y != 0.f)
+	{
+		//Define scroll areas
+		VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth + ButtonSize.Y + BorderWidth);
+		HScrollPos = Position + Vect2(BorderWidth + ButtonSize.X + BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
+		CalculateScroll();
+	}
 }
 
 void ScrollPanel::Attached()
@@ -203,6 +217,24 @@ void ScrollPanel::Attached()
 	Widget::AddItem(&Left);
 	Widget::AddItem(&Right);
 }
+
+void ScrollPanel::OnCanvasChanged(Canvas* C)
+{
+	if (CalculatedSize < C->CalculatedSize)
+		CalculatedSize = C->CalculatedSize;
+	if (Size.X != 0.f && Size.Y != 0.f)
+	{
+		//Define scroll areas
+		VScrollPos = Position + Vect2(Size.X - ScrollAreaWidth + BorderWidth, BorderWidth + ButtonSize.Y + BorderWidth);
+		HScrollPos = Position + Vect2(BorderWidth + ButtonSize.X + BorderWidth, Size.Y - ScrollAreaWidth + BorderWidth);
+
+		//Define total length
+		ScrollAreaSize = Size - ScrollAreaWidth - BorderWidth - BorderWidth - (ButtonSize * 2) - BorderWidth - BorderWidth;
+
+		CalculateScroll();
+	}
+}
+
 
 void YScrollCallback(Widget* W, float YOffset)
 {

@@ -51,23 +51,23 @@
 //Default accuracy
 namespace FT
 {
-    float sqrt(float squared);
-    float length(float x, float y);
-    float length(float x, float y, float z);
-    float atan2(float y, float x);
-    float cos(float angle);
-    float sin(float angle);
-    void  sincos(float angle, float *sin, float *cos);
+    MAGICGUIAPI float sqrt(float squared);
+    MAGICGUIAPI float length(float x, float y);
+    MAGICGUIAPI float length(float x, float y, float z);
+    MAGICGUIAPI float atan2(float y, float x);
+    MAGICGUIAPI float cos(float angle);
+    MAGICGUIAPI float sin(float angle);
+    MAGICGUIAPI void  sincos(float angle, float *sin, float *cos);
 
-    __m128 sqrt_ps(__m128 squared);
-    __m128 length_ps(__m128 x, __m128 y);
-    __m128 length_ps(__m128 x, __m128 y, __m128 z);
-    __m128 atan2_ps(__m128 y, __m128 x);
-    __m128 cos_ps(__m128 angle);
-    __m128 sin_ps(__m128 angle);
-    void   sincos_ps(__m128 angle, __m128 *sin, __m128 *cos);
-    void   interleave_ps(__m128 x0x1x2x3, __m128 y0y1y2y3, __m128 *x0y0x1y1, __m128 *x2y2x3y3);
-    void   deinterleave_ps(__m128 x0y0x1y1, __m128 x2y2x3y3, __m128 *x0x1x2x3, __m128 *y0y1y2y3);
+    MAGICGUIAPI __m128 sqrt_ps(__m128 squared);
+    MAGICGUIAPI __m128 length_ps(__m128 x, __m128 y);
+    MAGICGUIAPI __m128 length_ps(__m128 x, __m128 y, __m128 z);
+    MAGICGUIAPI __m128 atan2_ps(__m128 y, __m128 x);
+    MAGICGUIAPI __m128 cos_ps(__m128 angle);
+    MAGICGUIAPI __m128 sin_ps(__m128 angle);
+    MAGICGUIAPI void   sincos_ps(__m128 angle, __m128 *sin, __m128 *cos);
+    MAGICGUIAPI void   interleave_ps(__m128 x0x1x2x3, __m128 y0y1y2y3, __m128 *x0y0x1y1, __m128 *x2y2x3y3);
+    MAGICGUIAPI void   deinterleave_ps(__m128 x0y0x1y1, __m128 x2y2x3y3, __m128 *x0x1x2x3, __m128 *y0y1y2y3);
 
 };
 

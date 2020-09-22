@@ -1005,7 +1005,7 @@ class dense_hashtable {
            && "Erasing the empty key");
    // assert((!settings.use_deleted() || !equals(key, key_info.delkey))
    //        && "Erasing the deleted key");
-    if (!settings.use_deleted() || !equals(key, key_info.delkey))
+    if (!settings.use_deleted() || equals(key, key_info.delkey))
         return 0;
     const_iterator pos = find(key);   // shrug: shouldn't need to be const
     if ( pos != end() ) {

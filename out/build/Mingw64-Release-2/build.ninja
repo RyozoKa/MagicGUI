@@ -254,6 +254,14 @@ build CMakeFiles/MagicGUI.dir/Src/BasicForm.cpp.obj: CXX_COMPILER__MagicGUI ../.
   OBJECT_DIR = CMakeFiles\MagicGUI.dir
   OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src
 
+build CMakeFiles/MagicGUI.dir/Src/Localization/LocalizationManager.cpp.obj: CXX_COMPILER__MagicGUI ../../../Src/Localization/LocalizationManager.cpp || cmake_object_order_depends_target_MagicGUI
+  DEFINES = -DBUILD -DMagicGUI_EXPORTS
+  DEP_FILE = CMakeFiles\MagicGUI.dir\Src\Localization\LocalizationManager.cpp.obj.d
+  FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g   -std=gnu++2a
+  INCLUDES = -I../../../glew-2.1.0/include -I../../.././Inc/Widgets -I../../.././Inc/Themes -I../../.././Inc/google -I../../.././glfw-3.3.2/include -I../../.././freetype-2.10.2/include -I../../.././glfw-3.3.2/deps -I../../../. -I../../../Inc -I../../../
+  OBJECT_DIR = CMakeFiles\MagicGUI.dir
+  OBJECT_FILE_DIR = CMakeFiles\MagicGUI.dir\Src\Localization
+
 
 # =============================================================================
 # Link build statements for SHARED_LIBRARY target MagicGUI
@@ -262,7 +270,7 @@ build CMakeFiles/MagicGUI.dir/Src/BasicForm.cpp.obj: CXX_COMPILER__MagicGUI ../.
 #############################################
 # Link the shared library libMagicGUI.dll
 
-build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/TabPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/RenderBuffer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/WindowCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Font.cpp.obj CMakeFiles/MagicGUI.dir/Src/TextRenderer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Label.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlidePanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/BasicForm.cpp.obj
+build libMagicGUI.dll libMagicGUI.dll.a: CXX_SHARED_LIBRARY_LINKER__MagicGUI CMakeFiles/MagicGUI.dir/Src/fasttrigo.cpp.obj CMakeFiles/MagicGUI.dir/Src/WinBase.cpp.obj CMakeFiles/MagicGUI.dir/Src/Window.cpp.obj CMakeFiles/MagicGUI.dir/Src/Texture.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widget.cpp.obj CMakeFiles/MagicGUI.dir/Src/Application.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Image.cpp.obj CMakeFiles/MagicGUI.dir/Src/Shader.cpp.obj CMakeFiles/MagicGUI.dir/Src/Windows.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Canvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Gridsubsystem.cpp.obj CMakeFiles/MagicGUI.dir/Src/StaticAllocator.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Button.cpp.obj CMakeFiles/MagicGUI.dir/Src/Themes/ThemeManager.cpp.obj CMakeFiles/MagicGUI.dir/Src/HString.cpp.obj CMakeFiles/MagicGUI.dir/Src/HMath.cpp.obj CMakeFiles/MagicGUI.dir/Src/HIO.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/ScrollPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlideButton.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/TabPanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/RenderBuffer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/WindowCanvas.cpp.obj CMakeFiles/MagicGUI.dir/Src/Font.cpp.obj CMakeFiles/MagicGUI.dir/Src/TextRenderer.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/Label.cpp.obj CMakeFiles/MagicGUI.dir/Src/Widgets/SlidePanel.cpp.obj CMakeFiles/MagicGUI.dir/Src/BasicForm.cpp.obj CMakeFiles/MagicGUI.dir/Src/Localization/LocalizationManager.cpp.obj
   LANGUAGE_COMPILE_FLAGS = -fdata-sections -ffunction-sections -Wl,--gc-sections -fno-math-errno -ffast-math -msse4.1 -g
   LINK_LIBRARIES = -Wl,-Bstatic  -lglfw3  -lgdi32  -lGLEW32  -lglu32  -lwinmm  -lfreetype  -lz  -Wl,-Bdynamic  -lgdi32 -lopengl32 -lstdc++
   LINK_PATH = -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/glfw-3.3.2/src   -LC:/Users/Chris/source/repos/MagicGUI/out/build/Mingw64-Release-2/lib   -LC:/Users/Chris/source/repos/MagicGUI/freetype-2.10.2/objs/.libs

@@ -19,3 +19,13 @@ void SlidePanel::Toggle()
 		ToggleButton->Animate();
 	}
 }
+
+void SlidePanel::OnMouseLeave()
+{
+	if(C->DrawSize.X == C->Size.X)
+	{
+		C->VerticalCollapse();
+		ToggleButton->ReturnAnim();
+	}
+	//Widget::OnMouseLeave(X, Y);
+}

@@ -23,9 +23,8 @@ void Image::SetColor(const Color Cf)
 
 void Image::SetSize(const Vect2 Sz)
 {
+	Widget::SetSize(Sz);
 	ImgObj.SetPrimitive(Sz);
-	Size = Sz;
-	DrawSize = Sz;
 	bUpdate = true;
 }
 

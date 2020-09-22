@@ -3,7 +3,7 @@
 
 dense_hash_map<HASH, TextBuffer*> TextBuffer::TextPool;
 
-TextBuffer::TextBuffer(String S, Map8* FontMap)
+TextBuffer::TextBuffer(String &S, Map8* FontMap)
 {
 	//Pre-calculate metrics
 	int MaxWidth = 0;
@@ -12,7 +12,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 	int CurrentMaxHeight = MaxHeight;	//-- This is used for 
 	for (int i = 0; i < S.Length(); ++i)
 	{
-		int NegOffset = FontMap->CharMap[S[i]].Size.Y - FontMap->CharMap[S[i]].Bearing.Y;	//Negative offset delta
+		int NegOffset = FontMap->CharMap[(unsigned char)S[i]].Size.Y - FontMap->CharMap[(unsigned char)S[i]].Bearing.Y;	//Negative offset delta
 		
 		if (S[i] == '\n')
 		{
@@ -22,7 +22,7 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 			continue;
 		}
 		CurrentMaxHeight = MAX(FontMap->Height + NegOffset, CurrentMaxHeight);
-		MaxWidth += FontMap->CharMap[S[i]].Advance;
+		MaxWidth += FontMap->CharMap[(unsigned char)S[i]].Advance;
 	}
 	Size.X = MAX(MaxWidth, Size.X);
 	Size.Y = MAX(CurrentMaxHeight, MaxHeight);
@@ -64,13 +64,12 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 			0, 1, 3,   // first triangle
 			1, 2, 3    // second triangle
 		};
-
 		//Draw fonts
 		for(int i = 0; i < S.Length(); ++i)
 		{
 			if (S[i] == ' ' || S[i] == '\t')
 			{
-				CaretPos += FontMap->CharMap[S[i]].Advance;
+				CaretPos += FontMap->CharMap[(unsigned char)S[i]].Advance;
 				continue;
 			}
 			else if (S[i] == '\n')
@@ -80,8 +79,8 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 				continue;
 			}
 			//FontMap->CharMap[S[i]].Size *= 1.4;
-			int NegOffset = FontMap->CharMap[S[i]].Size.Y - FontMap->CharMap[S[i]].Bearing.Y;	//Negative offset delta
-			Vect2 FontSize = FontMap->CharMap[S[i]].Size;
+			int NegOffset = FontMap->CharMap[(unsigned char)S[i]].Size.Y - FontMap->CharMap[(unsigned char)S[i]].Bearing.Y;	//Negative offset delta
+			Vect2 FontSize = FontMap->CharMap[(unsigned char)S[i]].Size;
 			Vect2 Origin = FontSize / 2;
 			//Draw texture upside down
 			Vect2 Vertices[8];
@@ -113,11 +112,11 @@ TextBuffer::TextBuffer(String S, Map8* FontMap)
 			glUniform2f(Shader.Position, (float)CaretPos, (Size.Y - CaretY) - FontMap->Height - NegOffset);
 			glUniform2f(Shader.RectSize, FontSize.X, FontSize.Y);
 			glActiveTexture(GL_TEXTURE0);
-			glBindTexture(GL_TEXTURE_2D, FontMap->CharMap[S[i]].TextureID);
+			glBindTexture(GL_TEXTURE_2D, FontMap->CharMap[(unsigned char)S[i]].TextureID);
 			glUniform4f(Shader.Color, 0.f, 0.f, 0.f, 1.f);
 			glUniform2f(Shader.UVCoords, 0, 0);
 			glUniform3f(Shader.ColorOffset, 0.f, 0.f, 0.f);
-			CaretPos += FontMap->CharMap[S[i]].Advance;
+			CaretPos += FontMap->CharMap[(unsigned char)S[i]].Advance;
 
 			glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
 			glEnableVertexAttribArray(0);
@@ -157,7 +156,7 @@ void TextBuffer::Detach()
 	}
 }
 
-TextBuffer* TextBuffer::GetDrawableUTF8Text(String S, String FontName, int Height)
+TextBuffer* TextBuffer::GetDrawableUTF8Text(String &S, String &FontName, int Height)
 {
 	Map8* Font = Font::LoadTrueTypeFont8(FontName.Tochar(), Height);
 	
@@ -179,7 +178,7 @@ TextBuffer* TextBuffer::GetDrawableUTF8Text(String S, String FontName, int Heigh
 	return TB;
 }
 
-TextBuffer* TextBuffer::GetDrawableUTF8Text(String S, Map8* Font)
+TextBuffer* TextBuffer::GetDrawableUTF8Text(String &S, Map8* Font)
 {
 	HASH HName = HashName(S) + Font->FontName;
 

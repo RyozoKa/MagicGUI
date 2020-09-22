@@ -989,7 +989,7 @@ int String::Findlast(const char* in, int index) const
 //Move constructor!!
 String::String(String && in)
 {
-	printf("Construct move\n");
+	//printf("Construct move\n");
 
 	nstring = in.nstring;
 	nlength = in.nlength;
@@ -999,7 +999,7 @@ String::String(String && in)
 //Copy constructor
 String::String(String& in)
 {
-	printf("Construct copy\n");
+	//printf("Construct copy\n");
 
 	nstring = NewCharStr();
 	nlength = in.nlength;
@@ -1007,7 +1007,7 @@ String::String(String& in)
 }
 String::String(BYTE*& bytes)
 {
-	printf("Construct byte\n");
+	//printf("Construct byte\n");
 
 		nlength = *(USHORT*)bytes + 1;
 		nstring = NewCharStr();
@@ -1019,7 +1019,7 @@ String::String(BYTE*& bytes)
 }
 String::String(FileReader* f)
 {
-	printf("Construct fr\n");
+	//printf("Construct fr\n");
 
 		nlength = f->Read<USHORT>() + 1;
 		nstring = NewCharStr();
@@ -1055,7 +1055,7 @@ void String::Serialize(FileWriter *FW)
 }
 String::String(const wchar_t* in, int len)
 {
-	printf("Construct wchar \n");
+	//printf("Construct wchar \n");
 
 		nlength = len > 0 ? len + 1 : wcslen(in) + 1;
 		nstring = NewCharStr();
@@ -1065,7 +1065,7 @@ String::String(const wchar_t* in, int len)
 }
 String::String(const char* in, int len)
 {
-	printf("Construct char\n");
+	//printf("Construct char\n");
 
 		nlength = len > 0 ? len + 1 : strlen(in) + 1;
 		nstring = NewCharStr();
@@ -1074,7 +1074,7 @@ String::String(const char* in, int len)
 }
 String::String(const String& in)
 {
-	printf("Construct str\n");
+	//printf("Construct str\n");
 
 		nlength = in.nlength;
 		nstring = NewCharStr();
@@ -1083,7 +1083,7 @@ String::String(const String& in)
 }
 String::String(const WString & in)
 {
-	printf("Construct wstr\n");
+	//printf("Construct wstr\n");
 
 	nstring = NewCharStr();
 	wchar_t* str = in.Towchar();
@@ -1096,7 +1096,7 @@ String::~String()
 	if (nstring)
 	{
 		FreeCharStr(nstring);
-		printf("Destruct\n");
+		//printf("Destruct\n");
 	}
 }
 HDynamicArray<String> String::Split(const char *str) const
@@ -1620,12 +1620,12 @@ String& String::operator +=(UINT S)
 		numDigits(S, &Count, &Factor);
 		for (;;)
 		{
-			nstring[++nlength - 1] = '0' + (S % Factor);
+			nstring[nlength++] = '0' + (S % Factor);
 			Factor /= 10;
 			if (Factor < 10)
 				break;
 		}
-		nstring[++nlength - 1] = '\0';
+		nstring[nlength++] = '\0';
 		return *this;
 	
 }
@@ -1637,16 +1637,16 @@ String& String::operator +=(INT S)
 		S = abs(S);
 		numDigits(S, &Count, &Factor);
 		if (bNeg)
-			nstring[nlength++ - 1] = '-';
+			nstring[nlength++] = '-';
 		for (;;)
 		{
-			nstring[nlength++ - 1] = '0' + (S / Factor);
+			nstring[nlength++] = '0' + (S / Factor);
 			S %= Factor;
 			if (Factor == 1)
 				break;
 			Factor /= 10;
 		}
-		nstring[nlength - 1] = '\0';
+		nstring[nlength++] = '\0';
 		return *this;
 	
 }
@@ -1714,35 +1714,42 @@ String& String::operator +=(float S)
 	
 		UINT64 Factor, Count, Num;
 		DOUBLE T;
-		bool bNeg = (S < 0);
+		bool bNeg = (S < 0.f);
 		S = fabs(S);
 		Num = (UINT64)S;
 		S -= (DOUBLE)Num;
 		numDigits(Num, &Count, &Factor);
 
 		if (bNeg)
-			nstring[++nlength - 1] = '-';
-
-		for (;;)
+			nstring[nlength++] = '-';
+		if (Num > 0)
 		{
-			nstring[nlength++ - 1] = '0' + (Num / Factor);
-			Num %= Factor;
-			if (Factor == 1)
-				break;
-			Factor /= 10;
+			for (;;)
+			{
+				nstring[nlength++] = '0' + (Num / Factor);
+				Num %= Factor;
+				if (Factor == 1)
+					break;
+				Factor /= 10;
+			}
 		}
-		nstring[nlength++ - 1] = '.';
-		for (Count = 0;; ++Count)
+		else
+			nstring[nlength++] = '0';
+		if (S != 0.f)
 		{
-			S *= 10;
-			Factor = (UINT64)S;		//Reuse this variable, truncate the fraction
-			T = (DOUBLE)Factor;		//Convert to an integer using cvtsd2si SSE2
-			S -= T;
-			nstring[nlength++ - 1] = '0' + (S * 10);
-			if (Count == 6)
-				break;	//We're done.
+			nstring[nlength++] = '.';
+			for (Count = 0; Count < DecimalPlaces; ++Count)
+			{
+				S *= 10;
+				Factor = (UINT64)S;		//Reuse this variable, truncate the fraction
+				T = (DOUBLE)Factor;		//Convert to an integer using cvtsd2si SSE2
+				S -= T;
+				nstring[nlength++] = '0' + (T);
+				if (S == 0.f)
+					break;	//We're done.
+			}
 		}
-		nstring[nlength - 1] = '\0';
+		nstring[nlength++] = '\0';
 		return *this;
 	
 }
@@ -1758,28 +1765,36 @@ String& String::operator +=(double S)
 		numDigits(Num, &Count, &Factor);
 
 		if (bNeg)
-			nstring[++nlength - 1] = '-';
+			nstring[nlength++] = '-';
 
-		for (;;)
+		if (Num > 0)
 		{
-			nstring[nlength++ - 1] = '0' + (Num / Factor);
-			Num %= Factor;
-			if (Factor == 1)
-				break;
-			Factor /= 10;
+			for (;;)
+			{
+				nstring[nlength++] = '0' + (Num / Factor);
+				Num %= Factor;
+				if (Factor == 1)
+					break;
+				Factor /= 10;
+			}
 		}
-		nstring[nlength++ - 1] = '.';
-		for (Count = 0;; ++Count)
+		else
+			nstring[nlength++] = '0';
+		if (S != 0.f)
 		{
-			S *= 10;
-			Factor = (UINT64)S;		//Reuse this variable, truncate the fraction
-			T = (DOUBLE)Factor;		//Convert to an integer using cvtsd2si SSE2
-			S -= T;
-			nstring[nlength++ - 1] = '0' + (S * 10);
-			if (Count == 14)
-				break;	//We're done.
+			nstring[nlength++] = '.';
+			for (Count = 0; Count < DecimalPlaces; ++Count)
+			{
+				S *= 10;
+				Factor = (UINT64)S;		//Reuse this variable, truncate the fraction
+				T = (DOUBLE)Factor;		//Convert to an integer using cvtsd2si SSE2
+				S -= T;
+				nstring[nlength++] = '0' + (T);
+				if (S == 0.f)
+					break;	//We're done.
+			}
 		}
-		nstring[nlength - 1] = '\0';
+		nstring[nlength++] = '\0';
 		return *this;
 	
 }

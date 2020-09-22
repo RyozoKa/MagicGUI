@@ -1,5 +1,8 @@
 #include "Canvas.h"
 
+
+#include "Window.h"
+#include <windows.h>
 extern unsigned int GZindex;
 
 void Canvas::SetColor(Color C)
@@ -63,7 +66,12 @@ void Canvas::AddItem(Widget* W)
 		Buffer.SetSize(CalculatedSize);
 		//Background.SetPrimitive(CalculatedSize);
 		BackgroundImage.SetSize(CalculatedSize);
+		OnCanvasResize.DelegateCallbacks(this);
+		ItemCanvas = CalculatedSize;
 	}
+	else if (Sz > ItemCanvas)
+		ItemCanvas = Sz;
+	//W->OnDrawChanged += ClassDelegate((void*)&Canvas::OnItemChanged, this);
 }
 
 void Canvas::OnCursor(double X, double Y)
@@ -118,36 +126,42 @@ void Canvas::OnMouseLeftClick(float X, float Y)
 	}
 	if (LastHit)
 	{
-		LastHit->OnMouseLeftClick(X, Y);
 		bPressed = true;
+		LastHit->OnMouseLeftClick(X, Y);
 	}
 
 }
 
 void Canvas::OnMouseRightClick(float X, float Y)
 {
-	if(LocalGridSystem.bUpdate)
+	if (!ContextMenuHandle)
 	{
-		Widget* W = LastHit;
-		if (!bPressed && (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0)) //If not, find the new widget
-			W = LocalGridSystem.GetWidget(CursorPos);
-		if (W == this)
-			W = nullptr;
-		if (LastHit != W)
+		if (LocalGridSystem.bUpdate)
 		{
-			if (LastHit != nullptr)
-				LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
-			if(W)
-				W->OnMouseEnter(CursorPos.X, CursorPos.Y);
-			LastHit = W;
+			Widget* W = LastHit;
+			if (!bPressed && (!LastHit || !LastHit->TestCollision(CursorPos) || LastHit->Items.size() > 0)) //If not, find the new widget
+				W = LocalGridSystem.GetWidget(CursorPos);
+			if (W == this)
+				W = nullptr;
+			if (LastHit != W)
+			{
+				if (LastHit != nullptr)
+					LastHit->OnMouseLeave(CursorPos.X, CursorPos.Y);
+
+				if (W)
+					W->OnMouseEnter(CursorPos.X, CursorPos.Y);
+				LastHit = W;
+			}
+			LocalGridSystem.bUpdate = false;
 		}
-		LocalGridSystem.bUpdate = false;
+		if (LastHit)
+		{
+			bPressed = true;
+			LastHit->OnMouseRightClick(X, Y);
+		}
 	}
-	if (LastHit)
-	{
-		LastHit->OnMouseRightClick(X, Y);
-		bPressed = true;
-	}
+	else
+		ShowContextMenu();
 }
 
 void Canvas::OnMouseLeftReleased(float X, float Y)
@@ -159,6 +173,7 @@ void Canvas::OnMouseLeftReleased(float X, float Y)
 
 void Canvas::OnMouseRightReleased(float X, float Y)
 {
+	
 	if (LastHit)
 		LastHit->OnMouseRightReleased(X, Y);
 	bPressed = false;
@@ -172,8 +187,17 @@ void Canvas::OnScroll(float YOffset)
 
 void Canvas::OnMouseLeave(float X, float Y)
 {
+	if (bPopup)
+		return;
+
+	if (!TestCollision({ X, Y }))
+			OnMouseLeaveEvent.DelegateCallbacks(this);
+
 	if (LastHit)
+	{
 		LastHit->OnMouseLeave(X, Y);
+		
+	}
 	LastHit = nullptr;
 }
 
@@ -449,4 +473,42 @@ void Canvas::SegmentRender(Vect2 Pos, Vect2 aSize)
 	//	Frame.DrawObject(Position);
 	//	Buffer.bUpdate = false;
 	//}
+}
+
+void Canvas::OnItemChanged(Vect2 aPosition, Vect2 aSize)
+{
+	//Calculate total canvas size (outside clipping region)
+	Vect2 Sz = aPosition + aSize;
+	if (Sz.X > ItemCanvas.X)
+		ItemCanvas.X = Sz.X;
+	if (Sz.Y > ItemCanvas.Y)
+		ItemCanvas.Y = Sz.Y;
+
+	if (CalculatedSize < ItemCanvas)
+	{
+		Buffer.SetSize(ItemCanvas);
+		BackgroundImage.SetSize(ItemCanvas);
+		OnCanvasResize.DelegateCallbacks(this);
+	}
+}
+
+void Canvas::OnWindowResize(Vect2 Delta)
+{
+	Widget::OnWindowResize(Delta);
+	
+	//We need to clip the buffer frame if resize -> shrink is performed 
+}
+
+Vect2 Canvas::CalculateEndpoint()
+{
+	Vect2 Result;
+	for(int i = 0; i < Items.size(); ++i)
+	{
+		Vect2 Sz = Items[i]->Size + Items[i]->Position;
+		if (Sz.X > Result.X)
+			Result.X = Sz.X;
+		if (Sz.Y > Result.Y)
+			Result.Y = Sz.Y;
+	}
+	return Result;
 }

@@ -50,6 +50,11 @@ void TabPanel::SetTabVisibility(bool bVisible)
 	}
 }
 
+TabPage* TabPanel::GetCurrentTab()
+{
+	return Tabs[CurrentTab];
+}
+
 int TabPanel::GetCount()
 {
 	return Tabs.Size();
@@ -68,6 +73,8 @@ void TabPanel::Tick(double DT)
 		//bUpdate = Tabs[CurrentTab]->bUpdate;
 	//}
 	Widget::Tick(DT);
+	//if (bUpdate)
+	//	Draw();
 	//if(CurrentTab != -1)
 	//	Tabs[CurrentTab]->Tick(DT);
 	//for (int i = 0; i < Tabs.Size(); ++i)
@@ -81,8 +88,9 @@ void TabPanel::SegmentRender(Vect2 Pos, Vect2 Size)
 	//	Tabs[CurrentTab]->SegmentRender(Pos, Size);
 	//	bUpdate = Tabs[CurrentTab]->bUpdate;
 	//}
-	if(CurrentTab != -1)
-		Tabs[CurrentTab]->SegmentRender(Pos, Size);
+	//if(CurrentTab != -1)
+	//	Tabs[CurrentTab]->SegmentRender(Pos, Size);
+	Widget::SegmentRender(Pos, Size);
 	//for (int i = 0; i < Tabs.Size(); ++i)
 	//	Tabs[i]->TabButton.SegmentRender(Pos, Size);
 }
@@ -94,9 +102,12 @@ TabPage* TabPanel::AddTab()
 	Tabs.Insert(Tab);
 	Tab->SetSize(Size - Vect2(0.f, TabStripHeight));
 	Tab->TabButton.OnClick += ClassDelegate((void*)&TabPanel::OnTabButton, this);
+	Tab->TabButton.bToggleButton = true;
+	Tab->TabButton.bClickLock = true;
 	Tab->Owner = this;
 	Tab->TabButton.SetSize(Vect2(128.f, TabStripHeight));
-	Tab->TabButton.SetPosition(Position + Vect2(Tab->Index * 128.f, 0.f));
+	Tab->TabButton.SetPosition(Position + Vect2(XOffset, 0.f));
+	XOffset += 128.f;
 	Tab->SetPosition(Position + Vect2(0.f, TabStripHeight));
 	//Very important to call the Attached event
 	Tab->C->Attached();
@@ -113,17 +124,31 @@ void TabPanel::SelectTab(int Index)
 		return;
 
 	//Don't perform a segmented render on tab switch.
+	
 	if (CurrentTab != -1)
+	{
 		Tabs[CurrentTab]->C->bHidden = true;
+		Tabs[CurrentTab]->TabButton.bOn = false;
+		Tabs[CurrentTab]->TabButton.SetState(Button::STATE_Normal);
+	}
 
 	CurrentTab = Index;
 	//TabCanvas.SetImage(Tabs[CurrentTab]->C->Buffer.GetTexture());
 	Tabs[CurrentTab]->C->Show();
+	OnTabChanged.DelegateCallbacks(this);
+	Tabs[CurrentTab]->TabButton.bOn = true;
+	Tabs[CurrentTab]->TabButton.SetState(Button::STATE_Pressed);
 }
 
 //
 //	TabPage
 //
+
+void TabPage::SetText(String S, String FontName, int FontHeight)
+{
+	TabButton.SetText(S, FontName, FontHeight);
+	Owner->XOffset += (TabButton.Size.X - 128.f);
+}
 
 void TabPage::SetSize(const Vect2 TSize)
 {
@@ -144,6 +169,7 @@ void TabPage::SegmentRender(Vect2 Pos, Vect2 Size)
 {
 	C->SegmentRender(Pos, Size);
 }
+
 
 void TabPage::AddItem(Widget* W)
 {

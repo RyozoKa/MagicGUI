@@ -34,6 +34,7 @@
 #include <malloc.h>
 #include <string.h>
 #include <windowsx.h>
+#include <windows.h>
 #include <shellapi.h>
 
 // Returns the window style for the specified window
@@ -503,12 +504,18 @@ static void releaseMonitor(_GLFWwindow* window)
     _glfwRestoreVideoModeWin32(window->monitor);
 }
 
+
+//extern void* GetCallbackEntry(int index);
+typedef void(*Callback)(int);
+Callback GetCallbackEntry = NULL;
+
 // Window callback function (handles window messages)
 //
 static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
                                    WPARAM wParam, LPARAM lParam)
 {
     _GLFWwindow* window = GetPropW(hWnd, L"GLFW");
+
     if (!window)
     {
         // This is the message handling for the hidden helper window
@@ -552,6 +559,11 @@ static LRESULT CALLBACK windowProc(HWND hWnd, UINT uMsg,
 
     switch (uMsg)
     {
+        case WM_COMMAND:
+        {
+            GetCallbackEntry(LOWORD(wParam));
+        }
+        break;
         case WM_MOUSEACTIVATE:
         {
             // HACK: Postpone cursor disabling when the window was activated by

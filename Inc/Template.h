@@ -6,6 +6,12 @@
 */
 #pragma once
 
+#ifdef BUILD
+	#define MAGICGUIAPI	__attribute__((dllexport))
+#else
+	#define MAGICGUIAPI __attribute__((dllimport))
+#endif
+
 typedef unsigned char		BYTE;
 typedef unsigned int		UINT;
 typedef float				FLOAT;
@@ -48,11 +54,6 @@ struct GLFWwindow
 	//We don't care about the other members for now. The structure will still align accordingly.
 };
 
-#ifdef BUILD
-	#define MAGICGUIAPI	__attribute__((dllexport))
-#else
-	#define MAGICGUIAPI __attribute__((dllimport))
-#endif
 #include "CallbackChain.h"
 #include "Shader.h"
 
@@ -67,6 +68,75 @@ inline float FAbs(float f)
   return f;
 }
 
+//Euiler angles
+struct Rotator
+{
+	float Rot = 0;
+
+	Rotator() = default;
+	Rotator(float _Rot)
+	{
+		Rot = _Rot;
+	}
+
+	Rotator operator +(const Rotator& R2) const
+	{
+		return { Rot + R2.Rot };
+	}
+
+	Rotator& operator += (const Rotator& R2)
+	{
+		Rot += R2.Rot;
+		return *this;
+	}
+
+	Rotator& operator += (const float Ang)
+	{
+		Rot += Ang;
+		return *this;
+	}
+
+	Rotator& operator = (const float F)
+	{
+		Rot = F;
+		return *this;
+	}
+
+	Rotator operator -(const Rotator&R2) const
+	{
+		return { Rot - R2.Rot };
+	}
+
+	Rotator operator - (const float Ang) const
+	{
+		return { Rot - Ang };
+	}
+};
+
+// 2x2 matrix
+struct Mat2
+{
+	float M[2][2];
+	Rotator Rot;
+	Mat2(const Rotator& R)
+	{
+		float fsin = FT::sin(R.Rot * 0.0174532925f);
+		float fcos = FT::cos(R.Rot * 0.0174532925f);
+		M[0][0] = fcos;
+		M[1][0] = -fsin;
+		M[0][1] = fsin;
+		M[1][1] = fcos;
+		Rot = R;
+	}
+	Mat2()
+	{
+		M[0][0] = 1.f;
+		M[1][0] = 0.f;
+		M[0][1] = 0.f;
+		M[1][1] = 1.f;
+	}
+};
+
 struct Vect2
 {	
 	float X;
@@ -80,6 +150,36 @@ struct Vect2
 
 	Vect2() : X(0.f), Y(0.f)
 	{}
+
+	Vect2(const Rotator R)
+	{
+		//Normalized
+		X = 1.f;
+		Y = 1.f;
+
+		float RSin = FT::sin(R.Rot * 0.0174532925f);
+		float RCos = FT::cos(R.Rot * 0.0174532925f);
+		X = (X * RCos) - (Y * RSin);
+		Y = (X * RSin) + (Y * RCos);
+	}
+
+	void Rotate(const float Deg)
+	{
+		float RSin = FT::sin(Deg * 0.0174532925f);
+		float RCos = FT::cos(Deg * 0.0174532925f);
+		float X2 = (X * RCos) - (Y * RSin);
+		float Y2 = (X * RSin) + (Y * RCos);
+		X = X2;
+		Y = Y2;
+	}
+
+	void Rotate(const Rotator R)
+	{
+		float RSin = FT::sin(R.Rot * 0.0174532925f);
+		float RCos = FT::cos(R.Rot * 0.0174532925f);
+		X = (X * RCos) - (Y * RSin);
+		Y = (X * RSin) + (Y * RCos);
+	}
 
 	Vect2& Negate()
 	{
@@ -140,6 +240,11 @@ struct Vect2
 	friend bool operator<=(const Vect2&, const float);
 
 	friend bool operator != (const Vect2&, const Vect2&);
+	friend bool operator != (const Vect2&, const float);
+	friend bool operator == (const Vect2&, const float);
+	friend bool operator == (const Vect2&, const Vect2&);
+
+
 
 	Vect2 operator/(const Vect2& S)
 	{
@@ -309,6 +414,20 @@ inline bool operator !=(const Vect2& A, const Vect2& B)
 	return A.X != B.X || A.Y != B.Y;
 }
 
+inline bool operator !=(const Vect2& A, const float B)
+{
+	return A.X != B || A.Y != B;
+}
+
+inline bool operator ==(const Vect2& A, const Vect2& B)
+{
+	return A.X == B.X || A.Y == B.Y;
+}
+
+inline bool operator ==(const Vect2& A, const float B)
+{
+	return A.X == B || A.Y == B;
+}
 
 struct Vect3
 {
@@ -343,41 +462,7 @@ struct Color
 };
 
 
-//Euiler angles
-struct Rotator
-{
-	float Rot = 0;
 
-	Rotator() = default;
-	Rotator(float _Rot)
-	{
-		Rot = _Rot;
-	}
-};
-
-// 2x2 matrix
-struct Mat2
-{
-	float M[2][2];
-	Rotator Rot;
-	Mat2(const Rotator& R)
-	{
-		float fsin = FT::sin(R.Rot * 0.0174532925f);
-		float fcos = FT::cos(R.Rot * 0.0174532925f);
-		M[0][0] = fcos;
-		M[1][0] = -fsin;
-		M[0][1] = fsin;
-		M[1][1] = fcos;
-		Rot = R;
-	}
-	Mat2()
-	{
-		M[0][0] = 1.f;
-		M[1][0] = 0.f;
-		M[0][1] = 0.f;
-		M[1][1] = 1.f;
-	}
-};
 
 //String hasing
 typedef unsigned long long HASH;

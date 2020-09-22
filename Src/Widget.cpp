@@ -279,7 +279,8 @@ void Widget::SetSize(const Vect2 Sz)
 			DrawSize.Y = Sz.Y;
 		Size = Sz;
 	}
-	
+
+	OnDrawChanged.DelegateCallbacks(Position, Sz);
 	Update();	//Update all the children
 }
 
@@ -301,7 +302,9 @@ void Widget::SetPosition(const Vect2 Pos)
 	//	return;
 
 	//Move widget if necessary
-	if (Owner && Position != Vect2(-1.f, -1.f) && Position.GetBlock() != Pos.GetBlock() && Owner->GridSystem)
+	if (Pos < 0.f)
+		return;
+	if (Owner && Position.GetBlock() != Pos.GetBlock() && Owner->GridSystem)
 	{
 		Owner->GridSystem->RemoveWidget(*this);
 		Position = Pos;
@@ -309,7 +312,7 @@ void Widget::SetPosition(const Vect2 Pos)
 	}
 	else
 		Position = Pos;
-
+	OnDrawChanged.DelegateCallbacks(Pos, Size);
 	Keys[0].Pos = Pos;
 	Keys[0].Rot.Rot = 0.f;
 	Update();
@@ -470,8 +473,12 @@ void Widget::OnWindowResize(Vect2 Delta)
 	if (!FinalPos.IsEmpty())
 		SetPosition(Position - FinalPos);
 
-	if(bUpdated)
+	if (bUpdated)
+	{
 		Update();
+		//OnResize.DelegateCallbacks(ADelta);
+		OnDrawChanged.DelegateCallbacks(Position, Size);
+	}
 
 	for (int i = 0; i < Items.size(); ++i)
 	{

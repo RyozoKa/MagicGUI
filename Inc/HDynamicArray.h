@@ -21,16 +21,16 @@ public:
 	//Constructors
 	HDynamicArray() : _Size(0), _Alloc(16)
 	{
-		_Data = (T*)malloc(_Alloc * sizeof(T));//new T[_Alloc];
+		_Data = new T[_Alloc];
 	}
 	HDynamicArray(const UINT64 Alloc) : _Size(0), _Alloc(Alloc)
 	{
-		_Data =  (T*)malloc(_Alloc * sizeof(T));//new T[Alloc];
+		_Data = new T[_Alloc];// (T*)malloc(_Alloc * sizeof(T));//new T[Alloc];
 	}
 	//Destructors
 	~HDynamicArray()
 	{
-		free(_Data);// delete[] _Data;
+		delete[] _Data;
 	}
 
 	void Insert(T& D)
@@ -43,7 +43,9 @@ public:
 			//memcpy(New, _Data, _Size * sizeof(T));
 			//delete[] _Data;
 			//_Data = New;
-			_Data = (T*)realloc(_Data, _Size * sizeof(T));
+			//_Data = (T*)realloc(_Data, _Size * sizeof(T));
+			delete[] _Data;
+			_Data = new T[_Size];
 		}
 		_Data[_Size++] = D;
 	}
@@ -54,7 +56,9 @@ public:
 		if (_Size >= _Alloc)
 		{
 			_Alloc <<= 1;
-			_Data = (T*)realloc(_Data, _Size * sizeof(T));
+			delete[] _Data;
+			_Data = new T[_Size];
+			//_Data = (T*)realloc(_Data, _Size * sizeof(T));
 		}
 		_Data[_Size++] = D;
 	}
@@ -76,7 +80,9 @@ public:
 			_Alloc = 16;
 			//delete[] _Data;
 			//_Data = new T[_Alloc];
-			realloc(_Data, _Alloc * sizeof(T));
+			delete[] _Data;
+			_Data = new T[_Size];
+			//realloc(_Data, _Alloc * sizeof(T));
 		}
 		_Size = 0;
 	}

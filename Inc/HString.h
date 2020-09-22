@@ -132,6 +132,7 @@ inline wchar_t*					Towchar() const { return nstring; }
 
 	wchar_t* nstring;
 	USHORT nlength;
+	unsigned char DecimalPlaces = 6;
 };
 
 class MAGICGUIAPI String
@@ -252,6 +253,7 @@ inline char*					Tochar() const { return nstring; }
 
 	char* nstring;
 	USHORT nlength;
+	unsigned char DecimalPlaces = 6;
 };
 
 //Primitive string functions

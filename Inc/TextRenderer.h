@@ -17,7 +17,7 @@
 class MAGICGUIAPI TextBuffer
 {
 public:
-	TextBuffer(String S, class Map8*);
+	TextBuffer(String &S, class Map8*);
 	
 	class Texture* GetTexture();
 
@@ -28,8 +28,8 @@ public:
 	bool bUpdate = false;
 	Vect2 Size;
 
-	static TextBuffer* GetDrawableUTF8Text(String S, String Font, int Height);
-	static TextBuffer* GetDrawableUTF8Text(String S, class Map8*);
+	static TextBuffer* GetDrawableUTF8Text(String &S, String &Font, int Height);
+	static TextBuffer* GetDrawableUTF8Text(String &S, class Map8*);
 	
 	//Main text buffer pool. This stores all the currently existing
 	//Text buffers for 1) Reuse text pools 2) Precache text pools for tasks

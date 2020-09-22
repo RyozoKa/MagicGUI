@@ -13,6 +13,7 @@
 #include "Gridsubsystem.h"
 #include "RenderBuffer.h"
 #include "Image.h"
+#include "CallbackChain.h"
 
 class MAGICGUIAPI Canvas : public Widget
 {
@@ -29,9 +30,11 @@ public:
 	Widget* LastHit = nullptr;
 	Widget* Focused = nullptr;
 	Canvas* ParentCanvas = nullptr;					//-- Support Canvas animations.
-
+	Vect2 ItemCanvas;
 	RenderBuffer Buffer;		//-- Actual framebuffer
 	RenderObject Frame;			//-- Frame on which this buffer will be drawn
+
+	Callbacks<Canvas*> OnCanvasResize;
 
 	//Canvas interface
 	void SetColor(const Color);		//-- Background color
@@ -118,10 +121,7 @@ public:
 			Buffer.AbsPosition = Owner->GridSystem->OwnerCanvas->Buffer.AbsPosition + Position;
 	}
 	//A Canvas will never collide
-	/*virtual bool TestCollision(const Vect2&)
-	{
-		return false;
-	}*/
+
 	bool ShouldDraw(Widget* W)
 	{
 		return (Position + Size) > W->Position;
@@ -151,4 +151,10 @@ public:
 
 	virtual void Tick(double dt);
 	virtual void SegmentRender(Vect2 Pos, Vect2 Size);
+
+	virtual void OnItemChanged(Vect2 Position, Vect2 Size);
+
+	virtual void OnWindowResize(Vect2 Delta);
+
+	Vect2 CalculateEndpoint();
 };

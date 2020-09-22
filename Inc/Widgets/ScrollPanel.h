@@ -83,6 +83,8 @@ class MAGICGUIAPI ScrollPanel : public Widget
 		Down.SetSize(ButtonSize);
 		Left.SetSize(ButtonSize);
 		Right.SetSize(ButtonSize);
+
+		CC.OnCanvasResize += ClassDelegate((void*)&ScrollPanel::OnCanvasChanged, this);
 	}
 
 	//ScrollPanel
@@ -109,5 +111,6 @@ class MAGICGUIAPI ScrollPanel : public Widget
 	virtual void SetPosition(const Vect2 Pos);
 
 	virtual void Attached();
+	virtual void OnCanvasChanged(Canvas* C);	//-- Linked canvas has changed in size
 
 };

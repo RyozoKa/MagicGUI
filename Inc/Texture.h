@@ -141,6 +141,7 @@ class MAGICGUIAPI RenderObject
 	void DriverStartup();
 
 	void DrawObject(const Vect2 Location);	
+	void DrawObject(const Vect2 Location, const Mat2 Rotation);	
 };
 
 //Render specific statics

@@ -44,7 +44,7 @@ void SlideButton::OnScroll(float YOffset)
 				return;
 		GridSystem->MoveWidget(*this, { 0.f, YOffset });
 		bUpdate = true;
-		GridSystem->UpdateSegment(*this, Start, { Size.X, SlideStop - Start.Y + Size.Y} );
+		//GridSystem->UpdateSegment(*this, Start, { Size.X, SlideStop - Start.Y + Size.Y} );
 	}
 	else
 	{
@@ -58,14 +58,14 @@ void SlideButton::OnScroll(float YOffset)
 				return;
 		GridSystem->MoveWidget(*this, { YOffset, 0.f });
 		bUpdate = true;
-		GridSystem->UpdateSegment(*this, Start, { SlideStop - Start.X + Size.X, Size.Y } );
+		//GridSystem->UpdateSegment(*this, Start, { SlideStop - Start.X + Size.X, Size.Y } );
 	}
 	OnSlide.DelegateCallbacks(this, -YOffset);
 }
 
 void SlideButton::Tick(double DT)
 {
-	Button::Tick(DT);
+	
 	if(bHolding && LastCursor != Window->CursorPos) 
 	{
 		float Offset;
@@ -82,7 +82,7 @@ void SlideButton::Tick(double DT)
 				return;
 			GridSystem->MoveWidget(*this, { 0.f, Offset });
 			bUpdate = true;
-			GridSystem->UpdateSegment(*this, Start, { Size.X, SlideStop - Start.Y + Size.Y} );
+			//GridSystem->UpdateSegment(*this, Start, { Size.X, SlideStop - Start.Y + Size.Y} );
 		}
 		else
 		{
@@ -91,16 +91,25 @@ void SlideButton::Tick(double DT)
 				Offset = SlideStop - Position.X;
 
 			else if( (Position.X + Offset) < Start.X)
-				Offset = -(Position.Y - Start.Y);
+				Offset = -(Position.X - Start.X);
 
 			if (Offset == 0.f)
 					return;
 			GridSystem->MoveWidget(*this, { Offset, 0.f });
 			bUpdate = true;
-			GridSystem->UpdateSegment(*this, Start, { SlideStop - Start.X + Size.X, Size.Y } );
+			//GridSystem->UpdateSegment(*this, Start, { SlideStop - Start.X + Size.X, Size.Y } );
 		}
 		
 		LastCursor = Window->CursorPos;
 		OnSlide.DelegateCallbacks(this, -Offset);
 	}
+
+	if (bUpdate)
+	{
+		if (bVertical)
+			GridSystem->UpdateSegment(*this, Start, { Size.X, SlideStop - Start.Y + Size.Y} );
+		else
+			GridSystem->UpdateSegment(*this, Start, { SlideStop - Start.X + Size.X, Size.Y } );
+	}
+	Button::Tick(DT);
 }

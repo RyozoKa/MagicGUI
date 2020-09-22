@@ -10,6 +10,7 @@
 #include "HDynamicArray.h"
 #include "RenderBuffer.h"
 #include "Canvas.h"
+#include "CallbackChain.h"
 
 class MAGICGUIAPI TabPage
 {
@@ -28,6 +29,8 @@ public:
 	int Index;
 	class TabPanel* Owner;
 	Canvas* C = new Canvas;
+
+	void SetText(String S, String FontName, int FontHeight);
 
 private:
 
@@ -49,6 +52,7 @@ public:
 		TabCanvas.Owner = this;
 		TabCanvas.SetColor(Color(79, 79, 78));
 		TabCanvas.SetRenderMode(TYPE::TYPE_COLOR);
+		ImageStrip.SetImage(ThemeManager::GetTextureFor(C_BUTTON_NORMAL));
 	}
 
 	virtual TabPage* AddTab();
@@ -60,6 +64,7 @@ public:
 	virtual void SetPosition(const Vect2 Pos);
 	virtual void RenderObjects();
 	virtual void SetTabVisibility(bool);
+	virtual TabPage* GetCurrentTab();
 
 	int GetCount();
 
@@ -70,6 +75,9 @@ public:
 	float TabStripHeight = DefaultTabStripHeight;
 	bool bShowTabs = true;
 	bool bShowFullStrip = false;
+	//Events
+	Callbacks<Widget*> OnTabChanged;
+	float XOffset = 0;
 
 private:
 	

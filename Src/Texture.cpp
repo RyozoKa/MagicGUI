@@ -416,3 +416,59 @@ void RenderObject::DrawObject(const Vect2 Pos)
 	glBindVertexArray(0);
 	RenderBuffer::CurrentFrame->bUpdate = true;
 }
+
+void RenderObject::DrawObject(const Vect2 Pos, const Mat2 Rotation)
+{
+	if (RenderMode == TYPE::TYPE_NONE || (RenderMode != TYPE::TYPE_TEXTURE && Alpha == 0.f))
+		return;
+	//glfwMakeContextCurrent(Owner->Window->WindowHandle);
+	//glViewport(0, 0, Owner->Window->WindowSize.X, Owner->Window->WindowSize.Y);
+	
+	
+	Vect2 Location = Pos;
+	Location.RoundDown();
+
+	glBindVertexArray(VertexArray);
+	glBindBuffer(GL_ARRAY_BUFFER, VertexBuffer);
+	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, ElementBuffer);
+	glUniform3f(Shader.ColorOffset, RedOffset, GreenOffset, BlueOffset);
+	glUniform2f(Shader.Viewport, 2.f / (float)RenderBuffer::CurrentFrame->Size.X, 2.f / (float)RenderBuffer::CurrentFrame->Size.Y);
+	glUniformMatrix2fv(Shader.Rotation, 1, GL_FALSE, (const GLfloat*)Rotation.M);
+	glUniform2f(Shader.Position, Location.X, (RenderBuffer::CurrentFrame->Size.Y - Location.Y) - Size.Y);
+	glUniform2f(Shader.RectSize, Size.X, Size.Y);
+	
+	switch (RenderMode)
+	{
+	case TYPE::TYPE_TEXTURE:
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, Image->_InternalID);
+		glUniform4f(Shader.Color, 1.f, 1.f, 1.f, 1.f);
+		glUniform2f(Shader.UVCoords, TexOffset.X / Image->Width, TexOffset.Y / Image->Height);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
+		break;
+	case TYPE::TYPE_BLEND: 
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, Image->_InternalID);
+		glUniform4f(Shader.Color, Red, Green, Blue, Alpha);
+		glUniform2f(Shader.UVCoords, TexOffset.X / Image->Width, TexOffset.Y / Image->Height);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
+		break;
+	case TYPE::TYPE_COLOR:
+		glActiveTexture(GL_TEXTURE0);
+		glBindTexture(GL_TEXTURE_2D, Texture::EMPTY);
+		glUniform4f(Shader.Color, Red, Green, Blue, Alpha);
+		glUniform2f(Shader.UVCoords, 0, 0);		//Texture coordinates are always size neutral scalars.																		//-- UV offsets have to be in the range of 0 - 1			
+
+		break;
+	}
+
+	glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), nullptr);
+	glEnableVertexAttribArray(0);
+	glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 4 * sizeof(float), (void*)(2 * sizeof(float)));
+	glEnableVertexAttribArray(1);
+
+	glDrawElements(GL_TRIANGLES, NumVertices, GL_UNSIGNED_INT, 0);
+	//glFlush();
+	glBindVertexArray(0);
+	RenderBuffer::CurrentFrame->bUpdate = true;
+}

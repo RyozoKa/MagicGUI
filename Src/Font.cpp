@@ -65,14 +65,16 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
             //else
             //    face->glyph->bitmap.buffer[i] = 0;
         }
+        GLint swizzleMask[] = {GL_ZERO, GL_ZERO, GL_ZERO, GL_RED};
+        glTexParameteriv(GL_TEXTURE_2D, GL_TEXTURE_SWIZZLE_RGBA, swizzleMask);
         glTexImage2D(
             GL_TEXTURE_2D,
             0,
-            GL_ALPHA,
+            GL_RED,
             face->glyph->bitmap.width,
             face->glyph->bitmap.rows,
             0,
-            GL_ALPHA,
+            GL_RED,
             GL_UNSIGNED_BYTE,
             face->glyph->bitmap.buffer
         );
@@ -89,6 +91,7 @@ Map8* Font::LoadTrueTypeFont8(const char * FontPath, int Height)
             (face->glyph->advance.x >> 6)
         };
         Map->CharMap[c] = character;
+        Map->Name = FontPath;
     }
    // glPixelStorei(GL_UNPACK_ALIGNMENT, 4); 
     UTF8Maps[HName] = Map;

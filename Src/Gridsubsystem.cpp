@@ -4,6 +4,7 @@
 #include "Widget.h"
 #include <cstdio>
 #include "Canvas.h"
+#include <cstring>
 
 Block& Gridsubsystem::GetBlock(const Vect2 Pos)
 {
@@ -24,7 +25,7 @@ Widget* Gridsubsystem::GetWidget(const Vect2 Pos)
 
 Block& Gridsubsystem::InsertWidget(Widget& W)
 {
-	if (&W == OwnerCanvas)
+	if (&W == OwnerCanvas || W.Position == Vect2(-1.f, -1.f))
 		return Grid[0];
 	//We'll need to get all the blocks covered and insert the widget
 	bUpdate = true;
@@ -167,13 +168,13 @@ void Gridsubsystem::ResizeWidget(Widget& W, const Vect2& Delta)
 Widget* Block::GetWidget(const Vect2 Pos)
 {
 	Widget* Result = nullptr;
-	for (unsigned char i = 0; i < Num && Widgets[i]; ++i)
+	for (unsigned char i = 0; i < Num; ++i)
 	{
 		//Vect2& Loc = Widgets[i]->Position;
 		//Vect2 End = Loc + (Widgets[i]->Size);
 		//Simple rectangular collision primitive
 		//if (Pos >= Loc && Pos <= End)
-		if ( (!Result || Result->ZIndex < Widgets[i]->ZIndex) && Widgets[i]->TestCollision(Pos))
+		if (Widgets[i] && (!Result || Result->ZIndex < Widgets[i]->ZIndex) && Widgets[i]->TestCollision(Pos))
 			Result = Widgets[i];//return Widgets[i];
 	}
 	return Result;
@@ -181,6 +182,12 @@ Widget* Block::GetWidget(const Vect2 Pos)
 
 bool Block::AddWidget(Widget& W)
 {
+	for(unsigned char i = 0; i < Num; ++i)
+	{
+		if (Widgets[i] == &W)
+			return false;
+	}
+
 	//Check if there is a free block
 	for (unsigned char i = 0; i < Num; ++i)
 	{
@@ -190,7 +197,7 @@ bool Block::AddWidget(Widget& W)
 			return true;
 		}
 	}
-	if (Num == 255)
+	if (Num == 128)
 		return false;
 
 	Widgets[Num++] = &W;
@@ -202,6 +209,18 @@ void Block::RemoveWidget(Widget& W)
 	for(unsigned char i = 0; i < Num; ++i)
 	{
 		if (Widgets[i] == &W)
+		{
+			/*if (i < (Num - 1) )
+			{
+				
+				memmove(&Widgets[i], &Widgets[i + 1], ( (Num - 1) - i) * sizeof(void*));
+				Widgets[Num - 1] = 0;
+			}
+			else*/
 			Widgets[i] = 0;
+			//--Num;
+			return;
+		}
+			
 	}
 }

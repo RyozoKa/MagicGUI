@@ -46,6 +46,7 @@ public:
 		//ToggleButton->SetText("What", "Fonts/arial.ttf", 14);
 		//ToggleButton->Text.SetTextColor(Color(255, 0, 0));
 		C->SetColor(ThemeManager::CanvasWhite);
+		C->OnMouseLeaveEvent += ClassDelegate((void*)&SlidePanel::OnMouseLeave, this);
 		
 	}
 
@@ -89,4 +90,6 @@ public:
 		Widget::Tick(DT);
 		DrawSize = C->DrawSize;
 	}
+
+	virtual void OnMouseLeave();
 };

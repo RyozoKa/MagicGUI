@@ -3,12 +3,15 @@
 #include "Texture.h"
 #include <vector>
 #include "CallbackChain.h"
+#include "ContextMenu.h"
 
 /*
 	Base class for all elements drawn in a window.
 	A widget primitive will always be a square or a rectangle by default
 	 
 */
+
+extern bool bPopup;
 
 enum Expansion
 {
@@ -55,7 +58,7 @@ public:
 	Mat2 RotMatrix;
 	ECollision CollisionType = ECollision_Rect;
 	bool bUpdate;
-
+	ContextMenu* ContextMenuHandle = nullptr;
 	Keypoint Keys[16];
 	unsigned char CurrentKey = 1;
 	unsigned char NumKeys = 1;
@@ -63,11 +66,12 @@ public:
 	//Callback events
 	Callbacks<Widget*> OnFinishedAnim;
 	Callbacks<Widget*> OnFinishedAnimReturn;
-	Callbacks<Widget*> OnResize;				//-- For draw segmentation or just a general resize
+	Callbacks<Vect2, Vect2> OnDrawChanged;				//-- Fired whenever size or position is changed
 	Callbacks<Widget*> OnVerticalExpanded;
 	Callbacks<Widget*> OnVerticalCollapsed;
 	Callbacks<Widget*> OnHorizontalExpanded;
 	Callbacks<Widget*> OnHorizontalCollapsed;
+	Callbacks<Widget*> OnMouseLeaveEvent;
 
 	//Radius collision data
 	float Radius = 0.f;
@@ -191,6 +195,12 @@ public:
 	virtual void OnScroll(float YOffset);
 	virtual void OnCursor(double X, double Y);
 
+	//Context Menu
+	virtual void RegisterContextMenu(ContextMenu* CI)
+	{
+		ContextMenuHandle = CI;
+	}
+	virtual void ShowContextMenu();
 	//Other events
 	virtual void Attached();		//--	Called when this widget is attached to another widget
 	virtual void OnWindowResize(Vect2 Delta);

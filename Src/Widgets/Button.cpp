@@ -4,6 +4,16 @@
 void Button::SetText(String S, String FontName, int FontHeight)
 {
 	Text.SetText(S, FontName, FontHeight);
+	if (Text.Size + 10.f > Size)
+	{
+		Vect2 NewSize = Size;
+		if (Text.Size.X + 20.f > Size.X)
+			NewSize.X = Text.Size.X + 20.f;
+		if (Text.Size.Y + 10.f > Size.Y)
+			NewSize.Y = Text.Size.Y + 10.f;
+		SetSize(NewSize);
+	}
+		
 	//Calculate text offset
 	TextOffset = (Size - Text.Size) / 2;
 	Text.SetPosition(Position + TextOffset);

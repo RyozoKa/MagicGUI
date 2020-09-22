@@ -1,4 +1,4 @@
-#include "Window.h"
+﻿#include "Window.h"
 #include <iostream>
 #include <stdlib.h>
 #include <stdio.h>
@@ -23,8 +23,11 @@ void Window::AddItem(Widget& Item)
 void Window::IsClosing()
 {
 	//Exclude this window from the list
-	--WndIdx;
+	//--WndIdx;
+	glfwDestroyWindow(WindowHandle);
 	Window::OpenWindows[WndIndex] = nullptr;
+	WindowHandle->Wnd = nullptr;
+	WindowHandle = nullptr;
 	delete this;
 }
 
@@ -47,7 +50,7 @@ void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 
 void window_close_callback(GLFWwindow* window)
 {
-	window->Wnd->IsClosing();
+	window->Wnd->IsClosing(); 
 }
 
 void GLAPIENTRY
@@ -81,7 +84,7 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 	}
 		if(Borderless)
 			glfwWindowHint(GLFW_DECORATED, GLFW_FALSE);
-		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 2);
+		glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
 		glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 0);
 		glfwWindowHint(GLFW_RESIZABLE, GL_TRUE);
 		//glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);
@@ -132,14 +135,21 @@ Window* Window::CreateWindow(const Vect2 Size, const char* Title, MODE Mode, boo
 			glDisable(GL_CULL_FACE); 
 
 			glEnable              ( GL_DEBUG_OUTPUT );
+			glEnable(GL_DEBUG_OUTPUT_SYNCHRONOUS);
 			glDebugMessageCallback( MessageCallback, 0 );
 
 			//glfwWindowHint(GLFW_SAMPLES, 4);
 			//glEnable(GL_MULTISAMPLE);
 		}
 		else
+		{
 			Wd = glfwCreateWindow(Size.X, Size.Y, Title, Mode == MD_FULLSCREEN ? Application::primary : nullptr, Context);
-		
+			glfwMakeContextCurrent(Wd);
+		}
+
+		glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
 		if(!Wd)
 		{
 			glfwTerminate();
@@ -214,6 +224,9 @@ void Window::SetDrawstyle(TYPE Mode)
 
 void Window::Close()
 {
+	WindowHandle->Wnd = nullptr;
+	WndIdx--;
+	OpenWindows[WndIndex] = nullptr;
 	glfwDestroyWindow(WindowHandle);
 	delete this;	//This is still safe, as long as no one attempts to delete it again.
 }
@@ -330,24 +343,37 @@ void Window::OnScroll(double XOffset, double YOffset)
 
 void CursorCallback(GLFWwindow* Wnd, double X, double Y)
 {
-	Wnd->Wnd->OnCursor(X, Y);
+	if(Wnd && Wnd->Wnd)
+		Wnd->Wnd->OnCursor(X, Y);
 	
 }
 
 void CursorEnterCallback(GLFWwindow* window, int entered)
 {
+	return;
 	if (entered)
 	{
-//		window->Wnd->C.OnCursor(window->Wnd->CursorPos.X, window->Wnd->CursorPos.Y);
+		window->Wnd->C.OnCursor(window->Wnd->CursorPos.X, window->Wnd->CursorPos.Y);
 	}
 	else
 	{
+		/*if(bPopup)
+		{	///!! This gets called after leaving the popup menu, but it shouldn't.
+			// We therefore have to supress it only when that happens.
+			bPopup = false;
+			printf("popup false\n");
+			return;
+		}
+		printf("Continue");
+		*/
+
 		window->Wnd->C.OnMouseLeave(window->Wnd->CursorPos.X, window->Wnd->CursorPos.Y);
 	}
 }
 
 void KeyCallback(GLFWwindow* Wnd, int Key, int Scancode, int Action, int Mods)
 {
+	if(Wnd && Wnd->Wnd)
 	switch(Action)
 	{
 		case GLFW_PRESS:
@@ -362,6 +388,7 @@ void KeyCallback(GLFWwindow* Wnd, int Key, int Scancode, int Action, int Mods)
 
 void MouseClickCallback(GLFWwindow* Wnd, int Button, int Action, int Mods)
 {
+	if(Wnd && Wnd->Wnd)
 	switch(Action)
 	{
 		case GLFW_PRESS:
